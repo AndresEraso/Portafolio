@@ -1,0 +1,228 @@
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 1.5rem + 2vw, 3rem);
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .about__grid {
+    grid-template-columns: 1.25fr 0.85fr;
+  }
+}
+
+/* Columna de Texto */
+.about__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.about__paragraph {
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.about__closing {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text);
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface);
+  border-left: 2px solid var(--color-primary);
+  border-radius: var(--radius-xs);
+}
+
+/* Directiva de Filosofía */
+.about__manifesto {
+  margin-top: 1.75rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+.about__manifesto-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+}
+
+.about__quote {
+  padding: 1.15rem 1.25rem;
+  margin: 0;
+}
+
+.about__quote-text {
+  font-size: var(--text-md);
+  line-height: 1.65;
+  color: var(--color-text);
+  font-style: italic;
+}
+
+/* Ficha de Especificaciones (SPEC_SHEET) */
+.about__spec-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+.about__spec-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background-color: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border-strong);
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-semibold);
+}
+
+.about__spec-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__spec-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.95rem 1.15rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__spec-row:last-child {
+  border-bottom: none;
+}
+
+.about__spec-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.about__spec-val {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* Módulos de Capacidad (Unified Matrix) */
+.about__pillars-wrapper {
+  margin-top: clamp(2.5rem, 2rem + 3vw, 4rem);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+.about__pillars-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+.about__pillars-tag {
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+}
+
+.about__pillars-title {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-medium);
+}
+
+.about__pillars-matrix {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .about__pillars-matrix {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about__pillar-col {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .about__pillar-col {
+    border-bottom: none;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .about__pillar-col:last-child {
+    border-right: none;
+  }
+}
+
+.about__pillar-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-subtle);
+  font-size: var(--text-xs);
+}
+
+.about__pillar-num {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+}
+
+.about__pillar-name {
+  font-size: var(--text-md);
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: 0.85rem;
+}
+
+.about__pillar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.about__pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.about__pillar-bullet {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}

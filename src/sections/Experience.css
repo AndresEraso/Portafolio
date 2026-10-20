@@ -1,0 +1,306 @@
+.experience__ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience__log {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.experience__log--employment {
+  border-left: 2px solid var(--color-primary);
+}
+
+.experience__log--volunteer {
+  border-left: 2px dashed var(--color-border-strong);
+}
+
+/* Cinta de Telemetría Superior */
+.experience__ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1.25rem;
+  background-color: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+}
+
+.experience__log-id {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+}
+
+.experience__status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  font-size: 0.72rem;
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.experience__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 6px var(--color-primary);
+}
+
+.experience__status-pill--volunteer {
+  color: var(--color-text-muted);
+}
+
+.experience__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .experience__header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.experience__role-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.experience__company {
+  font-size: var(--text-2xl);
+  font-family: var(--font-display);
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+}
+
+.experience__role {
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.experience__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+.experience__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* Síntesis */
+.experience__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.experience__summary-text {
+  font-size: var(--text-md);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* Responsabilidades */
+.experience__responsibilities-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.experience__section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-semibold);
+}
+
+.experience__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.65rem;
+}
+
+.experience__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
+}
+
+.experience__tab:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+}
+
+.experience__tab.is-active {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.experience__panel {
+  padding: 1.15rem;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.experience__panel-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-size: var(--text-xs);
+}
+
+.experience__panel-indicator {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.experience__panel-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.experience__panel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.experience__panel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.experience__item-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* Tecnologías del Puesto */
+.experience__tech-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.experience__tech-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .experience__tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .experience__tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.experience__tech-category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+}
+
+.experience__tech-cat-label {
+  font-size: 0.72rem;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.experience__tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.experience__tag {
+  display: inline-block;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  font-size: 0.75rem;
+  color: var(--color-text);
+}
+
+/* Aviso de Confidencialidad */
+.experience__confidentiality {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-surface-2);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  line-height: 1.5;
+}
