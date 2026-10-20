@@ -1,10 +1,14 @@
-import { ArrowRight, MapPin, Server, Terminal } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, Server, Terminal } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../components/Icons';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import { useLanguage } from '../hooks/useLanguage';
 import './Hero.css';
 
-export function Hero() {
+interface HeroProps {
+  onOpenContact?: (triggerRef?: HTMLElement | null) => void;
+}
+
+export function Hero({ onOpenContact }: HeroProps) {
   const { t } = useLanguage();
   const { profile, experience, education } = PORTFOLIO_DATA;
 
@@ -63,13 +67,19 @@ export function Hero() {
 
           {/* Llamadas a la acción */}
           <div className="hero__actions">
-            <a href="#projects" className="hero__btn hero__btn--primary">
+            <button
+              type="button"
+              id="hero-contact-trigger"
+              className="hero__btn hero__btn--primary"
+              onClick={(e) => onOpenContact?.(e.currentTarget)}
+            >
+              <Mail size={16} aria-hidden="true" />
+              <span className="mono">{t.hero.ctaContact}</span>
+            </button>
+
+            <a href="#projects" className="hero__btn hero__btn--secondary">
               <span className="mono">{t.hero.ctaProjects}</span>
               <ArrowRight size={16} aria-hidden="true" />
-            </a>
-
-            <a href="#contact" className="hero__btn hero__btn--secondary">
-              <span className="mono">{t.hero.ctaContact}</span>
             </a>
           </div>
 

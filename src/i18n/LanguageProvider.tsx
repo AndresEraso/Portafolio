@@ -23,10 +23,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const currentDict = translations[language];
     document.title = currentDict.meta.title;
 
-    const metaDesc = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.content = currentDict.meta.description;
-    }
+    const setMeta = (selector: string, content: string) => {
+      const el = document.querySelector<HTMLMetaElement>(selector);
+      if (el) el.content = content;
+    };
+
+    setMeta('meta[name="description"]', currentDict.meta.description);
+    setMeta('meta[property="og:title"]', currentDict.meta.title);
+    setMeta('meta[property="og:description"]', currentDict.meta.description);
+    setMeta('meta[property="og:locale"]', language === 'es' ? 'es_CO' : 'en_US');
+    setMeta('meta[name="twitter:title"]', currentDict.meta.title);
+    setMeta('meta[name="twitter:description"]', currentDict.meta.description);
   }, [language]);
 
   const setLanguage = useCallback((next: Language) => {

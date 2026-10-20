@@ -14,7 +14,11 @@ import { PORTFOLIO_DATA } from '../data/portfolio';
 import { useLanguage } from '../hooks/useLanguage';
 import './Contact.css';
 
-export function Contact() {
+interface ContactProps {
+  onOpenContact?: (triggerRef?: HTMLElement | null) => void;
+}
+
+export function Contact({ onOpenContact }: ContactProps) {
   const { t } = useLanguage();
   const { profile } = PORTFOLIO_DATA;
   const [copied, setCopied] = useState(false);
@@ -39,6 +43,27 @@ export function Contact() {
           title={t.contact.title}
           subtitle={t.contact.text}
         />
+
+        {/* Banner destacado para abrir asistente modal de contacto */}
+        <div className="contact__hero-banner reveal">
+          <div className="contact__hero-banner-content">
+            <h3 className="contact__hero-banner-title mono">
+              // {t.contact.openModalBtn.toUpperCase()}
+            </h3>
+            <p className="contact__hero-banner-desc">
+              {t.contactModal.subtitle}
+            </p>
+          </div>
+          <button
+            type="button"
+            id="contact-section-trigger"
+            className="contact-endpoint__btn contact-endpoint__btn--primary mono contact__modal-trigger-btn"
+            onClick={(e) => onOpenContact?.(e.currentTarget)}
+          >
+            <Mail size={15} aria-hidden="true" />
+            <span>{t.contact.openModalBtn}</span>
+          </button>
+        </div>
 
         <div className="contact__ledger reveal">
           <div className="contact__ledger-header mono">

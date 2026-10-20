@@ -1,3 +1,5 @@
+import { useRef, useState } from 'react';
+import { ContactModal } from './components/ContactModal';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { NAV_ITEMS } from './data/navigation';
@@ -21,6 +23,20 @@ export function App() {
   const { t } = useLanguage();
   const activeId = useScrollSpy(SECTION_IDS, 120);
 
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const contactTriggerRef = useRef<HTMLElement | null>(null);
+
+  const handleOpenContactModal = (triggerElement?: HTMLElement | null) => {
+    if (triggerElement) {
+      contactTriggerRef.current = triggerElement;
+    }
+    setIsContactModalOpen(true);
+  };
+
+  const handleCloseContactModal = () => {
+    setIsContactModalOpen(false);
+  };
+
   // Inicializa las animaciones de aparición al hacer scroll
   useScrollReveal();
 
@@ -36,7 +52,7 @@ export function App() {
 
       {/* Contenido principal con las 10 secciones */}
       <main id="main-content" tabIndex={-1}>
-        <Hero />
+        <Hero onOpenContact={handleOpenContactModal} />
         <About />
         <TechStack />
         <Experience />
@@ -45,8 +61,15 @@ export function App() {
         <SoftSkills />
         <Languages />
         <ProfessionalFocus />
-        <Contact />
+        <Contact onOpenContact={handleOpenContactModal} />
       </main>
+
+      {/* Modal accesible de contacto profesional */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={handleCloseContactModal}
+        triggerRef={contactTriggerRef}
+      />
 
       {/* Pie de página con enlaces y año dinámico */}
       <Footer />

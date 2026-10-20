@@ -109,7 +109,7 @@ export const PORTFOLIO_DATA = {
     social: {
       github: 'https://github.com/AndresEraso',
       linkedin: null as string | null, // Configurar aquí cuando se disponga de la URL de LinkedIn
-      email: null as string | null, // Configurar aquí cuando se disponga de correo confirmado (ej: 'dubereraso@unicauca.edu.co')
+      email: 'dubereraso@unicauca.edu.co', // Correo profesional confirmado (Universidad del Cauca)
       whatsapp: null as string | null, // Configurar aquí cuando se disponga de enlace seguro (ej: 'https://wa.me/...')
       instagram: null as string | null, // Configurar aquí cuando se disponga de perfil profesional verificado
       resumeUrl: null as string | null, // Configurar aquí cuando se disponga del archivo (ej: './documents/CV_Duber_Eraso.pdf')

@@ -27,9 +27,9 @@ export function isLanguage(value: unknown): value is Language {
 /* ------------------------------------------------------------------------ */
 const es = {
   meta: {
-    title: 'Duber Andrés Eraso Uni — Desarrollador Backend & Cloud',
+    title: 'Duber Andrés Eraso Uni — Backend Developer & Cloud Engineer (AWS)',
     description:
-      'Portafolio de Duber Andrés Eraso Uni, estudiante de Ingeniería de Sistemas en la Universidad del Cauca y desarrollador de back-end orientado a Backend, Cloud Computing (AWS), procesamiento de datos y sistemas distribuidos.',
+      'Portafolio profesional de Duber Andrés Eraso Uni, estudiante de Ingeniería de Sistemas en la Universidad del Cauca y desarrollador especializado en Backend, Cloud Computing (AWS), procesamiento distribuido de datos y arquitecturas escalables.',
   },
 
   a11y: {
@@ -45,6 +45,8 @@ const es = {
     opensInNewTab: '(se abre en una pestaña nueva)',
     homeLink: 'Duber Andrés Eraso Uni, ir al inicio',
     footerNav: 'Enlaces del pie de página',
+    closeModal: 'Cerrar ventana de contacto (tecla Escape)',
+    contactModalDialog: 'Ventana emergente de contacto profesional',
   },
 
   nav: {
@@ -76,7 +78,7 @@ const es = {
     intro:
       'Soy desarrollador de back-end y estudiante de Ingeniería de Sistemas, con experiencia en soporte y operación de procesos de datos en entornos cloud. Me interesa construir soluciones confiables, automatizar procesos y comprender cómo funcionan los sistemas distribuidos.',
     ctaProjects: 'Ver proyectos',
-    ctaContact: 'Contactar',
+    ctaContact: 'Conversemos sobre oportunidades',
     roleLabel: 'Desarrollador de back-end en',
     studyLabel: 'Ingeniería de Sistemas',
     socialLabel: 'Perfiles profesionales',
@@ -572,9 +574,10 @@ const es = {
 
   /* ------------------------------------------------------------- Contact */
   contact: {
-    eyebrow: 'Contacto',
-    title: '¿Hablamos?',
-    text: '¿Tienes una oportunidad profesional, un proyecto interesante o te gustaría conversar sobre backend, cloud y desarrollo de software? Estaré encantado de conectar y conocer nuevas oportunidades.',
+    eyebrow: 'Contacto profesional',
+    title: 'Conversemos sobre oportunidades profesionales',
+    text: 'Estoy abierto a conocer oportunidades en desarrollo de software, backend y tecnologías cloud, así como a colaborar en proyectos de ingeniería de software.',
+    openModalBtn: 'Abrir asistente de contacto',
     channelsLabel: 'Canales de contacto',
     github: {
       label: 'GitHub',
@@ -598,6 +601,43 @@ const es = {
       action: 'Descargar CV',
     },
     basedIn: 'Ubicado en',
+  },
+
+  /* ------------------------------------------------------- Contact Modal */
+  contactModal: {
+    badge: 'SYS.CONNECT // ASISTENTE DE CONTACTO',
+    title: 'Contacto profesional con Duber Andrés Eraso',
+    subtitle: 'Elige cómo prefieres comunicarte: formulario de mensaje directo o canales verificados.',
+    formTab: 'Enviar mensaje',
+    channelsTab: 'Canales directos',
+    nameLabel: 'Tu nombre completo',
+    namePlaceholder: 'Ej. María Gómez / Tech Recruiter',
+    emailLabel: 'Tu correo de contacto',
+    emailPlaceholder: 'nombre@empresa.com',
+    subjectLabel: 'Asunto de la conversación',
+    subjectPlaceholder: 'Ej. Oportunidad Backend Developer / AWS',
+    messageLabel: 'Detalles de la oportunidad o consulta',
+    messagePlaceholder: 'Describe brevemente el puesto, proyecto o requerimientos tecnológicos...',
+    submitBtn: 'Enviar mensaje',
+    sendingBtn: 'Preparando...',
+    mailtoBtn: 'Abrir en tu cliente de correo (mailto)',
+    successTitle: 'Mensaje preparado con éxito',
+    successDesc: 'Se ha abierto tu cliente de correo predeterminado con los datos completados para enviar a Duber Eraso.',
+    sendAnother: 'Redactar otro mensaje',
+    close: 'Cerrar',
+    copyEmail: 'Copiar correo',
+    copied: 'Copiado',
+    verifiedNote: 'Canal verificado con respuesta habitual en menos de 24 horas laborables.',
+    directEmailLabel: 'Correo electrónico profesional',
+    locationLabel: 'Ubicación y modalidad',
+    locationVal: 'Popayán, Colombia (Disponible para trabajo Remoto / Híbrido)',
+    validation: {
+      nameRequired: 'Por favor ingresa tu nombre o el de tu organización.',
+      emailRequired: 'Por favor ingresa tu dirección de correo electrónico.',
+      emailInvalid: 'Por favor ingresa un correo electrónico válido (ej. usuario@dominio.com).',
+      subjectRequired: 'Por favor especifica un asunto para el contacto.',
+      messageRequired: 'Por favor escribe un mensaje (mínimo 10 caracteres).',
+    },
   },
 
   /* -------------------------------------------------------------- Footer */
@@ -628,9 +668,9 @@ export type Dictionary = typeof es;
 /* ------------------------------------------------------------------------ */
 const en: Dictionary = {
   meta: {
-    title: 'Duber Andrés Eraso Uni — Backend & Cloud Developer',
+    title: 'Duber Andrés Eraso Uni — Backend Developer & Cloud Engineer (AWS)',
     description:
-      'Portfolio of Duber Andrés Eraso Uni, a Systems Engineering student at Universidad del Cauca and backend developer focused on Backend, Cloud Computing (AWS), data processing, and distributed systems.',
+      'Portfolio of Duber Andrés Eraso Uni, Systems Engineering student at Universidad del Cauca and Backend Developer focused on AWS Cloud Computing, data pipelines, and distributed architectures.',
   },
 
   a11y: {
@@ -646,6 +686,8 @@ const en: Dictionary = {
     opensInNewTab: '(opens in a new tab)',
     homeLink: 'Duber Andrés Eraso Uni, go to top',
     footerNav: 'Footer links',
+    closeModal: 'Close contact modal (Escape key)',
+    contactModalDialog: 'Professional contact modal dialog',
   },
 
   nav: {
@@ -675,8 +717,8 @@ const en: Dictionary = {
     headlineHighlight: 'backend, data, and cloud.',
     intro:
       "I'm a backend developer and Systems Engineering student with experience supporting and operating data pipelines in cloud environments. I'm interested in building reliable solutions, automating processes, and understanding how distributed systems work.",
-    ctaProjects: 'View projects',
-    ctaContact: 'Get in touch',
+    ctaProjects: 'Explore projects',
+    ctaContact: 'Let’s discuss opportunities',
     roleLabel: 'Backend Developer at',
     studyLabel: 'Systems Engineering',
     socialLabel: 'Professional profiles',
@@ -1159,9 +1201,10 @@ const en: Dictionary = {
   },
 
   contact: {
-    eyebrow: 'Contact',
-    title: "Let's connect.",
-    text: "Do you have a professional opportunity, an interesting project, or would you like to talk about backend, cloud, and software development? I'd be happy to connect and explore new opportunities.",
+    eyebrow: 'Professional Contact',
+    title: 'Discussing Professional Opportunities',
+    text: 'Open to exploring opportunities in software engineering, backend systems, and cloud architectures (AWS), as well as collaborating on impactful technical projects.',
+    openModalBtn: 'Open contact assistant',
     channelsLabel: 'Contact channels',
     github: {
       label: 'GitHub',
@@ -1185,6 +1228,43 @@ const en: Dictionary = {
       action: 'Download Resume',
     },
     basedIn: 'Based in',
+  },
+
+  /* ------------------------------------------------------- Contact Modal */
+  contactModal: {
+    badge: 'SYS.CONNECT // CONTACT ASSISTANT',
+    title: 'Professional Contact with Duber Andrés Eraso',
+    subtitle: 'Choose how you prefer to connect: direct message form or verified technical channels.',
+    formTab: 'Send message',
+    channelsTab: 'Direct channels',
+    nameLabel: 'Your full name',
+    namePlaceholder: 'e.g. Sarah Miller / Tech Recruiter',
+    emailLabel: 'Your contact email',
+    emailPlaceholder: 'name@company.com',
+    subjectLabel: 'Conversation subject',
+    subjectPlaceholder: 'e.g. Backend Developer Role / AWS Opportunity',
+    messageLabel: 'Opportunity or inquiry details',
+    messagePlaceholder: 'Briefly describe the role, project, or technical requirements...',
+    submitBtn: 'Send message',
+    sendingBtn: 'Preparing...',
+    mailtoBtn: 'Open in email client (mailto)',
+    successTitle: 'Message prepared successfully',
+    successDesc: 'Your default email client has been opened with your pre-filled details addressed to Duber Eraso.',
+    sendAnother: 'Compose another message',
+    close: 'Close',
+    copyEmail: 'Copy email',
+    copied: 'Copied',
+    verifiedNote: 'Verified channel with typical response time within 24 business hours.',
+    directEmailLabel: 'Professional email address',
+    locationLabel: 'Location & modality',
+    locationVal: 'Popayán, Colombia (Available for Remote / Hybrid work)',
+    validation: {
+      nameRequired: 'Please enter your name or company name.',
+      emailRequired: 'Please enter your email address.',
+      emailInvalid: 'Please enter a valid email address (e.g. user@domain.com).',
+      subjectRequired: 'Please specify a subject for the contact.',
+      messageRequired: 'Please provide a message (at least 10 characters).',
+    },
   },
 
   footer: {

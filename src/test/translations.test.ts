@@ -62,4 +62,16 @@ describe('Traducciones Bilingües', () => {
     expect(translations.es.experience.icetex.description).toContain('clases de informática');
     expect(translations.en.experience.icetex.description).toContain('computer science classes');
   });
+
+  it('incluye el encabezado formal de contacto y el diccionario del modal', () => {
+    expect(translations.es.contact.title).toBe('Conversemos sobre oportunidades profesionales');
+    expect(translations.en.contact.title).toBe('Discussing Professional Opportunities');
+    expect(translations.es.contact.openModalBtn).toBeDefined();
+    expect(translations.en.contact.openModalBtn).toBeDefined();
+
+    expect(translations.es.contactModal).toBeDefined();
+    expect(translations.en.contactModal).toBeDefined();
+    expect(translations.es.contactModal.title).toContain('Duber Andrés Eraso');
+    expect(translations.en.contactModal.title).toContain('Duber Andrés Eraso');
+  });
 });

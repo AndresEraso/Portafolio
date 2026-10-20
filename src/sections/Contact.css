@@ -1,3 +1,52 @@
+/* Banner destacado de contacto directo */
+.contact__hero-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--card-radius);
+  margin-bottom: 1.75rem;
+  max-width: 860px;
+}
+
+@media (min-width: 640px) {
+  .contact__hero-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.contact__hero-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contact__hero-banner-title {
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.contact__hero-banner-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 520px;
+}
+
+.contact__modal-trigger-btn {
+  white-space: nowrap;
+  padding-inline: 1.5rem;
+  font-weight: var(--font-weight-bold);
+}
+
 .contact__ledger {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border-strong);
