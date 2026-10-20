@@ -94,6 +94,8 @@ export interface SocialLinks {
   github: string;
   linkedin: string | null;
   email: string | null;
+  whatsapp?: string | null;
+  instagram?: string | null;
   resumeUrl: string | null;
 }
 
@@ -106,9 +108,11 @@ export const PORTFOLIO_DATA = {
     headlineKey: 'hero',
     social: {
       github: 'https://github.com/AndresEraso',
-      linkedin: null as string | null, // Configurar aquí cuando se disponga de la URL
-      email: null as string | null, // Configurar aquí cuando se disponga del correo
-      resumeUrl: null as string | null, // Configurar aquí cuando se disponga del archivo (ej: '/documents/CV_Duber_Eraso.pdf')
+      linkedin: null as string | null, // Configurar aquí cuando se disponga de la URL de LinkedIn
+      email: null as string | null, // Configurar aquí cuando se disponga de correo confirmado (ej: 'dubereraso@unicauca.edu.co')
+      whatsapp: null as string | null, // Configurar aquí cuando se disponga de enlace seguro (ej: 'https://wa.me/...')
+      instagram: null as string | null, // Configurar aquí cuando se disponga de perfil profesional verificado
+      resumeUrl: null as string | null, // Configurar aquí cuando se disponga del archivo (ej: './documents/CV_Duber_Eraso.pdf')
     } satisfies SocialLinks,
   },
 

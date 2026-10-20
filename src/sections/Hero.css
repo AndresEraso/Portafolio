@@ -204,9 +204,18 @@
     background-color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
+    transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
   text-decoration: none;
   cursor: pointer;
+}
+
+.hero__btn svg {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.hero__btn:active {
+  transform: translateY(0);
 }
 
 .hero__btn--primary {
@@ -217,7 +226,12 @@
 
 .hero__btn--primary:hover {
   background-color: var(--color-button-bg-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-primary-soft);
+}
+
+.hero__btn--primary:hover svg {
+  transform: translateX(3px);
 }
 
 .hero__btn--secondary {
@@ -229,7 +243,8 @@
 .hero__btn--secondary:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  transform: translateY(-1px);
+  background-color: var(--color-surface-hover);
+  transform: translateY(-2px);
 }
 
 /* Enlaces Sociales */
@@ -261,12 +276,107 @@
   text-decoration: none;
   transition:
     border-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.hero__social-link svg {
+  transition: transform var(--duration-fast) var(--ease-standard);
 }
 
 .hero__social-link:hover {
   border-color: var(--color-primary);
+  background-color: var(--color-surface-hover);
   color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.hero__social-link:hover svg {
+  transform: scale(1.12);
+}
+
+.hero__social-link:active {
+  transform: translateY(0);
+}
+
+/* Animaciones de entrada inicial sobrias y elegantes */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__top-bar {
+  animation: heroFadeUp 380ms var(--ease-emphasized) backwards;
+  animation-delay: 40ms;
+}
+
+.hero__cli-prompt {
+  animation: heroFadeUp 380ms var(--ease-emphasized) backwards;
+  animation-delay: 80ms;
+}
+
+.hero__headline {
+  animation: heroFadeUp 440ms var(--ease-emphasized) backwards;
+  animation-delay: 120ms;
+}
+
+.hero__spec-pill {
+  animation: heroFadeUp 440ms var(--ease-emphasized) backwards;
+  animation-delay: 160ms;
+}
+
+.hero__intro {
+  animation: heroFadeUp 440ms var(--ease-emphasized) backwards;
+  animation-delay: 200ms;
+}
+
+.hero__meta {
+  animation: heroFadeUp 440ms var(--ease-emphasized) backwards;
+  animation-delay: 240ms;
+}
+
+.hero__actions {
+  animation: heroFadeUp 440ms var(--ease-emphasized) backwards;
+  animation-delay: 280ms;
+}
+
+.hero__socials {
+  animation: heroFadeUp 440ms var(--ease-emphasized) backwards;
+  animation-delay: 320ms;
+}
+
+.hero__terminal {
+  animation: heroFadeUp 500ms var(--ease-emphasized) backwards;
+  animation-delay: 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__top-bar,
+  .hero__cli-prompt,
+  .hero__headline,
+  .hero__spec-pill,
+  .hero__intro,
+  .hero__meta,
+  .hero__actions,
+  .hero__socials,
+  .hero__terminal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero__btn--primary:hover,
+  .hero__btn--secondary:hover,
+  .hero__social-link:hover {
+    transform: none !important;
+  }
 }
 
 /* --------------------------------------------------------------------------

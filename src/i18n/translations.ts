@@ -603,8 +603,21 @@ const es = {
   /* -------------------------------------------------------------- Footer */
   footer: {
     rights: 'Todos los derechos reservados.',
-    builtWith: 'Desarrollado con React y TypeScript.',
+    builtWith: 'Desarrollado con React 19 y TypeScript.',
     backToTop: 'Volver al inicio',
+    tagline: 'Desarrollo de backend distribuido, procesamiento de datos y arquitecturas cloud en AWS.',
+    socialHeading: 'Canales y Redes',
+    socialSub: 'Conexión con perfiles profesionales y canales técnicos verificados.',
+    navHeading: 'Navegación',
+    statusOnline: 'SISTEMA // ONLINE',
+    region: 'POPAYÁN, CO',
+    channels: {
+      githubDesc: 'Repositorios de código, pipelines y proyectos de software',
+      linkedinDesc: 'Perfil profesional, trayectoria y red de contactos',
+      emailDesc: 'Contacto directo para oportunidades y colaboraciones',
+      whatsappDesc: 'Mensajería instantánea para comunicación directa',
+      instagramDesc: 'Perfil técnico y actualizaciones profesionales',
+    },
   },
 };
 
@@ -1176,8 +1189,21 @@ const en: Dictionary = {
 
   footer: {
     rights: 'All rights reserved.',
-    builtWith: 'Built with React and TypeScript.',
+    builtWith: 'Built with React 19 and TypeScript.',
     backToTop: 'Back to top',
+    tagline: 'Distributed backend development, data processing, and AWS cloud architectures.',
+    socialHeading: 'Channels & Networks',
+    socialSub: 'Connection with professional profiles and verified technical channels.',
+    navHeading: 'Navigation',
+    statusOnline: 'SYSTEM // ONLINE',
+    region: 'POPAYAN, CO',
+    channels: {
+      githubDesc: 'Code repositories, pipelines, and software projects',
+      linkedinDesc: 'Professional profile, trajectory, and network',
+      emailDesc: 'Direct contact for opportunities and collaborations',
+      whatsappDesc: 'Instant messaging for direct communication',
+      instagramDesc: 'Technical profile and professional updates',
+    },
   },
 };
 

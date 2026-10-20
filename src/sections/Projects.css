@@ -11,6 +11,15 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition:
+    transform var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.case-study:hover {
+  transform: translateY(var(--card-hover-lift, -2px));
+  box-shadow: var(--shadow-sm);
 }
 
 .case-study--eventManager {
@@ -342,14 +351,32 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.45rem 0.85rem;
+  font-size: var(--text-xs);
   border-radius: var(--radius-xs);
   font-weight: var(--font-weight-semibold);
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
   text-decoration: none;
   cursor: pointer;
+}
+
+.case-study__action-btn svg {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.case-study__action-btn:hover {
+  transform: translateY(-1px);
+}
+
+.case-study__action-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.case-study__action-btn:active {
+  transform: translateY(0);
 }
 
 .case-study__action-btn--primary {
@@ -375,7 +402,8 @@
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
   cursor: pointer;
 }
 
@@ -383,6 +411,11 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
   background-color: var(--color-surface-hover);
+  transform: translateY(-1px);
+}
+
+.case-study__toggle-btn:active {
+  transform: translateY(0);
 }
 
 /* GitHub CTA Box */
@@ -396,6 +429,14 @@
   flex-direction: column;
   gap: 1.25rem;
   align-items: flex-start;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.projects__github-cta:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 @media (min-width: 768px) {
@@ -458,12 +499,37 @@
   font-weight: var(--font-weight-semibold);
   transition:
     border-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
   text-decoration: none;
   flex-shrink: 0;
+}
+
+.projects__github-btn svg {
+  transition: transform var(--duration-fast) var(--ease-standard);
 }
 
 .projects__github-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  background-color: var(--color-surface-hover);
+  transform: translateY(-2px);
+}
+
+.projects__github-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.projects__github-btn:active {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-study:hover,
+  .case-study__action-btn:hover,
+  .case-study__toggle-btn:hover,
+  .projects__github-btn:hover {
+    transform: none !important;
+  }
 }

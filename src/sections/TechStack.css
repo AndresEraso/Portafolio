@@ -45,13 +45,17 @@
   flex-direction: column;
   gap: 1rem;
   transition:
+    transform var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard);
+    background-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
 }
 
 .tech-stack__panel:hover {
+  transform: translateY(var(--card-hover-lift, -2px));
   border-color: var(--color-border-strong);
   background-color: var(--color-surface-hover);
+  box-shadow: var(--shadow-sm);
 }
 
 .tech-stack__panel--highlight {

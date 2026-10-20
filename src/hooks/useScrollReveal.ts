@@ -36,5 +36,5 @@ export function useScrollReveal() {
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  });
+  }, []);
 }

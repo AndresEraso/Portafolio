@@ -205,26 +205,55 @@ main:focus {
 }
 
 /* --------------------------------------------------------------------------
-   Animación de aparición al desplazarse
+   Animación de aparición al desplazarse (Scroll Reveal Técnico)
    -------------------------------------------------------------------------- */
 .reveal {
   opacity: 0;
-  transform: translateY(var(--reveal-distance));
+  transform: translateY(var(--reveal-distance, 16px));
   transition:
-    opacity var(--duration-slow) var(--ease-emphasized),
-    transform var(--duration-slow) var(--ease-emphasized);
+    opacity var(--duration-slow, 500ms) var(--ease-emphasized),
+    transform var(--duration-slow, 500ms) var(--ease-emphasized);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
+}
+
+/* Retrasos escalonados para grupos de elementos */
+.reveal-stagger-1 { --reveal-delay: 75ms; }
+.reveal-stagger-2 { --reveal-delay: 150ms; }
+.reveal-stagger-3 { --reveal-delay: 225ms; }
+.reveal-stagger-4 { --reveal-delay: 300ms; }
+
+/* Microinteracción de elevación para tarjetas */
+.card-lift {
+  transition:
+    transform var(--duration-fast, 150ms) var(--ease-standard),
+    border-color var(--duration-fast, 150ms) var(--ease-standard),
+    background-color var(--duration-fast, 150ms) var(--ease-standard),
+    box-shadow var(--duration-fast, 150ms) var(--ease-standard);
+}
+
+.card-lift:hover {
+  transform: translateY(var(--card-hover-lift, -2px));
+}
+
+.card-lift:active {
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .card-lift:hover {
+    transform: none !important;
   }
 }
 
