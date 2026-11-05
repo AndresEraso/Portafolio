@@ -169,6 +169,12 @@
   --code-string: #8de3a4;
   --code-punct: #67786d;
   --code-comment: #526258;
+
+  /* Foco / Luz interactiva (inspirado en v4) */
+  --spotlight-color: rgb(183 243 107 / 0.08);
+  --spotlight-secondary: rgb(126 219 134 / 0.035);
+  --card-spotlight: rgb(183 243 107 / 0.10);
+  --card-focus-shadow: 0 12px 30px -8px rgb(0 0 0 / 0.72), 0 0 0 1px rgb(183 243 107 / 0.28);
 }
 
 /* --------------------------------------------------------------------------
@@ -238,6 +244,12 @@
   --code-string: #8de3a4;
   --code-punct: #67786d;
   --code-comment: #526258;
+
+  /* Foco / Luz interactiva en tema claro */
+  --spotlight-color: rgb(42 97 19 / 0.065);
+  --spotlight-secondary: rgb(59 116 33 / 0.028);
+  --card-spotlight: rgb(42 97 19 / 0.075);
+  --card-focus-shadow: 0 12px 26px -8px rgb(24 33 27 / 0.14), 0 0 0 1px rgb(42 97 19 / 0.28);
 }
 
 /* --------------------------------------------------------------------------

@@ -90,9 +90,9 @@ export function SoftSkills() {
         />
 
         {/* 6 Habilidades Principales en Matriz de Competencias */}
-        <div className="soft-skills__grid">
+        <div className="soft-skills__grid focus-group">
           {featured.map(({ key, icon: IconComponent, code, data }) => (
-            <div key={key} className="competency-card reveal">
+            <div key={key} className="competency-card focus-card reveal">
               <div className="competency-card__header mono">
                 <span className="competency-card__code">{code}</span>
                 <div className="competency-card__icon-box">
@@ -100,7 +100,7 @@ export function SoftSkills() {
                 </div>
               </div>
 
-              <h3 className="competency-card__title">{data.title}</h3>
+              <h3 className="competency-card__title hover-paint">{data.title}</h3>
               <p className="competency-card__desc">{data.description}</p>
 
               <div className="competency-card__practice">
@@ -121,9 +121,9 @@ export function SoftSkills() {
             <h4 className="soft-skills__secondary-title">{t.softSkills.secondaryTitle}</h4>
           </div>
 
-          <div className="soft-skills__secondary-grid">
+          <div className="soft-skills__secondary-grid focus-group">
             {secondary.map(({ icon: IconComponent, code, data }, idx) => (
-              <div key={idx} className="attribute-node">
+              <div key={idx} className="attribute-node focus-card">
                 <div className="attribute-node__top mono">
                   <span className="attribute-node__code">{code}</span>
                   <IconComponent size={14} className="attribute-node__icon" aria-hidden="true" />

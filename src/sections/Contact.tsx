@@ -45,7 +45,7 @@ export function Contact({ onOpenContact }: ContactProps) {
         />
 
         {/* Banner destacado para abrir asistente modal de contacto */}
-        <div className="contact__hero-banner reveal">
+        <div className="contact__hero-banner focus-card reveal">
           <div className="contact__hero-banner-content">
             <h3 className="contact__hero-banner-title mono">
               // {t.contact.openModalBtn.toUpperCase()}
@@ -74,9 +74,9 @@ export function Contact({ onOpenContact }: ContactProps) {
             <span className="contact__ledger-status">NETWORK_ENDPOINTS: READY</span>
           </div>
 
-          <div className="contact__channels-list">
+          <div className="contact__channels-list focus-group">
             {/* GitHub (Verificado) */}
-            <div className="contact-endpoint">
+            <div className="contact-endpoint focus-card">
               <div className="contact-endpoint__icon-box">
                 <GithubIcon width={18} height={18} />
               </div>
@@ -101,7 +101,7 @@ export function Contact({ onOpenContact }: ContactProps) {
 
             {/* LinkedIn (si está configurado) */}
             {profile.social.linkedin && (
-              <div className="contact-endpoint">
+              <div className="contact-endpoint focus-card">
                 <div className="contact-endpoint__icon-box">
                   <LinkedinIcon width={18} height={18} />
                 </div>
@@ -124,7 +124,7 @@ export function Contact({ onOpenContact }: ContactProps) {
 
             {/* Correo Electrónico (si está configurado) */}
             {profile.social.email && (
-              <div className="contact-endpoint">
+              <div className="contact-endpoint focus-card">
                 <div className="contact-endpoint__icon-box">
                   <Mail size={18} aria-hidden="true" />
                 </div>
@@ -160,7 +160,7 @@ export function Contact({ onOpenContact }: ContactProps) {
 
             {/* Descarga de CV (si está configurado) */}
             {profile.social.resumeUrl && (
-              <div className="contact-endpoint">
+              <div className="contact-endpoint focus-card">
                 <div className="contact-endpoint__icon-box">
                   <Download size={18} aria-hidden="true" />
                 </div>

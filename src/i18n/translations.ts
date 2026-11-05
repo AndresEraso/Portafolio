@@ -376,7 +376,7 @@ const es = {
           'Un videojuego desarrollado en Unity, con una propuesta en formato 2.5D, que aborda la representación de la cosmovisión y la lengua Misak procurando tratarlas con respeto y contexto.',
         context:
           'Proyecto de grado relacionado con la comunidad Misak del territorio de San Antonio, en Morales, Cauca.',
-        role: 'Proyecto de grado en desarrollo.',
+        role: 'Investigación y desarrollo de trabajo de grado en curso (Ingeniería de Sistemas · Universidad del Cauca).',
         contribution: [] as string[],
         team: '',
         highlights: ['Proyecto de grado', 'Propuesta en 2.5D', 'Cosmovisión y lengua Misak'],
@@ -390,7 +390,7 @@ const es = {
         solution:
           'Aplicación web con frontend en React y TypeScript y backend en Laravel, que incluye inicio de sesión con Google, tablero de eventos, publicaciones, notificaciones y paneles por rol.',
         context: '',
-        role: 'Desarrollo frontend (contribución principal).',
+        role: 'Desarrollo frontend (contribución principal: vistas por rol, integración con API REST y diseño responsivo) + endpoint y pruebas en backend.',
         contribution: [
           'Desarrollo de vistas y paneles por rol: mentor, coordinador, miembro activo, usuario interesado e invitado.',
           'Diseño responsivo de los paneles, el tablero de eventos y la gestión de usuarios.',
@@ -657,6 +657,85 @@ const es = {
       emailDesc: 'Contacto directo para oportunidades y colaboraciones',
       whatsappDesc: 'Mensajería instantánea para comunicación directa',
       instagramDesc: 'Perfil técnico y actualizaciones profesionales',
+    },
+  },
+
+  /* --------------------------------------------------- Workspace & UX Tabs */
+  workspace: {
+    consoleLabel: 'CONSOLA MODULAR // NAVEGACIÓN POR PESTAÑAS',
+    shortcutHint: 'Teclas [1–5] para cambiar de módulo',
+    tablistLabel: 'Módulos principales del portafolio',
+    nextModule: 'Siguiente módulo',
+    prevModule: 'Módulo anterior',
+    tabs: {
+      experience: {
+        code: '01',
+        label: 'Experiencia & Carrera',
+        short: 'Experiencia',
+        desc: 'Backend, AWS Cloud y docencia voluntaria',
+      },
+      projects: {
+        code: '02',
+        label: 'Proyectos Seleccionados',
+        short: 'Proyectos',
+        desc: 'Casos de estudio, arquitectura y mi rol real',
+      },
+      stack: {
+        code: '03',
+        label: 'Especialidad & Stack',
+        short: 'Stack & AWS',
+        desc: 'Foco principal en Backend, AWS y Datos Distribuidos',
+      },
+      profile: {
+        code: '04',
+        label: 'Perfil & Credenciales',
+        short: 'Perfil & Certs',
+        desc: 'Sobre mí, Unicauca, certificaciones e idiomas',
+      },
+      contact: {
+        code: '05',
+        label: 'Contacto Directo',
+        short: 'Contacto',
+        desc: 'Asistente de mensajes y canales verificados',
+      },
+    },
+    profileSubTabs: {
+      label: 'Subsecciones de perfil',
+      overview: 'Sobre mí & Educación',
+      competencies: 'Competencias & Idiomas',
+      all: 'Ver perfil completo',
+    },
+    careerArc: {
+      label: 'TRAYECTORIA & CONTEXTO PROFESIONAL',
+      step1Title: 'Ingeniería de Sistemas',
+      step1Meta: '2021 – Presente · Universidad del Cauca',
+      step2Title: 'Docente Voluntario de Informática',
+      step2Meta: '2023 – Presente · Proyecto Comunitario ICETEX',
+      step3Title: 'Desarrollador de Back-end & Cloud',
+      step3Meta: 'Ene 2026 – Presente · ST&T LTDA (AWS · Spark · Airflow)',
+    },
+    techFilters: {
+      label: 'Filtrar tecnologías por enfoque',
+      core: 'Especialidad Principal: Backend, AWS & Datos',
+      ops: 'Infraestructura, BD & Flujo Ágil',
+      complementary: 'Web & Otros Proyectos',
+      all: 'Todas las áreas',
+      focusedBanner:
+        'Vista enfocada en mi especialidad #1 (Backend, Cloud AWS y sistemas de datos distribuidos) para facilitar la revisión técnica.',
+    },
+    projectFilters: {
+      label: 'Filtrar proyectos por categoría',
+      all: 'Todos los casos',
+      completed: 'Software finalizado',
+      research: 'I+D / Trabajo de grado',
+      roleBadge: 'MI ROL EN EL PROYECTO',
+      verifiedRepo: 'Código público verificado',
+      activeThesis: 'Investigación académica activa',
+    },
+    quickBrief: {
+      localTime: 'Hora local (UTC-5)',
+      focusLabel: 'Especialidad #1',
+      focusValue: 'Backend · AWS Cloud · Pipelines de Datos',
     },
   },
 };
@@ -1011,7 +1090,7 @@ const en: Dictionary = {
           'A video game built with Unity, proposed in a 2.5D format, that represents the Misak worldview and language while aiming to treat them with respect and context.',
         context:
           'Undergraduate thesis project related to the Misak community of San Antonio, in Morales, Cauca (Colombia).',
-        role: 'Undergraduate thesis project, in development.',
+        role: 'Undergraduate thesis research & development in progress (Systems Engineering · Universidad del Cauca).',
         contribution: [],
         team: '',
         highlights: ['Thesis project', '2.5D proposal', 'Misak worldview & language'],
@@ -1025,7 +1104,7 @@ const en: Dictionary = {
         solution:
           'A web application with a React and TypeScript frontend and a Laravel backend, including Google sign-in, an event board, publications, notifications, and role-based dashboards.',
         context: '',
-        role: 'Frontend development (main contribution).',
+        role: 'Frontend development (main contribution: role-based views, REST API integration & responsive UI) + backend endpoint and automated tests.',
         contribution: [
           'Built views and role-based dashboards: mentor, coordinator, active member, interested user, and guest.',
           'Made the dashboards, event board, and user management responsive.',
@@ -1283,6 +1362,84 @@ const en: Dictionary = {
       emailDesc: 'Direct contact for opportunities and collaborations',
       whatsappDesc: 'Instant messaging for direct communication',
       instagramDesc: 'Technical profile and professional updates',
+    },
+  },
+
+  workspace: {
+    consoleLabel: 'MODULAR WORKBENCH // TABBED NAVIGATION',
+    shortcutHint: 'Keys [1–5] to switch module',
+    tablistLabel: 'Main portfolio modules',
+    nextModule: 'Next module',
+    prevModule: 'Previous module',
+    tabs: {
+      experience: {
+        code: '01',
+        label: 'Experience & Career',
+        short: 'Experience',
+        desc: 'Backend, AWS Cloud & volunteer teaching',
+      },
+      projects: {
+        code: '02',
+        label: 'Selected Projects',
+        short: 'Projects',
+        desc: 'Case studies, architecture & my concrete role',
+      },
+      stack: {
+        code: '03',
+        label: 'Core Specialty & Stack',
+        short: 'Stack & AWS',
+        desc: 'Primary focus on Backend, AWS & Distributed Data',
+      },
+      profile: {
+        code: '04',
+        label: 'Profile & Credentials',
+        short: 'Profile & Certs',
+        desc: 'About me, Unicauca, certifications & languages',
+      },
+      contact: {
+        code: '05',
+        label: 'Direct Contact',
+        short: 'Contact',
+        desc: 'Message assistant & verified channels',
+      },
+    },
+    profileSubTabs: {
+      label: 'Profile subsections',
+      overview: 'About & Education',
+      competencies: 'Soft Skills & Languages',
+      all: 'Full profile view',
+    },
+    careerArc: {
+      label: 'CAREER PROGRESSION & CONTEXT',
+      step1Title: 'Systems Engineering',
+      step1Meta: '2021 – Present · Universidad del Cauca',
+      step2Title: 'Volunteer Computer Science Instructor',
+      step2Meta: '2023 – Present · Proyecto Comunitario ICETEX',
+      step3Title: 'Backend & Cloud Developer',
+      step3Meta: 'Jan 2026 – Present · ST&T LTDA (AWS · Spark · Airflow)',
+    },
+    techFilters: {
+      label: 'Filter technologies by focus',
+      core: 'Core Specialty: Backend, AWS & Data',
+      ops: 'Infrastructure, DB & Agile Workflow',
+      complementary: 'Web & Other Projects',
+      all: 'All domains',
+      focusedBanner:
+        'View focused on my #1 specialty (Backend, AWS Cloud, and distributed data pipelines) for streamlined technical review.',
+    },
+    projectFilters: {
+      label: 'Filter projects by category',
+      all: 'All case studies',
+      completed: 'Completed software',
+      research: 'R&D / Thesis',
+      roleBadge: 'MY ROLE IN THIS PROJECT',
+      verifiedRepo: 'Verified public code',
+      activeThesis: 'Active academic R&D',
+    },
+    quickBrief: {
+      localTime: 'Local time (UTC-5)',
+      focusLabel: 'Primary Focus',
+      focusValue: 'Backend · AWS Cloud · Data Pipelines',
     },
   },
 };

@@ -4,9 +4,12 @@ export interface TechItem {
   iconName?: string;
 }
 
+export type TechDomainGroup = 'core' | 'ops' | 'complementary';
+
 export interface TechCategory {
   id: string;
   titleKey: 'languages' | 'cloud' | 'data' | 'apis' | 'databases' | 'infrastructure' | 'collaboration' | 'web';
+  domainGroup: TechDomainGroup;
   items: readonly TechItem[];
   highlight?: boolean;
 }
@@ -167,6 +170,7 @@ export const PORTFOLIO_DATA = {
     {
       id: 'languages',
       titleKey: 'languages',
+      domainGroup: 'core',
       highlight: true,
       items: [
         { name: 'Java', context: 'work', iconName: 'Coffee' },
@@ -181,6 +185,7 @@ export const PORTFOLIO_DATA = {
     {
       id: 'cloud',
       titleKey: 'cloud',
+      domainGroup: 'core',
       highlight: true,
       items: [
         { name: 'Amazon S3', context: 'work', iconName: 'Database' },
@@ -192,6 +197,7 @@ export const PORTFOLIO_DATA = {
     {
       id: 'data',
       titleKey: 'data',
+      domainGroup: 'core',
       highlight: true,
       items: [
         { name: 'Apache Spark', context: 'work', iconName: 'Cpu' },
@@ -205,6 +211,8 @@ export const PORTFOLIO_DATA = {
     {
       id: 'apis',
       titleKey: 'apis',
+      domainGroup: 'core',
+      highlight: true,
       items: [
         { name: 'Java', context: 'work', iconName: 'Coffee' },
         { name: 'Scala', context: 'work', iconName: 'CodeXml' },
@@ -218,6 +226,7 @@ export const PORTFOLIO_DATA = {
     {
       id: 'databases',
       titleKey: 'databases',
+      domainGroup: 'ops',
       items: [
         { name: 'MySQL', context: 'work', iconName: 'Database' },
         { name: 'SQL', context: 'work', iconName: 'Database' },
@@ -226,6 +235,7 @@ export const PORTFOLIO_DATA = {
     {
       id: 'infrastructure',
       titleKey: 'infrastructure',
+      domainGroup: 'ops',
       items: [
         { name: 'Linux', context: 'work', iconName: 'Terminal' },
         { name: 'Entornos de Clúster', context: 'work', iconName: 'Server' },
@@ -237,6 +247,7 @@ export const PORTFOLIO_DATA = {
     {
       id: 'collaboration',
       titleKey: 'collaboration',
+      domainGroup: 'ops',
       items: [
         { name: 'Git', context: 'work', iconName: 'GitBranch' },
         { name: 'Bitbucket', context: 'work', iconName: 'FolderGit2' },
@@ -247,6 +258,7 @@ export const PORTFOLIO_DATA = {
     {
       id: 'web',
       titleKey: 'web',
+      domainGroup: 'complementary',
       items: [
         { name: 'React', context: 'projects', iconName: 'CodeXml' },
         { name: 'Tailwind CSS', context: 'projects', iconName: 'Layers' },
@@ -257,22 +269,22 @@ export const PORTFOLIO_DATA = {
 
   projects: [
     {
-      id: 'nimpeMisak',
-      name: 'Ñimpe Misak: La gente del agua',
-      status: 'inDevelopment',
-      kind: 'academic',
-      technologies: ['Unity', 'C#'],
-      repoUrl: null,
-      demoUrl: null,
-      hasDetailView: true,
-    },
-    {
       id: 'eventManager',
       name: 'EventManager',
       status: 'completed',
       kind: 'collaborative',
       technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Laravel', 'PHP', 'MySQL'],
       repoUrl: 'https://github.com/maxskaink/EventManager',
+      demoUrl: null,
+      hasDetailView: true,
+    },
+    {
+      id: 'nimpeMisak',
+      name: 'Ñimpe Misak: La gente del agua',
+      status: 'inDevelopment',
+      kind: 'academic',
+      technologies: ['Unity', 'C#'],
+      repoUrl: null,
       demoUrl: null,
       hasDetailView: true,
     },

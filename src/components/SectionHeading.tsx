@@ -21,8 +21,9 @@ export function SectionHeading({
   return (
     <div className={`section-heading section-heading--${align} reveal`} id={id}>
       {eyebrow && <span className="section-heading__eyebrow">{eyebrow}</span>}
-      <h2 className="section-heading__title">{title}</h2>
+      <h2 className="section-heading__title hover-paint">{title}</h2>
       {subtitle && <p className="section-heading__subtitle">{subtitle}</p>}
+      <div className="section-heading__line scroll-line" aria-hidden="true" />
       {children}
     </div>
   );

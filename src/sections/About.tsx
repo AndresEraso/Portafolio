@@ -43,7 +43,7 @@ export function About() {
 
           {/* Columna Lateral: Ficha Técnica de Especificaciones */}
           <aside className="about__sidebar reveal" style={{ animationDelay: '100ms' }}>
-            <div className="about__spec-card">
+            <div className="about__spec-card focus-card">
               <div className="about__spec-header mono">
                 <FileText size={14} aria-hidden="true" />
                 <span>SPEC_SHEET // {t.about.factsTitle.toUpperCase()}</span>
@@ -97,14 +97,14 @@ export function About() {
             <h3 className="about__pillars-title">{t.about.pillarsTitle}</h3>
           </div>
 
-          <div className="about__pillars-matrix">
+          <div className="about__pillars-matrix focus-group">
             {/* Módulo 01: Backend Development */}
-            <div className="about__pillar-col">
+            <div className="about__pillar-col focus-card">
               <div className="about__pillar-meta mono">
                 <span className="about__pillar-num">MOD.01</span>
                 <CodeXml size={16} aria-hidden="true" />
               </div>
-              <h4 className="about__pillar-name">{t.about.pillars.backend.title}</h4>
+              <h4 className="about__pillar-name hover-paint">{t.about.pillars.backend.title}</h4>
               <ul className="about__pillar-list" role="list">
                 {t.about.pillars.backend.items.map((item, idx) => (
                   <li key={idx} className="about__pillar-item">
@@ -116,12 +116,12 @@ export function About() {
             </div>
 
             {/* Módulo 02: Cloud & Data */}
-            <div className="about__pillar-col">
+            <div className="about__pillar-col focus-card">
               <div className="about__pillar-meta mono">
                 <span className="about__pillar-num">MOD.02</span>
                 <Cloud size={16} aria-hidden="true" />
               </div>
-              <h4 className="about__pillar-name">{t.about.pillars.cloud.title}</h4>
+              <h4 className="about__pillar-name hover-paint">{t.about.pillars.cloud.title}</h4>
               <ul className="about__pillar-list" role="list">
                 {t.about.pillars.cloud.items.map((item, idx) => (
                   <li key={idx} className="about__pillar-item">
@@ -133,12 +133,12 @@ export function About() {
             </div>
 
             {/* Módulo 03: Problem Solving */}
-            <div className="about__pillar-col">
+            <div className="about__pillar-col focus-card">
               <div className="about__pillar-meta mono">
                 <span className="about__pillar-num">MOD.03</span>
                 <Search size={16} aria-hidden="true" />
               </div>
-              <h4 className="about__pillar-name">{t.about.pillars.problemSolving.title}</h4>
+              <h4 className="about__pillar-name hover-paint">{t.about.pillars.problemSolving.title}</h4>
               <ul className="about__pillar-list" role="list">
                 {t.about.pillars.problemSolving.items.map((item, idx) => (
                   <li key={idx} className="about__pillar-item">

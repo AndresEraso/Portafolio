@@ -42,3 +42,7 @@
   line-height: 1.6;
   color: var(--color-text-muted);
 }
+
+.section-heading__line {
+  margin-top: 1.15rem;
+}

@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Detecta la sección activa actual según la posición de scroll del usuario.
+ * Detecta la sección visible activa actual según la posición de scroll del usuario,
+ * ignorando paneles ocultos ([hidden]) y ordenando por posición real en el documento.
  */
-export function useScrollSpy(sectionIds: readonly string[], offset = 120): string {
+export function useScrollSpy(
+  sectionIds: readonly string[],
+  offset = 140,
+  triggerKey?: string
+): string {
   const [activeId, setActiveId] = useState<string>(sectionIds[0] || '');
 
   useEffect(() => {
@@ -12,27 +17,35 @@ export function useScrollSpy(sectionIds: readonly string[], offset = 120): strin
     const handleScroll = () => {
       const scrollPosition = window.scrollY + offset;
 
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const id = sectionIds[i];
-        const element = document.getElementById(id);
-        if (element) {
-          const top = element.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveId(id);
-            return;
-          }
+      const visibleSections = sectionIds
+        .map((id) => {
+          const el = document.getElementById(id);
+          if (!el || el.closest('[hidden]')) return null;
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          return { id, top };
+        })
+        .filter((item): item is { id: string; top: number } => item !== null)
+        .sort((a, b) => a.top - b.top);
+
+      for (let i = visibleSections.length - 1; i >= 0; i--) {
+        if (scrollPosition >= visibleSections[i].top) {
+          setActiveId(visibleSections[i].id);
+          return;
         }
       }
 
-      if (sectionIds.length > 0) {
-        setActiveId(sectionIds[0]);
+      if (visibleSections.length > 0) {
+        setActiveId(visibleSections[0].id);
       }
     };
 
-    handleScroll();
+    const raf = window.requestAnimationFrame(handleScroll);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sectionIds, offset]);
+    return () => {
+      window.cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [sectionIds, offset, triggerKey]);
 
   return activeId;
 }
