@@ -7,7 +7,6 @@ import './Hero.css';
 
 interface HeroProps {
   onOpenContact?: (triggerRef?: HTMLElement | null) => void;
-  onNavigateSection?: (sectionId: string) => void;
 }
 
 interface TypingState {
@@ -38,7 +37,7 @@ function getBogotaClock(locale: string): string {
   }
 }
 
-export function Hero({ onOpenContact, onNavigateSection }: HeroProps) {
+export function Hero({ onOpenContact }: HeroProps) {
   const { t, language } = useLanguage();
   const { profile, experience, education } = PORTFOLIO_DATA;
 
@@ -134,26 +133,17 @@ export function Hero({ onOpenContact, onNavigateSection }: HeroProps) {
       </div>
 
       <div className="container hero__container">
-        {/* Columna Editorial y de Identidad */}
-        <div className="hero__content reveal">
+        {/* Columna de Identidad Directa */}
+        <div className="hero__content reveal reveal--left">
           <div className="hero__top-bar">
-            <span className="hero__sys-tag mono">[SYS.01 // PROFILE]</span>
             <div className="hero__status-badge">
               <span className="hero__status-pulse" aria-hidden="true" />
-              <span className="mono">ACTIVE // BACKEND & CLOUD</span>
+              <span className="mono">{t.hero.codeRole}</span>
             </div>
             <div className="hero__clock-badge mono" title={t.workspace.quickBrief.localTime}>
               <Clock size={12} className="hero__meta-icon" aria-hidden="true" />
               <span>UTC-5 · {localClock}</span>
             </div>
-          </div>
-
-          <div className="hero__cli-prompt mono" aria-hidden="true">
-            <span className="hero__cli-user">duber@workstation</span>
-            <span className="hero__cli-separator">:</span>
-            <span className="hero__cli-path">~</span>
-            <span className="hero__cli-symbol">$</span>
-            <span className="hero__cli-command">cat profile.spec</span>
           </div>
 
           <h1 className="hero__headline" data-typing-complete={isTypingComplete ? 'true' : 'false'}>
@@ -203,7 +193,6 @@ export function Hero({ onOpenContact, onNavigateSection }: HeroProps) {
             </span>
           </div>
 
-          {/* Llamadas a la acción */}
           <div className="hero__actions">
             <button
               type="button"
@@ -215,22 +204,12 @@ export function Hero({ onOpenContact, onNavigateSection }: HeroProps) {
               <span className="mono">{t.hero.ctaContact}</span>
             </button>
 
-            <a
-              href="#projects"
-              className="hero__btn hero__btn--secondary paint-tag"
-              onClick={(e) => {
-                if (onNavigateSection) {
-                  e.preventDefault();
-                  onNavigateSection('projects');
-                }
-              }}
-            >
+            <a href="#projects" className="hero__btn hero__btn--secondary paint-tag">
               <span className="mono">{t.hero.ctaProjects}</span>
               <ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>
 
-          {/* Enlaces Sociales Técnicos */}
           <div className="hero__socials">
             <span className="hero__socials-label mono">{t.hero.socialLabel}:</span>
             <a
@@ -259,51 +238,38 @@ export function Hero({ onOpenContact, onNavigateSection }: HeroProps) {
           </div>
         </div>
 
-        {/* Columna Visual: Consola de Ingeniería y Telemetría */}
-        <div className="hero__visual reveal" style={{ animationDelay: '100ms' }}>
+        {/* Columna Visual: Resumen Técnico Compacto */}
+        <div className="hero__visual reveal reveal--right">
           <div className="hero__terminal focus-card">
-            {/* Barra de cabecera de la terminal */}
             <div className="hero__terminal-bar">
               <div className="hero__terminal-status mono">
                 <Terminal size={13} aria-hidden="true" />
-                <span>telemetry://{t.hero.codeFile}</span>
+                <span>{t.hero.codeFile}</span>
               </div>
               <div className="hero__terminal-meta mono">
                 <span className="hero__terminal-indicator" aria-hidden="true" />
-                <span>SYS_READY</span>
+                <span>{experience.company}</span>
               </div>
             </div>
 
-            {/* Cuerpo de código y estado real */}
             <pre className="hero__terminal-body mono">
               <code>
-                <span className="token-comment">// Duber Andrés Eraso Uni — Systems Engineering</span>
-                {'\n'}
-                <span className="token-keyword">type</span> <span className="token-type">TelemetryReport</span> = {'{\n'}
-                {'  '}engineer: <span className="token-string">'{profile.name}'</span>;{'\n'}
-                {'  '}role: <span className="token-string">'{t.hero.codeRole}'</span>;{'\n'}
-                {'  '}organization: <span className="token-string">'{experience.company}'</span>;{'\n'}
-                {'  '}education: <span className="token-string">'{education.institution}'</span>;{'\n'}
-                {'  '}runtimes: <span className="token-array">['Java', 'Scala', 'Python']</span>;{'\n'}
-                {'  '}infrastructure: <span className="token-array">['AWS S3', 'AWS EMR', 'Lambda', 'Airflow']</span>;{'\n'}
-                {'  '}status: <span className="token-string">'{t.hero.codeStatus}'</span>;{'\n'}
-                {'}'};
-                {'\n\n'}
-                <span className="token-prompt">$ </span>
-                <span className="token-cmd">verify-service-health</span>
-                {'\n'}
-                <span className="token-output">[OK] Distributed pipelines & data monitoring responsive.</span>
-                <span className="hero__cursor" aria-hidden="true">_</span>
+                <span className="token-keyword">const</span> <span className="token-type">profile</span> = {'{\n'}
+                {'  '}name: <span className="token-string">'{profile.name}'</span>,{'\n'}
+                {'  '}role: <span className="token-string">'{t.hero.codeRole}'</span>,{'\n'}
+                {'  '}stack: <span className="token-array">['Java', 'Scala', 'Python']</span>,{'\n'}
+                {'  '}cloud: <span className="token-array">['AWS S3', 'EMR', 'Lambda', 'Airflow']</span>,{'\n'}
+                {'  '}status: <span className="token-string">'{t.hero.codeStatus}'</span>{'\n'}
+                {'};'}
               </code>
             </pre>
 
-            {/* Pie de la consola */}
             <div className="hero__terminal-footer mono">
               <div className="hero__terminal-pulse-box">
                 <span className="hero__terminal-pulse" aria-hidden="true" />
-                <span>PIPELINES & CLOUD: ACTIVE</span>
+                <span>{profile.location}</span>
               </div>
-              <span className="hero__terminal-region">POPAYÁN · UTC-5 · {localClock}</span>
+              <span className="hero__terminal-region">UTC-5 · {localClock}</span>
             </div>
           </div>
         </div>

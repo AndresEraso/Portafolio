@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
 /**
- * Activa las animaciones de aparición al hacer scroll (clase .is-visible en .reveal y .scroll-line).
- * Acepta una clave opcional para re-evaluar elementos al cambiar de pestaña o filtro.
- * Respeta automáticamente prefers-reduced-motion.
+ * Activa animaciones dinámicas al hacer scroll (clase .is-visible en .reveal y .scroll-line).
+ * Cuando un elemento vuelve a quedar por debajo del viewport, se rearma suavemente para
+ * que el efecto de entrada al bajar siempre sea visible y fluido.
  */
 export function useScrollReveal(triggerKey?: string) {
   useEffect(() => {
@@ -24,21 +24,18 @@ export function useScrollReveal(triggerKey?: string) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+          } else if (entry.boundingClientRect.top > window.innerHeight * 0.94) {
+            entry.target.classList.remove('is-visible');
           }
         });
       },
       {
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.08,
+        rootMargin: '0px 0px -56px 0px',
+        threshold: 0.1,
       }
     );
 
-    elements.forEach((el) => {
-      if (!el.closest('[hidden]')) {
-        observer.observe(el);
-      }
-    });
+    elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, [triggerKey]);

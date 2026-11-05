@@ -99,6 +99,8 @@
 .experience__status-pill {
   display: inline-flex;
   align-items: center;
+  width: fit-content;
+  margin-bottom: 0.25rem;
   gap: 0.45rem;
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-xs);
