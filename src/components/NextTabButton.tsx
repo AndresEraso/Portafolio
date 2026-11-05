@@ -13,7 +13,7 @@ interface NextTabButtonProps {
 export function NextTabButton({ kicker, title, onClick }: NextTabButtonProps) {
   return (
     <div className="next-tab-nav">
-      <div className="container next-tab-nav__inner">
+      <div className="container next-tab-nav__inner reveal reveal--pop">
         <span className="next-tab-nav__kicker mono">{kicker}</span>
         <button type="button" className="next-tab-btn" onClick={onClick}>
           <span className="next-tab-btn__text">{title}</span>
@@ -32,3 +32,4 @@ export function NextTabButton({ kicker, title, onClick }: NextTabButtonProps) {
     </div>
   );
 }
+

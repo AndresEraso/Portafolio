@@ -47,6 +47,13 @@ export function App() {
   };
 
   const handleSelectTab = useCallback((nextTab: PageTabId) => {
+    if (typeof window !== 'undefined') {
+      try {
+        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
     setActiveTab(nextTab);
     const tabConfig = PAGE_TABS.find((item) => item.id === nextTab);
     const firstSection = tabConfig?.sectionIds[0];
@@ -56,9 +63,6 @@ export function App() {
         '',
         nextTab === 'tab1' ? window.location.pathname : `#${firstSection}`
       );
-    }
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, []);
 

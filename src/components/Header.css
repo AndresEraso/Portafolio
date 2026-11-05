@@ -150,22 +150,8 @@
   font-weight: var(--font-weight-bold);
 }
 
-.header__tab-label-full {
-  display: none;
-}
-
-.header__tab-label-short {
+.header__tab-label {
   display: inline;
-}
-
-@media (min-width: 1140px) {
-  .header__tab-label-full {
-    display: inline;
-  }
-
-  .header__tab-label-short {
-    display: none;
-  }
 }
 
 /* Actions */

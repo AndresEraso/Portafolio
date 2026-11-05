@@ -22,9 +22,15 @@ export function Projects() {
   const { t } = useLanguage();
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<ProjectCategoryFilter>('all');
+  const [hasFiltered, setHasFiltered] = useState(false);
 
   const toggleExpand = (id: string) => {
     setExpandedId((curr) => (curr === id ? null : id));
+  };
+
+  const handleSelectFilter = (nextFilter: ProjectCategoryFilter) => {
+    setHasFiltered(true);
+    setCategoryFilter(nextFilter);
   };
 
   const filteredProjects = PORTFOLIO_DATA.projects.filter((project) => {
@@ -54,7 +60,7 @@ export function Projects() {
                   type="button"
                   aria-pressed={active}
                   className={`projects__filter-pill mono ${active ? 'is-active' : ''}`}
-                  onClick={() => setCategoryFilter(key)}
+                  onClick={() => handleSelectFilter(key)}
                 >
                   <span>{t.workspace.projectFilters[key]}</span>
                 </button>
@@ -63,20 +69,23 @@ export function Projects() {
           </div>
         </SectionHeading>
 
-        <div className="projects__cases focus-group reveal">
+        <div className="projects__cases focus-group">
           {filteredProjects.map((project: ProjectData, idx: number) => {
             const projectText = t.projects.items[project.id];
             const isExpanded = expandedId === project.id;
             const isCompleted = project.status === 'completed';
 
             return (
-              <article
+              <div
                 key={project.id}
                 style={{ '--stagger-index': idx } as CSSProperties}
-                className={`case-study case-study--${project.id} focus-card ${
-                  isExpanded ? 'is-expanded' : ''
-                }`}
+                className={hasFiltered ? 'projects__case-item' : 'projects__case-item reveal'}
               >
+                <article
+                  className={`case-study case-study--${project.id} focus-card ${
+                    isExpanded ? 'is-expanded' : ''
+                  }`}
+                >
                 {/* Cabecera limpia de la tarjeta */}
                 <div className="case-study__ribbon mono">
                   <span className="case-study__kind">
@@ -228,7 +237,8 @@ export function Projects() {
                     )}
                   </button>
                 </div>
-              </article>
+                </article>
+              </div>
             );
           })}
         </div>

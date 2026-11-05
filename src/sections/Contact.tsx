@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import {
   ArrowUpRight,
   Check,
@@ -73,7 +73,10 @@ export function Contact({ onOpenContact }: ContactProps) {
 
           <div className="contact__channels-list focus-group">
             {/* GitHub */}
-            <div className="contact-endpoint focus-card">
+            <div
+              className="contact-endpoint focus-card reveal"
+              style={{ '--stagger-index': 0 } as CSSProperties}
+            >
               <div className="contact-endpoint__icon-box">
                 <GithubIcon width={18} height={18} />
               </div>
@@ -98,7 +101,10 @@ export function Contact({ onOpenContact }: ContactProps) {
 
             {/* LinkedIn (si está configurado) */}
             {profile.social.linkedin && (
-              <div className="contact-endpoint focus-card">
+              <div
+                className="contact-endpoint focus-card reveal"
+                style={{ '--stagger-index': 1 } as CSSProperties}
+              >
                 <div className="contact-endpoint__icon-box">
                   <LinkedinIcon width={18} height={18} />
                 </div>
@@ -121,7 +127,10 @@ export function Contact({ onOpenContact }: ContactProps) {
 
             {/* Correo Electrónico */}
             {profile.social.email && (
-              <div className="contact-endpoint focus-card">
+              <div
+                className="contact-endpoint focus-card reveal"
+                style={{ '--stagger-index': 2 } as CSSProperties}
+              >
                 <div className="contact-endpoint__icon-box">
                   <Mail size={18} aria-hidden="true" />
                 </div>
@@ -157,7 +166,10 @@ export function Contact({ onOpenContact }: ContactProps) {
 
             {/* Descarga de CV (si está configurado) */}
             {profile.social.resumeUrl && (
-              <div className="contact-endpoint focus-card">
+              <div
+                className="contact-endpoint focus-card reveal"
+                style={{ '--stagger-index': 3 } as CSSProperties}
+              >
                 <div className="contact-endpoint__icon-box">
                   <Download size={18} aria-hidden="true" />
                 </div>
