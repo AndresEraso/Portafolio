@@ -70,14 +70,14 @@ export function Header({
                     type="button"
                     role="tab"
                     id={`header-tab-${tab.id}`}
+                    title={copy.hint}
                     aria-selected={isSelected}
                     aria-controls={`screen-${tab.id}`}
                     className={`header__tab-btn ${isSelected ? 'is-active' : ''}`}
                     onClick={() => onSelectTab(tab.id)}
                   >
                     <span className="header__tab-num mono">{tab.number}</span>
-                    <span className="header__tab-label-full">{copy.label}</span>
-                    <span className="header__tab-label-short">{copy.short}</span>
+                    <span className="header__tab-label">{copy.label}</span>
                   </button>
                 );
               })}

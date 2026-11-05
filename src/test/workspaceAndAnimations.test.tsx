@@ -54,6 +54,15 @@ describe('División en 4 pestañas, botón Uiverse de avance y persistencia visu
     expect(tab3).toHaveAttribute('hidden');
     expect(tab4).toHaveAttribute('hidden');
 
+    // Las 4 pestañas del Header usan una sola palabra clara por pestaña
+    const headerTabLabels = Array.from(
+      container.querySelectorAll('.header__tab-btn .header__tab-label')
+    ).map((el) => el.textContent?.trim());
+    expect(headerTabLabels).toEqual(['Perfil', 'Trayectoria', 'Formación', 'Contacto']);
+    headerTabLabels.forEach((word) => {
+      expect(word?.split(/\s+/).length).toBe(1);
+    });
+
     // Botón Uiverse al final de Pestaña 1 ("Habilidades técnicas") -> Pestaña 2
     const nextBtn1 = tab1.querySelector<HTMLButtonElement>('.next-tab-btn')!;
     expect(nextBtn1.textContent).toContain('Habilidades técnicas');
@@ -163,5 +172,64 @@ describe('División en 4 pestañas, botón Uiverse de avance y persistencia visu
     allCards.forEach((card) => {
       expect(card).not.toHaveClass('reveal');
     });
+  });
+
+  it('revela progresivamente los objetos .reveal al hacer scroll hacia abajo y los mantiene visibles', () => {
+    vi.useFakeTimers();
+    let observerCallback: IntersectionObserverCallback | null = null;
+    const observedElements = new Set<Element>();
+    const originalIO = window.IntersectionObserver;
+
+    class TrackingIntersectionObserver {
+      constructor(cb: IntersectionObserverCallback) {
+        observerCallback = cb;
+      }
+      observe = (el: Element) => {
+        observedElements.add(el);
+      };
+      unobserve = (el: Element) => {
+        observedElements.delete(el);
+      };
+      disconnect = () => {
+        observedElements.clear();
+      };
+      takeRecords = () => [];
+    }
+
+    window.IntersectionObserver =
+      TrackingIntersectionObserver as unknown as typeof IntersectionObserver;
+
+    try {
+      const { container } = renderPortfolio();
+
+      act(() => {
+        vi.advanceTimersByTime(60);
+      });
+
+      const aboutMain = container.querySelector<HTMLElement>('#about .about__main.reveal')!;
+      expect(observedElements.has(aboutMain)).toBe(true);
+      expect(aboutMain).not.toHaveAttribute('data-revealed', 'true');
+
+      // Simular que el usuario hace scroll hacia abajo y el elemento entra al viewport
+      const emitIntersection = observerCallback as
+        | ((entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void)
+        | null;
+      act(() => {
+        emitIntersection?.(
+          [{ isIntersecting: true, target: aboutMain } as unknown as IntersectionObserverEntry],
+          {} as IntersectionObserver
+        );
+      });
+
+      expect(aboutMain).toHaveAttribute('data-revealed', 'true');
+
+      act(() => {
+        vi.advanceTimersByTime(900);
+      });
+
+      expect(aboutMain).toHaveAttribute('data-reveal-done', 'true');
+    } finally {
+      window.IntersectionObserver = originalIO;
+    }
   });
 });
