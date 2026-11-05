@@ -205,27 +205,43 @@ main:focus {
 }
 
 /* --------------------------------------------------------------------------
-   Animación de aparición al desplazarse (Scroll Reveal Técnico)
+   Animación marcada de aparición al desplazarse (Scroll Reveal Dinámico)
    -------------------------------------------------------------------------- */
 .reveal {
   opacity: 0;
-  transform: translateY(var(--reveal-distance, 16px));
+  transform: translate3d(0, var(--reveal-distance, 48px), 0) scale(0.955);
+  filter: blur(4px);
+  will-change: opacity, transform, filter;
   transition:
-    opacity var(--duration-slow, 500ms) var(--ease-emphasized),
-    transform var(--duration-slow, 500ms) var(--ease-emphasized);
-  transition-delay: var(--reveal-delay, 0ms);
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, calc(var(--stagger-index, 0) * 55ms));
+}
+
+.reveal--left {
+  transform: translate3d(-44px, 16px, 0) scale(0.96);
+}
+
+.reveal--right {
+  transform: translate3d(44px, 16px, 0) scale(0.96);
+}
+
+.reveal--pop {
+  transform: translate3d(0, 30px, 0) scale(0.84);
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
 }
 
 /* Retrasos escalonados para grupos de elementos */
-.reveal-stagger-1 { --reveal-delay: 75ms; }
-.reveal-stagger-2 { --reveal-delay: 150ms; }
-.reveal-stagger-3 { --reveal-delay: 225ms; }
-.reveal-stagger-4 { --reveal-delay: 300ms; }
+.reveal-stagger-1 { --reveal-delay: 80ms; }
+.reveal-stagger-2 { --reveal-delay: 160ms; }
+.reveal-stagger-3 { --reveal-delay: 240ms; }
+.reveal-stagger-4 { --reveal-delay: 320ms; }
 
 /* Microinteracción de elevación para tarjetas */
 .card-lift {
@@ -393,6 +409,7 @@ main:focus {
   .reveal.is-visible {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     transition: none !important;
   }
 

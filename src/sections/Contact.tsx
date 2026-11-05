@@ -6,7 +6,6 @@ import {
   Download,
   Mail,
   MapPin,
-  Terminal,
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../components/Icons';
 import { SectionHeading } from '../components/SectionHeading';
@@ -39,16 +38,16 @@ export function Contact({ onOpenContact }: ContactProps) {
     <section id="contact" className="section contact">
       <div className="container">
         <SectionHeading
-          eyebrow={`SYS.10 // ${t.contact.eyebrow}`}
+          eyebrow={t.contact.eyebrow}
           title={t.contact.title}
           subtitle={t.contact.text}
         />
 
-        {/* Banner destacado para abrir asistente modal de contacto */}
-        <div className="contact__hero-banner focus-card reveal">
+        {/* Banner directo para abrir el modal de contacto */}
+        <div className="contact__hero-banner focus-card reveal reveal--pop">
           <div className="contact__hero-banner-content">
-            <h3 className="contact__hero-banner-title mono">
-              // {t.contact.openModalBtn.toUpperCase()}
+            <h3 className="contact__hero-banner-title">
+              {t.contact.openModalBtn}
             </h3>
             <p className="contact__hero-banner-desc">
               {t.contactModal.subtitle}
@@ -68,14 +67,12 @@ export function Contact({ onOpenContact }: ContactProps) {
         <div className="contact__ledger reveal">
           <div className="contact__ledger-header mono">
             <div className="contact__ledger-title">
-              <Terminal size={14} aria-hidden="true" />
-              <span>// {t.contact.channelsLabel.toUpperCase()}</span>
+              <span>{t.contact.channelsLabel}</span>
             </div>
-            <span className="contact__ledger-status">NETWORK_ENDPOINTS: READY</span>
           </div>
 
           <div className="contact__channels-list focus-group">
-            {/* GitHub (Verificado) */}
+            {/* GitHub */}
             <div className="contact-endpoint focus-card">
               <div className="contact-endpoint__icon-box">
                 <GithubIcon width={18} height={18} />
@@ -83,7 +80,7 @@ export function Contact({ onOpenContact }: ContactProps) {
               <div className="contact-endpoint__info">
                 <div className="contact-endpoint__tag-row mono">
                   <span className="contact-endpoint__label">{t.contact.github.label}</span>
-                  <span className="contact-endpoint__badge">VERIFIED // PRIMARY</span>
+                  <span className="contact-endpoint__badge">VERIFIED</span>
                 </div>
                 <p className="contact-endpoint__desc">{t.contact.github.description}</p>
               </div>
@@ -122,7 +119,7 @@ export function Contact({ onOpenContact }: ContactProps) {
               </div>
             )}
 
-            {/* Correo Electrónico (si está configurado) */}
+            {/* Correo Electrónico */}
             {profile.social.email && (
               <div className="contact-endpoint focus-card">
                 <div className="contact-endpoint__icon-box">
@@ -167,7 +164,7 @@ export function Contact({ onOpenContact }: ContactProps) {
                 <div className="contact-endpoint__info">
                   <span className="contact-endpoint__label mono">{t.contact.cv.label}</span>
                   <p className="contact-endpoint__desc">
-                    PDF Curriculum Vitae (Duber Andrés Eraso Uni)
+                    PDF Curriculum Vitae ({profile.name})
                   </p>
                 </div>
                 <a
@@ -183,15 +180,10 @@ export function Contact({ onOpenContact }: ContactProps) {
             )}
           </div>
 
-          {/* Pie de Ubicación y Disponibilidad */}
           <div className="contact__footer mono">
             <div className="contact__location">
               <MapPin size={13} aria-hidden="true" />
               <span>{t.contact.basedIn}: {profile.location}</span>
-            </div>
-            <div className="contact__readiness">
-              <span className="contact__readiness-pulse" aria-hidden="true" />
-              <span>STATUS: INQUIRIES_WELCOME</span>
             </div>
           </div>
         </div>

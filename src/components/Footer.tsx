@@ -1,4 +1,4 @@
-import { ArrowUp, ArrowUpRight, Mail, Terminal } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Mail } from 'lucide-react';
 import { PRIMARY_NAV_ITEMS } from '../data/navigation';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import { useLanguage } from '../hooks/useLanguage';
@@ -17,9 +17,8 @@ export function Footer() {
   return (
     <footer className="footer" role="contentinfo">
       <div className="container footer__container">
-        {/* Sección Superior: Identidad, Navegación y Canales Sociales */}
         <div className="footer__grid">
-          {/* Columna 1: Identidad y Lema Técnico */}
+          {/* Identidad */}
           <div className="footer__brand-col">
             <a href="#hero" className="footer__logo" aria-label={t.a11y.homeLink}>
               <span className="footer__logo-badge mono">DE</span>
@@ -29,10 +28,10 @@ export function Footer() {
             <p className="footer__tagline">{t.footer.tagline}</p>
           </div>
 
-          {/* Columna 2: Navegación Secundaria */}
+          {/* Navegación */}
           <div className="footer__nav-col">
             <div className="footer__col-header mono">
-              <span>// {t.footer.navHeading.toUpperCase()}</span>
+              <span>{t.footer.navHeading}</span>
             </div>
             <nav className="footer__nav" aria-label={t.a11y.footerNav}>
               <ul className="footer__nav-list" role="list">
@@ -47,16 +46,14 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Columna 3: Apartado de Redes Sociales y Canales */}
+          {/* Canales Sociales */}
           <div className="footer__social-col">
             <div className="footer__col-header mono">
-              <Terminal size={13} aria-hidden="true" />
-              <span>// {t.footer.socialHeading.toUpperCase()}</span>
+              <span>{t.footer.socialHeading}</span>
             </div>
             <p className="footer__social-desc">{t.footer.socialSub}</p>
 
             <div className="footer__social-list">
-              {/* GitHub (Verificado) */}
               <a
                 href={profile.social.github}
                 target="_blank"
@@ -74,7 +71,6 @@ export function Footer() {
                 </div>
               </a>
 
-              {/* LinkedIn (si está configurado) */}
               {profile.social.linkedin && (
                 <a
                   href={profile.social.linkedin}
@@ -94,7 +90,6 @@ export function Footer() {
                 </a>
               )}
 
-              {/* Correo Electrónico (si está configurado) */}
               {profile.social.email && (
                 <a
                   href={`mailto:${profile.social.email}`}
@@ -112,7 +107,6 @@ export function Footer() {
                 </a>
               )}
 
-              {/* WhatsApp (si está configurado) */}
               {profile.social.whatsapp && (
                 <a
                   href={profile.social.whatsapp}
@@ -132,7 +126,6 @@ export function Footer() {
                 </a>
               )}
 
-              {/* Instagram (si está configurado) */}
               {profile.social.instagram && (
                 <a
                   href={profile.social.instagram}
@@ -155,14 +148,12 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Separador Técnico */}
         <div className="footer__divider" aria-hidden="true" />
 
-        {/* Barra Inferior: Telemetría, Copyright y Botón de Inicio */}
         <div className="footer__bottom">
           <div className="footer__telemetry mono">
             <span className="footer__status-pulse" aria-hidden="true" />
-            <span>{t.footer.statusOnline} // {t.footer.region}</span>
+            <span>{t.footer.region}</span>
           </div>
 
           <p className="footer__copy mono">

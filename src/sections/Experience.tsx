@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
   Activity,
-  Briefcase,
   Calendar,
   CheckCircle2,
   Cloud,
@@ -12,7 +11,6 @@ import {
   Layers,
   MapPin,
   Search,
-  ShieldCheck,
   Workflow,
 } from 'lucide-react';
 import { SectionHeading } from '../components/SectionHeading';
@@ -46,48 +44,20 @@ export function Experience() {
     <section id="experience" className="section section--alt experience">
       <div className="container">
         <SectionHeading
-          eyebrow={`SYS.04 // ${t.experience.title}`}
+          eyebrow={t.nav.experience}
           title={t.experience.title}
           subtitle={t.experience.subtitle}
         />
 
-        {/* Arco de progresión y contexto de carrera */}
-        <div className="experience__arc reveal" aria-label={t.workspace.careerArc.label}>
-          <span className="experience__arc-kicker mono">// {t.workspace.careerArc.label}</span>
-          <div className="experience__arc-steps focus-group">
-            <div className="experience__arc-step focus-card">
-              <span className="experience__arc-num mono">01</span>
-              <strong className="experience__arc-title">{t.workspace.careerArc.step1Title}</strong>
-              <span className="experience__arc-meta mono">{t.workspace.careerArc.step1Meta}</span>
-            </div>
-            <div className="experience__arc-step focus-card">
-              <span className="experience__arc-num mono">02</span>
-              <strong className="experience__arc-title">{t.workspace.careerArc.step2Title}</strong>
-              <span className="experience__arc-meta mono">{t.workspace.careerArc.step2Meta}</span>
-            </div>
-            <div className="experience__arc-step experience__arc-step--current focus-card">
-              <span className="experience__arc-num mono">03</span>
-              <strong className="experience__arc-title">{t.workspace.careerArc.step3Title}</strong>
-              <span className="experience__arc-meta mono">{t.workspace.careerArc.step3Meta}</span>
-            </div>
-          </div>
-        </div>
-
         <div className="experience__ledger focus-group">
-          {/* 1. Experiencia laboral: ST&T LTDA (Más reciente: 2026-01 - Actualidad) */}
-          <article className="experience__log experience__log--employment focus-card reveal">
-            {/* Cinta de Telemetría Superior */}
-            <div className="experience__ribbon mono">
-              <span className="experience__log-id">LOG.01 // EMPLOYMENT</span>
-              <div className="experience__status-pill">
-                <span className="experience__status-dot" aria-hidden="true" />
-                <span>{t.experience.current}</span>
-              </div>
-            </div>
-
-            {/* Encabezado del Registro */}
+          {/* 1. Experiencia laboral: ST&T LTDA */}
+          <article className="experience__log experience__log--employment focus-card reveal reveal--left">
             <div className="experience__header">
               <div className="experience__role-info">
+                <div className="experience__status-pill mono">
+                  <span className="experience__status-dot" aria-hidden="true" />
+                  <span>{t.experience.current}</span>
+                </div>
                 <h3 className="experience__company hover-paint">{experience.company}</h3>
                 <p className="experience__role mono">{t.experience.role}</p>
               </div>
@@ -108,7 +78,6 @@ export function Experience() {
               </div>
             </div>
 
-            {/* Síntesis Profesional */}
             <div className="experience__summary">
               {t.experience.summary.map((paragraph, index) => (
                 <p key={index} className="experience__summary-text">
@@ -117,14 +86,13 @@ export function Experience() {
               ))}
             </div>
 
-            {/* Bloque de Responsabilidades Técnicas con Pestañas */}
+            {/* Pestañas concisas de responsabilidades */}
             <div className="experience__responsibilities-section">
               <div className="experience__section-header mono">
                 <Workflow size={15} aria-hidden="true" />
-                <span>// {t.experience.responsibilitiesTitle.toUpperCase()}</span>
+                <span>{t.experience.responsibilitiesTitle}</span>
               </div>
 
-              {/* Pestañas de Navegación por Área */}
               <div
                 className="experience__tabs"
                 role="tablist"
@@ -152,16 +120,14 @@ export function Experience() {
                 })}
               </div>
 
-              {/* Contenido de la Pestaña Activa */}
               <div
                 id={`panel-${activeTab}`}
                 role="tabpanel"
                 aria-labelledby={`tab-${activeTab}`}
                 className="experience__panel"
               >
-                <div className="experience__panel-header mono">
-                  <span className="experience__panel-indicator">› EXECUTION_SCOPE:</span>
-                  <h5 className="experience__panel-title">{currentGroupData.title}</h5>
+                <div className="experience__panel-header">
+                  <h4 className="experience__panel-title">{currentGroupData.title}</h4>
                 </div>
                 <ul className="experience__panel-list" role="list">
                   {currentGroupData.items.map((item, idx) => (
@@ -173,114 +139,16 @@ export function Experience() {
                 </ul>
               </div>
             </div>
-
-            {/* Tecnologías del Puesto */}
-            <div className="experience__tech-section">
-              <div className="experience__section-header mono">
-                <Briefcase size={15} aria-hidden="true" />
-                <span>// {t.experience.techTitle.toUpperCase()}</span>
-              </div>
-
-              <div className="experience__tech-grid">
-                <div className="experience__tech-category">
-                  <span className="experience__tech-cat-label mono">
-                    {t.experience.techGroups.languages}:
-                  </span>
-                  <div className="experience__tech-tags">
-                    {experience.technologies.languages.map((tech) => (
-                      <span key={tech} className="experience__tag paint-tag mono">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="experience__tech-category">
-                  <span className="experience__tech-cat-label mono">
-                    {t.experience.techGroups.cloud}:
-                  </span>
-                  <div className="experience__tech-tags">
-                    {experience.technologies.cloud.map((tech) => (
-                      <span key={tech} className="experience__tag paint-tag mono">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="experience__tech-category">
-                  <span className="experience__tech-cat-label mono">
-                    {t.experience.techGroups.orchestration}:
-                  </span>
-                  <div className="experience__tech-tags">
-                    {experience.technologies.orchestration.map((tech) => (
-                      <span key={tech} className="experience__tag paint-tag mono">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="experience__tech-category">
-                  <span className="experience__tech-cat-label mono">
-                    {t.experience.techGroups.systems}:
-                  </span>
-                  <div className="experience__tech-tags">
-                    {experience.technologies.systems.map((tech) => (
-                      <span key={tech} className="experience__tag paint-tag mono">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="experience__tech-category">
-                  <span className="experience__tech-cat-label mono">
-                    {t.experience.techGroups.apis}:
-                  </span>
-                  <div className="experience__tech-tags">
-                    {experience.technologies.apis.map((tech) => (
-                      <span key={tech} className="experience__tag paint-tag mono">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="experience__tech-category">
-                  <span className="experience__tech-cat-label mono">
-                    {t.experience.techGroups.collaboration}:
-                  </span>
-                  <div className="experience__tech-tags">
-                    {experience.technologies.collaboration.map((tech) => (
-                      <span key={tech} className="experience__tag paint-tag mono">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Nota de Confidencialidad */}
-            <div className="experience__confidentiality mono">
-              <ShieldCheck size={15} aria-hidden="true" />
-              <span>[COMPLIANCE] {t.experience.confidentiality}</span>
-            </div>
           </article>
 
-          {/* 2. Experiencia de voluntariado: Proyecto Comunitario ICETEX (2023 - Actualidad) */}
-          <article className="experience__log experience__log--volunteer focus-card reveal">
-            <div className="experience__ribbon mono">
-              <span className="experience__log-id">LOG.02 // VOLUNTEERING</span>
-              <div className="experience__status-pill experience__status-pill--volunteer">
-                <HeartHandshake size={13} aria-hidden="true" />
-                <span>{t.experience.icetex.badge}</span>
-              </div>
-            </div>
-
+          {/* 2. Experiencia de voluntariado: Proyecto Comunitario ICETEX */}
+          <article className="experience__log experience__log--volunteer focus-card reveal reveal--right">
             <div className="experience__header">
               <div className="experience__role-info">
+                <div className="experience__status-pill experience__status-pill--volunteer mono">
+                  <HeartHandshake size={13} aria-hidden="true" />
+                  <span>{t.experience.icetex.badge}</span>
+                </div>
                 <h3 className="experience__company hover-paint">{t.experience.icetex.organization}</h3>
                 <p className="experience__role mono">{t.experience.icetex.role}</p>
               </div>

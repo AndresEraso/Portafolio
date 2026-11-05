@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -7,7 +7,6 @@ import {
   FolderGit2,
   Gamepad2,
   Layers,
-  Sparkles,
   UserCheck,
   Users,
 } from 'lucide-react';
@@ -17,97 +16,11 @@ import { PORTFOLIO_DATA, type ProjectData } from '../data/portfolio';
 import { useLanguage } from '../hooks/useLanguage';
 import './Projects.css';
 
-// Diagrama SVG conceptual para EventManager (Arquitectura Web Cliente - API - Base de Datos)
-function EventManagerDiagram() {
-  return (
-    <div className="project-diagram" aria-label="Diagrama de flujo conceptual de EventManager">
-      <div className="project-diagram__header mono">
-        <span>// CONCEPTUAL_FLOW: CLIENT_API_DATABASE</span>
-      </div>
-      <svg
-        viewBox="0 0 680 120"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="project-diagram__svg"
-        aria-hidden="true"
-      >
-        {/* Node 1: Frontend Client */}
-        <rect x="10" y="30" width="180" height="60" rx="3" className="diagram-node" />
-        <text x="25" y="55" className="diagram-title mono">FRONTEND UI</text>
-        <text x="25" y="75" className="diagram-sub mono">React · TS · Vite · Tailwind</text>
-
-        {/* Arrow 1 */}
-        <path d="M190 60 H240" className="diagram-arrow" />
-        <polygon points="240,56 248,60 240,64" className="diagram-arrow-head" />
-        <text x="198" y="50" className="diagram-label mono">REST API</text>
-
-        {/* Node 2: Backend Laravel */}
-        <rect x="250" y="30" width="180" height="60" rx="3" className="diagram-node diagram-node--core" />
-        <text x="265" y="55" className="diagram-title mono">BACKEND API</text>
-        <text x="265" y="75" className="diagram-sub mono">Laravel · PHP Services</text>
-
-        {/* Arrow 2 */}
-        <path d="M430 60 H480" className="diagram-arrow" />
-        <polygon points="480,56 488,60 480,64" className="diagram-arrow-head" />
-        <text x="442" y="50" className="diagram-label mono">SQL</text>
-
-        {/* Node 3: Database */}
-        <rect x="490" y="30" width="180" height="60" rx="3" className="diagram-node" />
-        <text x="505" y="55" className="diagram-title mono">DATABASE</text>
-        <text x="505" y="75" className="diagram-sub mono">MySQL Relational Storage</text>
-      </svg>
-    </div>
-  );
-}
-
-// Diagrama SVG conceptual para Ñimpe Misak (Pipeline de Juego en Unity / C#)
-function NimpeMisakDiagram() {
-  return (
-    <div className="project-diagram" aria-label="Diagrama de arquitectura del juego Ñimpe Misak">
-      <div className="project-diagram__header mono">
-        <span>// CONCEPTUAL_PIPELINE: GAME_LOOP_AND_MECHANICS</span>
-      </div>
-      <svg
-        viewBox="0 0 680 120"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="project-diagram__svg"
-        aria-hidden="true"
-      >
-        {/* Step 1: Input */}
-        <rect x="10" y="30" width="180" height="60" rx="3" className="diagram-node" />
-        <text x="25" y="55" className="diagram-title mono">USER CONTROLS</text>
-        <text x="25" y="75" className="diagram-sub mono">Input Manager & Motion</text>
-
-        {/* Arrow 1 */}
-        <path d="M190 60 H240" className="diagram-arrow" />
-        <polygon points="240,56 248,60 240,64" className="diagram-arrow-head" />
-        <text x="198" y="50" className="diagram-label mono">EVENTS</text>
-
-        {/* Step 2: C# Interaction Scripts */}
-        <rect x="250" y="30" width="180" height="60" rx="3" className="diagram-node diagram-node--core" />
-        <text x="265" y="55" className="diagram-title mono">C# SCRIPTS</text>
-        <text x="265" y="75" className="diagram-sub mono">Player & Interaction Logic</text>
-
-        {/* Arrow 2 */}
-        <path d="M430 60 H480" className="diagram-arrow" />
-        <polygon points="480,56 488,60 480,64" className="diagram-arrow-head" />
-        <text x="442" y="50" className="diagram-label mono">STATE</text>
-
-        {/* Step 3: Engine */}
-        <rect x="490" y="30" width="180" height="60" rx="3" className="diagram-node" />
-        <text x="505" y="55" className="diagram-title mono">UNITY PIPELINE</text>
-        <text x="505" y="75" className="diagram-sub mono">Scene Render & Mechanics</text>
-      </svg>
-    </div>
-  );
-}
-
 type ProjectCategoryFilter = 'all' | 'completed' | 'research';
 
 export function Projects() {
   const { t } = useLanguage();
-  const [expandedId, setExpandedId] = useState<string | null>('eventManager');
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<ProjectCategoryFilter>('all');
 
   const toggleExpand = (id: string) => {
@@ -124,7 +37,7 @@ export function Projects() {
     <section id="projects" className="section projects">
       <div className="container">
         <SectionHeading
-          eyebrow={`SYS.05 // ${t.projects.title}`}
+          eyebrow={t.nav.projects}
           title={t.projects.title}
           subtitle={t.projects.subtitle}
         >
@@ -151,31 +64,26 @@ export function Projects() {
         </SectionHeading>
 
         <div className="projects__cases focus-group">
-          {filteredProjects.map((project: ProjectData) => {
+          {filteredProjects.map((project: ProjectData, idx: number) => {
             const projectText = t.projects.items[project.id];
             const isExpanded = expandedId === project.id;
             const isCompleted = project.status === 'completed';
-            const globalIndex = PORTFOLIO_DATA.projects.findIndex((p) => p.id === project.id);
-            const caseNumber = String(globalIndex + 1).padStart(2, '0');
 
             return (
               <article
                 key={project.id}
+                style={{ '--stagger-index': idx } as CSSProperties}
                 className={`case-study case-study--${project.id} focus-card reveal ${
                   isExpanded ? 'is-expanded' : ''
                 }`}
               >
-                {/* Cabecera del Caso de Estudio */}
+                {/* Cabecera limpia de la tarjeta */}
                 <div className="case-study__ribbon mono">
-                  <div className="case-study__id-group">
-                    <span className="case-study__num">CASE.{caseNumber}</span>
-                    <span className="case-study__sep">//</span>
-                    <span className="case-study__kind">
-                      {project.kind === 'academic' && t.projects.kinds.academic.toUpperCase()}
-                      {project.kind === 'collaborative' && t.projects.kinds.collaborative.toUpperCase()}
-                      {project.kind === 'personal' && t.projects.kinds.personal.toUpperCase()}
-                    </span>
-                  </div>
+                  <span className="case-study__kind">
+                    {project.kind === 'academic' && t.projects.kinds.academic}
+                    {project.kind === 'collaborative' && t.projects.kinds.collaborative}
+                    {project.kind === 'personal' && t.projects.kinds.personal}
+                  </span>
 
                   <div
                     className={`case-study__status ${
@@ -185,8 +93,8 @@ export function Projects() {
                     <span className="case-study__status-dot" aria-hidden="true" />
                     <span>
                       {isCompleted
-                        ? t.projects.status.completed.toUpperCase()
-                        : t.projects.status.inDevelopment.toUpperCase()}
+                        ? t.projects.status.completed
+                        : t.projects.status.inDevelopment}
                     </span>
                   </div>
                 </div>
@@ -208,7 +116,7 @@ export function Projects() {
 
                   <p className="case-study__summary">{projectText.summary}</p>
 
-                  {/* Contexto explícito y visible del rol dentro del proyecto */}
+                  {/* Contexto conciso de rol */}
                   {projectText.role && (
                     <div className="case-study__role-callout">
                       <div className="case-study__role-callout-head mono">
@@ -229,7 +137,7 @@ export function Projects() {
                     </div>
                   )}
 
-                  {/* Etiquetas de Tecnologías */}
+                  {/* Tecnologías */}
                   <div className="case-study__techs">
                     {project.technologies.map((tech) => (
                       <span key={tech} className="case-study__tech-tag paint-tag mono">
@@ -238,69 +146,38 @@ export function Projects() {
                     ))}
                   </div>
 
-                  {/* Aspectos Destacados */}
-                  <div className="case-study__highlights">
-                    {projectText.highlights.map((h, i) => (
-                      <span key={i} className="case-study__highlight-chip">
-                        <Sparkles size={12} aria-hidden="true" />
-                        <span>{h}</span>
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Diagrama Arquitectónico Específico */}
-                  {project.id === 'eventManager' ? (
-                    <EventManagerDiagram />
-                  ) : (
-                    <NimpeMisakDiagram />
-                  )}
-
-                  {/* Vista Detallada Desplegable */}
+                  {/* Detalles puntuales desplegables bajo demanda */}
                   {isExpanded && (
                     <div className="case-study__details" id={`project-details-${project.id}`}>
                       <div className="case-study__detail-block">
                         <h4 className="case-study__detail-title mono">
-                          // {t.projects.labels.problem.toUpperCase()}
+                          {t.projects.labels.problem}
                         </h4>
                         <p className="case-study__detail-text">{projectText.problem}</p>
                       </div>
 
                       <div className="case-study__detail-block">
                         <h4 className="case-study__detail-title mono">
-                          // {t.projects.labels.solution.toUpperCase()}
+                          {t.projects.labels.solution}
                         </h4>
                         <p className="case-study__detail-text">{projectText.solution}</p>
                       </div>
 
-                      {projectText.context && (
-                        <div className="case-study__detail-block">
+                      {projectText.contribution && projectText.contribution.length > 0 && (
+                        <div className="case-study__detail-block case-study__detail-block--contribution">
                           <h4 className="case-study__detail-title mono">
-                            // {t.projects.labels.context.toUpperCase()}
+                            {t.projects.labels.contribution}
                           </h4>
-                          <p className="case-study__detail-text">{projectText.context}</p>
-                        </div>
-                      )}
-
-                      <div className="case-study__detail-block case-study__detail-block--contribution">
-                        <h4 className="case-study__detail-title mono">
-                          // {t.projects.labels.contribution.toUpperCase()}
-                        </h4>
-                        {projectText.role && (
-                          <p className="case-study__role-text mono">
-                            <strong>{t.projects.labels.role}:</strong> {projectText.role}
-                          </p>
-                        )}
-                        {projectText.contribution && projectText.contribution.length > 0 && (
                           <ul className="case-study__contribution-list" role="list">
-                            {projectText.contribution.map((c, idx) => (
-                              <li key={idx} className="case-study__contribution-item">
+                            {projectText.contribution.map((c, cIdx) => (
+                              <li key={cIdx} className="case-study__contribution-item">
                                 <span className="case-study__bullet mono" aria-hidden="true">›</span>
                                 <span>{c}</span>
                               </li>
                             ))}
                           </ul>
-                        )}
-                      </div>
+                        </div>
+                      )}
 
                       {projectText.team && (
                         <div className="case-study__detail-block case-study__detail-block--team">
@@ -314,7 +191,7 @@ export function Projects() {
                   )}
                 </div>
 
-                {/* Acciones de la Tarjeta */}
+                {/* Acciones */}
                 <div className="case-study__footer mono">
                   <div className="case-study__links">
                     {project.repoUrl && (
@@ -356,13 +233,12 @@ export function Projects() {
           })}
         </div>
 
-        {/* Tarjeta de invitación a GitHub */}
-        <div className="projects__github-cta focus-card reveal">
+        {/* Enlace compacto a GitHub */}
+        <div className="projects__github-cta focus-card reveal reveal--pop">
           <div className="projects__github-icon-box">
             <FolderGit2 size={22} aria-hidden="true" />
           </div>
           <div className="projects__github-info">
-            <span className="projects__github-tag mono">// GIT_REPOSITORY_INDEX</span>
             <h4 className="projects__github-title">{t.projects.more.title}</h4>
             <p className="projects__github-desc">{t.projects.more.description}</p>
           </div>

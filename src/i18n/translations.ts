@@ -76,80 +76,64 @@ const es = {
     headlineStart: 'Construyo soluciones de software que conectan ',
     headlineHighlight: 'backend, datos y cloud.',
     intro:
-      'Soy desarrollador de back-end y estudiante de Ingeniería de Sistemas, con experiencia en soporte y operación de procesos de datos en entornos cloud. Me interesa construir soluciones confiables, automatizar procesos y comprender cómo funcionan los sistemas distribuidos.',
+      'Desarrollador backend y estudiante de Ingeniería de Sistemas en Unicauca. Opero, diagnostico y mantengo pipelines de datos distribuidos en AWS con Java, Scala y Python.',
     ctaProjects: 'Ver proyectos',
     ctaContact: 'Conversemos sobre oportunidades',
     roleLabel: 'Desarrollador de back-end en',
     studyLabel: 'Ingeniería de Sistemas',
-    socialLabel: 'Perfiles profesionales',
+    socialLabel: 'Perfiles',
     codeFile: 'perfil.ts',
     codeRole: 'Desarrollador de back-end',
-    codeStatus: 'aprendiendo continuamente',
+    codeStatus: 'activo',
   },
 
   /* --------------------------------------------------------------- About */
   about: {
     title: 'Sobre mí',
-    subtitle: 'Quién soy, qué experiencia estoy construyendo y hacia dónde quiero crecer.',
+    subtitle: 'Backend, AWS Cloud y confiabilidad en procesos de datos distribuidos.',
     paragraphs: [
-      'Soy Duber Andrés Eraso Uni, estudiante de Ingeniería de Sistemas en la Universidad del Cauca y desarrollador de back-end en ST&T LTDA.',
-      'Mi experiencia profesional está orientada al soporte, monitoreo y mantenimiento de procesos de datos en entornos cloud. Participo en el seguimiento de ejecuciones, el diagnóstico y la resolución de incidencias, el análisis de información y la revisión de procesos distribuidos. Esta experiencia me ha permitido comprender la importancia de la confiabilidad, la observabilidad y la calidad de los datos en sistemas que operan de manera continua.',
-      'En el ámbito técnico, trabajo con lenguajes como Java, Scala y Python, y con herramientas y servicios relacionados con AWS, Apache Airflow, Amazon EMR, Amazon S3, Linux, SQL y APIs. También utilizo herramientas de colaboración y gestión de código dentro de equipos de desarrollo que trabajan con metodologías ágiles.',
-      'Me interesa seguir profundizando en el diseño de soluciones backend, la automatización de procesos y la construcción de sistemas escalables y mantenibles. Disfruto aprender tecnologías nuevas, analizar problemas técnicos y colaborar con otras personas para encontrar soluciones.',
+      'Estudiante de Ingeniería de Sistemas en la Universidad del Cauca y desarrollador de back-end en ST&T LTDA.',
+      'Trabajo en monitoreo, diagnóstico y mantenimiento de pipelines de datos en AWS con Java, Scala, Python, Spark, Airflow y SQL bajo metodologías ágiles.',
     ],
-    closing:
-      'Este portafolio reúne mi experiencia, formación y proyectos, y refleja mi evolución profesional en el desarrollo de software y las tecnologías cloud.',
-    factsTitle: 'Perfil',
+    closing: 'Enfocado en construir software confiable, automatizar procesos y resolver incidencias de raíz.',
+    factsTitle: 'Resumen',
     facts: {
       location: 'Ubicación',
       education: 'Formación',
       educationValue: 'Ingeniería de Sistemas (en curso)',
       role: 'Cargo actual',
       roleValue: 'Desarrollador de back-end',
-      profile: 'Perfil tecnológico',
-      profileValue: 'Backend & Cloud, con experiencia complementaria en desarrollo web y bases de datos',
+      profile: 'Especialidad',
+      profileValue: 'Backend, AWS Cloud & Sistemas Distribuidos',
     },
-    pillarsTitle: 'Experiencia y enfoque',
+    pillarsTitle: 'Pilares técnicos',
     pillars: {
       backend: {
-        title: 'Backend Development',
-        items: [
-          'Programación y mantenimiento de soluciones de software.',
-          'Trabajo con Java, Scala y Python.',
-          'Uso de APIs y herramientas de desarrollo.',
-        ],
+        title: 'Backend',
+        items: ['Servicios mantenibles en Java, Scala y Python, integración de REST APIs y pruebas.'],
       },
       cloud: {
-        title: 'Cloud & Data',
-        items: [
-          'Trabajo con servicios y herramientas del ecosistema AWS.',
-          'Monitoreo y soporte de procesos de datos.',
-          'Diagnóstico de incidencias y análisis de ejecuciones.',
-        ],
+        title: 'Cloud & Datos',
+        items: ['Operación y soporte de pipelines con AWS (S3, EMR, Lambda), Spark y Airflow.'],
       },
       problemSolving: {
-        title: 'Problem Solving',
-        items: [
-          'Investigación de errores.',
-          'Análisis de información para identificar posibles causas.',
-          'Colaboración con el equipo para resolver problemas técnicos.',
-        ],
+        title: 'Diagnóstico',
+        items: ['Análisis de logs, validación de calidad de datos y resolución ágil de incidencias.'],
       },
     },
-    quoteLabel: 'Filosofía de trabajo',
-    quote:
-      'Me gusta entender los problemas desde su origen, aprender continuamente y construir soluciones que funcionen de manera confiable.',
+    quoteLabel: 'Enfoque',
+    quote: 'Entender los problemas desde su origen y construir soluciones confiables.',
   },
 
   /* ---------------------------------------------------------- Tech stack */
   techStack: {
     title: 'Habilidades técnicas',
     subtitle:
-      'Tecnologías organizadas por área y por el contexto en el que las he utilizado, priorizando las de mi experiencia profesional actual.',
-    legendLabel: 'Contexto de uso',
+      'Pasa el cursor sobre cualquier hexágono o haz clic para ver mi experiencia real con cada tecnología.',
+    legendLabel: 'Contexto',
     contexts: {
-      work: 'Experiencia profesional',
-      projects: 'Proyectos',
+      work: 'Experiencia laboral (ST&T LTDA)',
+      projects: 'Proyectos y formación',
     },
     capabilitiesLabel: 'Capacidades asociadas',
     terms: {
@@ -227,18 +211,15 @@ const es = {
   /* ---------------------------------------------------------- Experience */
   experience: {
     title: 'Experiencia profesional',
-    subtitle:
-      'Experiencia práctica en un entorno empresarial: soporte, monitoreo, diagnóstico y mantenimiento de procesos de datos en la nube.',
+    subtitle: 'Operación de procesos de datos en cloud y docencia comunitaria en programación.',
     role: 'Desarrollador de back-end',
     present: 'Actualidad',
     current: 'Empleo actual',
     modality: 'Remoto',
     summary: [
-      'Me desempeño como desarrollador de back-end en ST&T LTDA, participando en actividades de soporte, monitoreo, diagnóstico y mantenimiento de procesos de datos en entornos cloud. Mi trabajo incluye revisar la ejecución de pipelines, analizar logs y resultados, investigar incidencias, corregir errores y colaborar con el equipo para mantener la estabilidad y confiabilidad de los procesos.',
-      'También trabajo con código distribuido en distintos repositorios y módulos, utilizando Java, Scala y Python, además de herramientas del ecosistema AWS, Apache Airflow, Amazon EMR, Amazon S3, Linux, SQL y Postman.',
-      'Las actividades se desarrollan dentro de una dinámica de equipo que sigue la metodología Scrum e incluye seguimiento de tareas, atención de tickets, análisis técnico y colaboración para resolver problemas.',
+      'Soporte, monitoreo, diagnóstico y mantenimiento de pipelines de datos distribuidos en AWS con Java, Scala, Python, Spark y Airflow bajo metodología Scrum.',
     ],
-    responsibilitiesTitle: 'Responsabilidades técnicas',
+    responsibilitiesTitle: 'Responsabilidades clave',
     tablistLabel: 'Áreas de responsabilidad',
     relatedTools: 'Herramientas relacionadas',
     groups: {
@@ -246,69 +227,48 @@ const es = {
         title: 'Monitoreo y operación de pipelines',
         short: 'Monitoreo',
         items: [
-          'Supervisar el estado de las ejecuciones de procesos de datos.',
-          'Revisar que las ejecuciones hayan finalizado correctamente.',
-          'Inspeccionar logs y resultados para identificar fallos.',
-          'Detectar comportamientos anómalos durante la operación.',
-          'Hacer seguimiento de procesos programados con las herramientas del entorno.',
+          'Supervisar ejecuciones programadas y estado de pipelines.',
+          'Inspeccionar logs y salidas para detectar anomalías.',
         ],
       },
       incidents: {
         title: 'Diagnóstico y resolución de incidencias',
         short: 'Incidencias',
         items: [
-          'Investigar errores detectados durante la ejecución de procesos.',
-          'Analizar logs para identificar posibles causas.',
-          'Corregir errores de software dentro del alcance de mis responsabilidades.',
-          'Verificar el comportamiento del proceso después de aplicar una corrección.',
-          'Atender tickets asignados al equipo de soporte.',
-          'Colaborar con el equipo en el seguimiento y la resolución de incidencias.',
+          'Analizar logs para identificar causas raíz de fallos.',
+          'Corregir errores de software y verificar el proceso post-ajuste.',
+          'Atender tickets de soporte junto al equipo.',
         ],
       },
       dataAnalysis: {
         title: 'Análisis y validación de datos',
         short: 'Datos',
         items: [
-          'Examinar la información de entrada y salida de los procesos.',
-          'Investigar resultados incorrectos o inconsistencias en los datos.',
-          'Analizar el comportamiento del procesamiento para localizar posibles causas.',
-          'Validar los resultados después de una corrección cuando corresponde.',
-          'Colaborar en la identificación de problemas que afectan la calidad de los datos.',
+          'Validar datos de entrada/salida e investigar inconsistencias.',
+          'Asegurar la calidad de resultados tras correcciones técnicas.',
         ],
       },
       software: {
         title: 'Desarrollo y mantenimiento de software',
         short: 'Software',
         items: [
-          'Trabajar con Java, Scala y Python.',
-          'Revisar y modificar código en distintos repositorios y módulos.',
-          'Corregir errores de software.',
-          'Utilizar herramientas de control de versiones.',
-          'Probar endpoints y analizar respuestas de APIs con Postman.',
-          'Trabajar con funciones serverless y sensores de flujos de trabajo cuando corresponde.',
+          'Mantenimiento de módulos en Java, Scala y Python.',
+          'Pruebas de endpoints REST con Postman y funciones serverless.',
         ],
       },
       cloud: {
         title: 'Infraestructura y servicios cloud',
         short: 'Cloud',
         items: [
-          'Trabajar con servicios y herramientas del ecosistema AWS.',
-          'Interactuar con entornos de procesamiento distribuido y clústeres.',
-          'Consultar entornos Linux y sistemas remotos.',
-          'Participar en actividades puntuales de configuración de clústeres y sus plantillas.',
-          'Aplicar conocimientos básicos de redes cuando la actividad lo requiere.',
+          'Operación cotidiana con AWS (S3, EMR, Lambda, API Gateway).',
+          'Acceso a entornos Linux remotos y revisión de plantillas de clúster.',
         ],
       },
       collaboration: {
         title: 'Colaboración y metodología de trabajo',
         short: 'Equipo',
         items: [
-          'Participar en reuniones de seguimiento del equipo.',
-          'Trabajar dentro de una dinámica basada en Scrum.',
-          'Gestionar y atender tickets con las herramientas del equipo.',
-          'Utilizar Jira para el seguimiento de tareas e incidencias.',
-          'Colaborar mediante repositorios y control de versiones con Bitbucket.',
-          'Comunicar hallazgos técnicos e investigar problemas junto al equipo.',
+          'Trabajo ágil con Scrum, seguimiento en Jira y repositorios en Bitbucket.',
         ],
       },
     },
@@ -337,8 +297,7 @@ const es = {
   /* ------------------------------------------------------------ Projects */
   projects: {
     title: 'Proyectos destacados',
-    subtitle:
-      'Casos de estudio que explican la necesidad, la solución, mi contribución real, las tecnologías verificadas y el estado actual.',
+    subtitle: 'Proyectos seleccionados con mi rol concreto, tecnologías verificadas y estado real.',
     labels: {
       status: 'Estado',
       type: 'Tipo',
@@ -369,42 +328,40 @@ const es = {
       nimpeMisak: {
         type: 'Videojuego etnoeducativo',
         summary:
-          'Iniciativa de videojuego etnoeducativo con perspectiva cultural, orientada a integrar exploración, narrativa y aprendizaje en una experiencia interactiva.',
+          'Videojuego 2.5D en Unity para difundir la lengua y cosmovisión de la comunidad Misak (Morales, Cauca).',
         problem:
-          'Explorar alternativas interactivas que apoyen la difusión y el aprendizaje de elementos culturales y lingüísticos de la comunidad Misak.',
+          'Apoyar de forma interactiva el aprendizaje cultural y lingüístico de la comunidad Misak.',
         solution:
-          'Un videojuego desarrollado en Unity, con una propuesta en formato 2.5D, que aborda la representación de la cosmovisión y la lengua Misak procurando tratarlas con respeto y contexto.',
+          'Propuesta interactiva 2.5D en Unity construida con respeto cultural y contexto territorial.',
         context:
-          'Proyecto de grado relacionado con la comunidad Misak del territorio de San Antonio, en Morales, Cauca.',
-        role: 'Investigación y desarrollo de trabajo de grado en curso (Ingeniería de Sistemas · Universidad del Cauca).',
+          'Trabajo de grado vinculado a la comunidad Misak de San Antonio, Morales, Cauca.',
+        role: 'Investigación y desarrollo de trabajo de grado (Unicauca).',
         contribution: [] as string[],
         team: '',
-        highlights: ['Proyecto de grado', 'Propuesta en 2.5D', 'Cosmovisión y lengua Misak'],
+        highlights: ['Trabajo de grado', 'Unity 2.5D', 'Lengua Misak'],
       },
       eventManager: {
         type: 'Aplicación web de gestión de eventos',
         summary:
-          'Sistema para organizar y hacer seguimiento de eventos, publicaciones y participantes, con paneles diferenciados según el rol de cada usuario.',
+          'Plataforma web con paneles por rol para gestionar eventos, publicaciones, participantes y notificaciones.',
         problem:
-          'Centralizar la organización de eventos, publicaciones y participantes en una misma aplicación, con distintos niveles de acceso según el rol.',
+          'Unificar la gestión de eventos y usuarios con permisos diferenciados según cada rol.',
         solution:
-          'Aplicación web con frontend en React y TypeScript y backend en Laravel, que incluye inicio de sesión con Google, tablero de eventos, publicaciones, notificaciones y paneles por rol.',
+          'Aplicación React + TypeScript conectada a API REST en Laravel con autenticación Google y MySQL.',
         context: '',
-        role: 'Desarrollo frontend (contribución principal: vistas por rol, integración con API REST y diseño responsivo) + endpoint y pruebas en backend.',
+        role: 'Frontend principal (paneles por rol, integración API REST y UI responsiva) + endpoint y tests en backend.',
         contribution: [
-          'Desarrollo de vistas y paneles por rol: mentor, coordinador, miembro activo, usuario interesado e invitado.',
-          'Diseño responsivo de los paneles, el tablero de eventos y la gestión de usuarios.',
-          'Integración de componentes del frontend con la API de eventos, perfil y publicaciones, reemplazando datos estáticos por datos reales.',
-          'Creación de la página de publicaciones, el modal de notificaciones y mejoras en el inicio de sesión.',
-          'Participación puntual en el backend: un endpoint de creación de usuarios y pruebas unitarias y de características.',
+          'Paneles responsivos para 5 roles: mentor, coordinador, miembro, interesado e invitado.',
+          'Integración de eventos, perfil, publicaciones y notificaciones con API REST.',
+          'Endpoint backend de usuarios y pruebas automatizadas.',
         ],
-        team: 'Proyecto desarrollado por un equipo de cuatro colaboradores. La arquitectura general y el backend fueron trabajo conjunto del equipo; mi aporte se concentró en el frontend.',
-        highlights: ['Frontend', 'Paneles por rol', 'Diseño responsivo'],
+        team: 'Equipo de 4 desarrolladores; lideré el frontend e integraciones con la API.',
+        highlights: ['Frontend & API REST', '5 paneles por rol', 'Código público'],
       },
     },
     more: {
-      title: 'Más proyectos en GitHub',
-      description: 'Explora mis repositorios y proyectos de software.',
+      title: 'Más en GitHub',
+      description: 'Repositorios y prácticas de ingeniería de software.',
       action: 'Ir a GitHub',
     },
   },
@@ -412,99 +369,89 @@ const es = {
   /* ----------------------------------------------------------- Education */
   education: {
     title: 'Educación y certificaciones',
-    subtitle:
-      'Formación académica y credenciales, con enlace de verificación cuando existe uno público.',
-    academicTitle: 'Formación académica',
-    certificationsTitle: 'Certificaciones y formación complementaria',
+    subtitle: 'Formación universitaria en curso y credenciales verificables.',
+    academicTitle: 'Formación universitaria',
+    certificationsTitle: 'Certificaciones verificables',
     inProgress: 'En curso',
     start: 'Inicio',
-    expectedCompletion: 'Finalización estimada',
+    expectedCompletion: 'Grado estimado',
     viewCredential: 'Ver credencial',
-    verifiedOnCredly: 'Verificable en Credly',
+    verifiedOnCredly: 'Ver en Credly',
     issuer: 'Emisor',
-    platform: 'Plataforma de credencial',
-    identifier: 'Identificador',
-    topics: 'Temas abordados en la formación',
+    platform: 'Plataforma',
+    identifier: 'ID',
+    topics: 'Temas',
     groups: {
       security: 'Redes y ciberseguridad',
       ai: 'Inteligencia artificial',
     },
     types: {
-      careerPath: 'Ruta de aprendizaje',
+      careerPath: 'Ruta profesional',
       course: 'Curso',
       bootcamp: 'Bootcamp',
-      training: 'Formación complementaria',
+      training: 'Formación',
     },
     aiAdvancedTopics: [
-      'Redes neuronales convolucionales',
+      'Redes convolucionales',
       'Segmentación',
-      'Frameworks de inteligencia artificial',
-      'Aprendizaje por refuerzo',
-      'Algoritmos DQN, A3C y PPO',
-      'Aplicaciones en juegos y robótica',
+      'Aprendizaje por refuerzo (DQN, A3C, PPO)',
     ],
   },
 
   /* --------------------------------------------------------- Soft skills */
   softSkills: {
     title: 'Habilidades blandas',
-    subtitle: 'Cómo trabajo, cómo colaboro y qué cualidades aporto a un equipo de desarrollo.',
+    subtitle: 'Cómo colaboro y resuelvo problemas dentro de un equipo de ingeniería.',
     inPractice: 'En la práctica',
-    secondaryTitle: 'También me caracterizan',
+    secondaryTitle: 'Cualidades complementarias',
     featured: {
       learning: {
         title: 'Aprendizaje continuo',
-        description:
-          'Tengo disposición para aprender nuevas tecnologías, recibir retroalimentación y mejorar progresivamente mis capacidades técnicas.',
-        practice: 'Adaptación a nuevas herramientas y tecnologías.',
+        description: 'Rápida adopción de herramientas cloud, lenguajes y buenas prácticas.',
+        practice: 'Adaptación ágil al stack.',
       },
       proactivity: {
-        title: 'Proactividad e iniciativa',
-        description:
-          'Identifico problemas, investigo posibles soluciones y contribuyo a las actividades del equipo sin esperar instrucciones cuando puedo actuar dentro de mis responsabilidades.',
-        practice: 'Investigación de incidencias antes de escalar.',
+        title: 'Proactividad',
+        description: 'Investigación previa de errores y propuestas de solución antes de escalar.',
+        practice: 'Diagnóstico autónomo.',
       },
       teamwork: {
         title: 'Trabajo en equipo',
-        description:
-          'Disfruto colaborar con otras personas, compartir conocimientos y contribuir a que el equipo alcance sus objetivos.',
-        practice: 'Colaboración en tareas e incidencias.',
+        description: 'Colaboración activa en Scrum, revisión técnica y soporte compartido.',
+        practice: 'Sinergia en sprints.',
       },
       problemSolving: {
         title: 'Resolución de problemas',
-        description:
-          'Me gusta investigar los errores, analizar sus posibles causas y trabajar para encontrar soluciones que contribuyan a la estabilidad de los sistemas.',
-        practice: 'Investigación de incidencias técnicas.',
+        description: 'Búsqueda de causas raíz en logs y datos para estabilizar sistemas.',
+        practice: 'Corrección de raíz.',
       },
       communication: {
-        title: 'Comunicación efectiva',
-        description:
-          'Explico conceptos, procedimientos y soluciones a otras personas de manera paciente y comprensible.',
-        practice: 'Explicación de hallazgos y apoyo a compañeros.',
+        title: 'Comunicación clara',
+        description: 'Explicación concisa de hallazgos técnicos a compañeros y estudiantes.',
+        practice: 'Claridad técnica.',
       },
       analytical: {
         title: 'Pensamiento analítico',
-        description:
-          'Examino la información, identifico inconsistencias y organizo el análisis de un problema antes de proponer una solución.',
-        practice: 'Análisis de logs y resultados de procesos.',
+        description: 'Validación estructurada de entradas, salidas y trazas distribuidas.',
+        practice: 'Análisis de logs y datos.',
       },
     },
     secondary: {
       adaptability: {
         title: 'Adaptabilidad',
-        description: 'Disposición para trabajar con diferentes herramientas, tecnologías, tareas y dinámicas de equipo.',
+        description: 'Versatilidad entre herramientas y prioridades.',
       },
       responsibility: {
-        title: 'Responsabilidad y compromiso',
-        description: 'Orientación al cumplimiento de las tareas asignadas y al seguimiento de las actividades del equipo.',
+        title: 'Compromiso',
+        description: 'Seguimiento riguroso de tickets y entregas.',
       },
       curiosity: {
         title: 'Curiosidad técnica',
-        description: 'Interés por comprender cómo funcionan los sistemas y explorar alternativas para resolver problemas.',
+        description: ' Comprensión profunda de sistemas distribuidos.',
       },
       patience: {
-        title: 'Paciencia y empatía',
-        description: 'Actitud respetuosa durante la colaboración, escucha activa y apoyo en los procesos de aprendizaje.',
+        title: 'Empatía',
+        description: 'Escucha activa y vocación docente.',
       },
     },
   },
@@ -512,64 +459,57 @@ const es = {
   /* ----------------------------------------------------------- Languages */
   languages: {
     title: 'Idiomas',
-    subtitle: 'Los idiomas en los que me comunico, descritos con honestidad.',
+    subtitle: 'Comunicación cotidiana, académica y técnica.',
     spanish: {
       name: 'Español',
-      level: 'Idioma principal',
-      description: 'Comunicación oral y escrita en contextos cotidianos, académicos y profesionales.',
+      level: 'Nativo',
+      description: 'Comunicación profesional y técnica fluida.',
     },
     english: {
       name: 'Inglés',
-      level: 'Nivel aproximado B1–B2',
-      levelNote: 'Autoevaluación · sin certificación formal',
-      description:
-        'Me desenvuelvo en inglés conversacional y puedo comunicarme con personas de diferentes contextos culturales. Tengo experiencia interactuando en inglés y busco seguir mejorando mi fluidez y confianza en entornos profesionales.',
-      context: 'He vivido experiencias en Estados Unidos y he mantenido comunicación con personas de India.',
+      level: 'B1–B2 Conversacional',
+      levelNote: 'Autoevaluación práctica',
+      description: 'Lectura técnica diaria e interacción conversacional intercultural.',
+      context: 'Experiencia comunicativa en Estados Unidos y con equipos de India.',
     },
     interface: {
-      title: 'Idioma de navegación del sitio',
-      text: 'Este portafolio está disponible en español e inglés. Puedes cambiar el idioma en cualquier momento desde el selector del encabezado.',
-      current: 'Idioma actual del sitio:',
+      title: 'Idioma del sitio',
+      text: 'Disponible en ES / EN desde el encabezado.',
+      current: 'Idioma actual:',
     },
   },
 
   /* --------------------------------------------------- Professional focus */
   focus: {
     title: 'Enfoque profesional',
-    subtitle:
-      'Áreas en las que quiero seguir creciendo y el tipo de problemas que me interesa resolver. Son objetivos de crecimiento, no logros alcanzados.',
-    goalLabel: 'Objetivo de crecimiento',
-    relatedLabel: 'Tecnologías relacionadas',
-    connectionLabel: 'Conexión con mi experiencia',
+    subtitle: 'Áreas estratégicas en las que enfoco mi crecimiento como ingeniero.',
+    goalLabel: 'Foco',
+    relatedLabel: 'Stack',
+    connectionLabel: 'Base actual',
     areas: {
       backend: {
         title: 'Backend Engineering',
-        description:
-          'Seguir desarrollando soluciones backend, APIs y componentes de software mantenibles, prestando atención a la calidad del código, la integración entre sistemas y la resolución de problemas.',
-        connection: 'Mi trabajo actual con Java, Scala y Python.',
+        description: 'Diseño de servicios mantenibles, APIs limpias e integración confiable entre sistemas.',
+        connection: 'Java, Scala y Python en producción.',
       },
       cloud: {
-        title: 'Cloud Computing',
-        description:
-          'Profundizar en el uso de servicios cloud, especialmente AWS, para comprender mejor cómo se despliegan, operan y mantienen las aplicaciones y los procesos de datos.',
-        connection: 'El uso de servicios y herramientas AWS en mi día a día.',
+        title: 'Cloud Computing (AWS)',
+        description: 'Despliegue, operación y optimización de cargas de trabajo y almacenamiento en AWS.',
+        connection: 'S3, EMR, Lambda y API Gateway.',
       },
       data: {
-        title: 'Data Engineering & Distributed Systems',
-        description:
-          'Ampliar mis conocimientos sobre procesamiento distribuido, orquestación de flujos de trabajo y confiabilidad de procesos de datos, aprovechando la experiencia práctica adquirida en entornos empresariales.',
-        connection: 'El monitoreo, diagnóstico y soporte de procesos de datos.',
+        title: 'Datos & Sistemas Distribuidos',
+        description: 'Orquestación, procesamiento a escala y calidad de datos en pipelines continuos.',
+        connection: 'Spark, Hadoop, Airflow y SQL.',
       },
       automation: {
-        title: 'Automatización y confiabilidad',
-        description:
-          'Me interesa mejorar la confiabilidad de los sistemas mediante la automatización de tareas, el análisis de errores y la mejora continua de los procesos de desarrollo y operación.',
-        connection: 'La investigación de incidencias y la mejora de procesos.',
+        title: 'Automatización & Confiabilidad',
+        description: 'Observabilidad, diagnóstico preventivo y reducción de tareas operativas manuales.',
+        connection: 'Monitoreo y soporte de pipelines.',
       },
     },
-    philosophyLabel: 'Filosofía de desarrollo',
-    philosophy:
-      'Mi objetivo es construir software útil y mantenible, entender los sistemas más allá del código y seguir aprendiendo para aportar soluciones confiables a problemas reales.',
+    philosophyLabel: 'Principio',
+    philosophy: 'Construir software útil, mantenible y confiable para problemas reales.',
   },
 
   /* ------------------------------------------------------------- Contact */
@@ -725,17 +665,165 @@ const es = {
     },
     projectFilters: {
       label: 'Filtrar proyectos por categoría',
-      all: 'Todos los casos',
-      completed: 'Software finalizado',
-      research: 'I+D / Trabajo de grado',
-      roleBadge: 'MI ROL EN EL PROYECTO',
-      verifiedRepo: 'Código público verificado',
-      activeThesis: 'Investigación académica activa',
+      all: 'Todos',
+      completed: 'Finalizados',
+      research: 'Trabajo de grado',
+      roleBadge: 'Mi rol',
+      verifiedRepo: 'Código público',
+      activeThesis: 'En desarrollo',
     },
     quickBrief: {
       localTime: 'Hora local (UTC-5)',
-      focusLabel: 'Especialidad #1',
+      focusLabel: 'Especialidad',
       focusValue: 'Backend · AWS Cloud · Pipelines de Datos',
+    },
+  },
+
+  /* ------------------------------------------------ Honeycomb Tech Stack */
+  honeycomb: {
+    filterLabel: 'Resaltar área en el panal',
+    all: 'Todo el panal',
+    clickToPin: 'Clic para abrir ficha completa',
+    closeModal: 'Cerrar detalle',
+    categories: {
+      backend: 'Backend & Lenguajes',
+      cloud: 'AWS Cloud',
+      data: 'Datos Distribuidos',
+      databases: 'Bases de Datos',
+      tools: 'Sistemas, APIs & Flujo Ágil',
+      frontend: 'Web & Videojuegos',
+    },
+    items: {
+      java: {
+        role: 'Lenguaje Backend Principal',
+        desc: 'Desarrollo, mantenimiento y corrección de módulos backend empresariales en producción.',
+        tags: ['ST&T LTDA', 'Backend', 'Sistemas distribuidos'],
+      },
+      scala: {
+        role: 'Backend & Procesamiento Distribuido',
+        desc: 'Mantenimiento y soporte de procesos de datos escalables sobre Spark y entornos cloud.',
+        tags: ['ST&T LTDA', 'Apache Spark', 'Pipelines'],
+      },
+      python: {
+        role: 'Automatización, Datos & Backend',
+        desc: 'Scripts de soporte, sensores de flujos en Airflow, validación de datos y automatización.',
+        tags: ['ST&T LTDA', 'Airflow', 'AWS Lambda'],
+      },
+      aws: {
+        role: 'Ecosistema Cloud Principal',
+        desc: 'Operación cotidiana de servicios cloud para almacenamiento, cómputo distribuido y APIs.',
+        tags: ['ST&T LTDA', 'Cloud Computing', 'Operación'],
+      },
+      awsS3: {
+        role: 'Almacenamiento Cloud de Datos',
+        desc: 'Inspección y validación de datos de entrada/salida en buckets de pipelines distribuidos.',
+        tags: ['AWS', 'Data Lakes', 'Pipelines'],
+      },
+      awsEmr: {
+        role: 'Clústeres Big Data Administrados',
+        desc: 'Seguimiento de ejecuciones distribuidas, logs y revisión de plantillas de clúster.',
+        tags: ['AWS', 'Spark & Hadoop', 'Clústeres'],
+      },
+      awsLambda: {
+        role: 'Cómputo Serverless',
+        desc: 'Soporte y mantenimiento de funciones serverless e integraciones basadas en eventos.',
+        tags: ['AWS', 'Serverless', 'Eventos'],
+      },
+      awsApiGateway: {
+        role: 'Gestión de APIs en AWS',
+        desc: 'Exposición, integración e inspección de endpoints de servicios backend en la nube.',
+        tags: ['AWS', 'REST APIs', 'Integración'],
+      },
+      spark: {
+        role: 'Procesamiento Distribuido de Datos',
+        desc: 'Monitoreo, diagnóstico de fallos y validación de resultados en jobs distribuidos.',
+        tags: ['Big Data', 'Scala & Python', 'EMR'],
+      },
+      airflow: {
+        role: 'Orquestación de Pipelines',
+        desc: 'Supervisión de DAGs programados, sensores de flujos, logs e investigación de alertas.',
+        tags: ['Orquestación', 'DAGs', 'Monitoreo'],
+      },
+      hadoop: {
+        role: 'Ecosistema de Datos Distribuidos',
+        desc: 'Soporte en entornos de clúster y almacenamiento/procesamiento distribuido.',
+        tags: ['Sistemas Distribuidos', 'Clústeres', 'Big Data'],
+      },
+      sql: {
+        role: 'Consultas y Validación de Datos',
+        desc: 'Análisis de consistencia, cruce de registros y verificación de calidad en bases de datos.',
+        tags: ['Calidad de datos', 'Consultas', 'Análisis'],
+      },
+      mysql: {
+        role: 'Base de Datos Relacional',
+        desc: 'Modelado relacional y consultas en entornos laborales y aplicaciones web (EventManager).',
+        tags: ['Relacional', 'ST&T LTDA', 'EventManager'],
+      },
+      mongodb: {
+        role: 'Base de Datos NoSQL',
+        desc: 'Manejo de colecciones orientadas a documentos para datos flexibles.',
+        tags: ['NoSQL', 'Documentos', 'Bases de datos'],
+      },
+      linux: {
+        role: 'Sistemas Operativos & Entornos Remotos',
+        desc: 'Acceso por terminal a servidores remotos, inspección de logs y operación en clústeres.',
+        tags: ['Terminal SSH', 'Servidores', 'Logs'],
+      },
+      postman: {
+        role: 'Pruebas e Inspección de APIs',
+        desc: 'Validación de endpoints REST, análisis de respuestas HTTP y diagnóstico de integraciones.',
+        tags: ['REST APIs', 'Testing', 'Debugging'],
+      },
+      git: {
+        role: 'Control de Versiones',
+        desc: 'Gestión de ramas, fusiones limpias y trabajo colaborativo en múltiples repositorios.',
+        tags: ['Git Flow', 'Repositorios', 'Colaboración'],
+      },
+      bitbucket: {
+        role: 'Repositorios Empresariales',
+        desc: 'Gestión de código fuente, pull requests y revisión colaborativa en el entorno laboral.',
+        tags: ['ST&T LTDA', 'Pull Requests', 'Git'],
+      },
+      jira: {
+        role: 'Gestión Ágil e Incidencias',
+        desc: 'Seguimiento de tickets de soporte, tareas de sprint y trazabilidad bajo Scrum.',
+        tags: ['Scrum', 'Tickets', 'ST&T LTDA'],
+      },
+      typescript: {
+        role: 'Desarrollo Web Tipado',
+        desc: 'Construcción de interfaces mantenibles y tipadas como EventManager y este portafolio.',
+        tags: ['EventManager', 'Tipado estático', 'Frontend'],
+      },
+      javascript: {
+        role: 'Lenguaje para la Web',
+        desc: 'Interactividad en aplicaciones web e integración asíncrona con servicios REST.',
+        tags: ['ES6+', 'APIs Web', 'Proyectos'],
+      },
+      react: {
+        role: 'Interfaces Basadas en Componentes',
+        desc: 'Desarrollo de paneles por rol, vistas dinámicas y consumo de APIs en EventManager.',
+        tags: ['EventManager', 'Componentes', 'UI'],
+      },
+      tailwind: {
+        role: 'Estilos Responsivos Utility-First',
+        desc: 'Maquetación adaptable de tableros y vistas por rol en proyectos colaborativos.',
+        tags: ['EventManager', 'Responsive UI', 'CSS'],
+      },
+      csharp: {
+        role: 'Lógica e Interacción en Unity',
+        desc: 'Programación de mecánicas, eventos e interacción en el proyecto Ñimpe Misak.',
+        tags: ['Ñimpe Misak', 'Scripting', 'POO'],
+      },
+      cpp: {
+        role: 'Programación Base y Algoritmos',
+        desc: 'Fundamentos sólidos de estructuras de datos, memoria y resolución algorítmica.',
+        tags: ['Unicauca', 'Algoritmos', 'Sistemas'],
+      },
+      unity: {
+        role: 'Motor Interactivo 2.5D / 3D',
+        desc: 'Desarrollo del videojuego etnoeducativo Ñimpe Misak como trabajo de grado.',
+        tags: ['Trabajo de grado', '2.5D', 'C#'],
+      },
     },
   },
 };
@@ -790,82 +878,68 @@ const en: Dictionary = {
     light: 'Light',
   },
 
+  /* ---------------------------------------------------------------- Hero */
   hero: {
     greeting: "Hi, I'm",
     headlineStart: 'I build software solutions connecting ',
     headlineHighlight: 'backend, data, and cloud.',
     intro:
-      "I'm a backend developer and Systems Engineering student with experience supporting and operating data pipelines in cloud environments. I'm interested in building reliable solutions, automating processes, and understanding how distributed systems work.",
+      'Backend developer and Systems Engineering student at Unicauca. I operate, troubleshoot, and maintain distributed data pipelines on AWS using Java, Scala, and Python.',
     ctaProjects: 'Explore projects',
     ctaContact: 'Let’s discuss opportunities',
     roleLabel: 'Backend Developer at',
     studyLabel: 'Systems Engineering',
-    socialLabel: 'Professional profiles',
+    socialLabel: 'Profiles',
     codeFile: 'profile.ts',
     codeRole: 'Backend Developer',
-    codeStatus: 'always learning',
+    codeStatus: 'active',
   },
 
   about: {
     title: 'About me',
-    subtitle: "Who I am, the experience I'm building, and where I want to grow.",
+    subtitle: 'Backend, AWS Cloud, and distributed data pipeline reliability.',
     paragraphs: [
-      "I'm Duber Andrés Eraso Uni, a Systems Engineering student at Universidad del Cauca and a backend developer at ST&T LTDA.",
-      'My professional experience focuses on supporting, monitoring, and maintaining data processes in cloud environments. My work includes monitoring executions, diagnosing and resolving incidents, analyzing data, and reviewing distributed processes. This experience has helped me understand the importance of reliability, observability, and data quality in systems that operate continuously.',
-      'I work with programming languages such as Java, Scala, and Python, as well as AWS services and tools related to Apache Airflow, Amazon EMR, Amazon S3, Linux, SQL, and APIs. I also use collaboration and code management tools as part of teams that follow agile development practices.',
-      "I'm interested in continuing to develop my skills in backend engineering, process automation, and the design of scalable and maintainable systems. I enjoy learning new technologies, analyzing technical problems, and working with others to find solutions.",
+      'Systems Engineering student at Universidad del Cauca and Backend Developer at ST&T LTDA.',
+      'Focused on monitoring, troubleshooting, and maintaining cloud data pipelines on AWS with Java, Scala, Python, Spark, Airflow, and SQL in agile teams.',
     ],
-    closing:
-      'This portfolio brings together my professional experience, education, and projects, reflecting my growth in software development and cloud technologies.',
-    factsTitle: 'Profile',
+    closing: 'Focused on building reliable software, automating workflows, and resolving root-cause incidents.',
+    factsTitle: 'Summary',
     facts: {
       location: 'Location',
       education: 'Education',
       educationValue: 'Systems Engineering (in progress)',
       role: 'Current role',
       roleValue: 'Backend Developer',
-      profile: 'Tech profile',
-      profileValue: 'Backend & Cloud, with complementary experience in web development and databases',
+      profile: 'Specialty',
+      profileValue: 'Backend, AWS Cloud & Distributed Systems',
     },
-    pillarsTitle: 'Experience & focus',
+    pillarsTitle: 'Core pillars',
     pillars: {
       backend: {
-        title: 'Backend Development',
-        items: [
-          'Building and maintaining software solutions.',
-          'Working with Java, Scala, and Python.',
-          'Using APIs and development tools.',
-        ],
+        title: 'Backend',
+        items: ['Maintainable services in Java, Scala, and Python, REST API integration, and testing.'],
       },
       cloud: {
         title: 'Cloud & Data',
-        items: [
-          'Working with services and tools from the AWS ecosystem.',
-          'Monitoring and supporting data processes.',
-          'Diagnosing incidents and analyzing executions.',
-        ],
+        items: ['Pipeline operations and support with AWS (S3, EMR, Lambda), Spark, and Airflow.'],
       },
       problemSolving: {
-        title: 'Problem Solving',
-        items: [
-          'Investigating errors.',
-          'Analyzing information to identify possible causes.',
-          'Working with the team to solve technical problems.',
-        ],
+        title: 'Diagnostics',
+        items: ['Log analysis, data quality validation, and agile incident resolution.'],
       },
     },
-    quoteLabel: 'Work philosophy',
-    quote: 'I enjoy understanding problems at their source, learning continuously, and building reliable solutions.',
+    quoteLabel: 'Focus',
+    quote: 'Understand problems at their root and deliver reliable software.',
   },
 
   techStack: {
     title: 'Technical Skills',
     subtitle:
-      "Technologies grouped by area and by the context in which I've used them, prioritizing those from my current professional experience.",
-    legendLabel: 'Context of use',
+      'Hover over any hexagon or click to inspect my hands-on experience with each technology.',
+    legendLabel: 'Context',
     contexts: {
-      work: 'Professional experience',
-      projects: 'Projects',
+      work: 'Professional work (ST&T LTDA)',
+      projects: 'Projects & education',
     },
     capabilitiesLabel: 'Related capabilities',
     terms: {
@@ -942,18 +1016,15 @@ const en: Dictionary = {
 
   experience: {
     title: 'Professional Experience',
-    subtitle:
-      'Hands-on experience in an enterprise environment: supporting, monitoring, troubleshooting, and maintaining data processes in the cloud.',
+    subtitle: 'Cloud data pipeline operations and volunteer computer science teaching.',
     role: 'Backend Developer',
     present: 'Present',
     current: 'Current role',
     modality: 'Remote',
     summary: [
-      'I work as a Backend Developer at ST&T LTDA, supporting, monitoring, troubleshooting, and maintaining data processes in cloud environments. My responsibilities include reviewing pipeline executions, analyzing logs and outputs, investigating incidents, fixing software issues, and collaborating with the team to maintain reliable processes.',
-      'I also work with code across multiple repositories and modules, using Java, Scala, and Python, together with tools and services from the AWS ecosystem, Apache Airflow, Amazon EMR, Amazon S3, Linux, SQL, and Postman.',
-      'My daily work involves technical investigation, ticket handling, code maintenance, and collaboration within a team that follows Scrum practices.',
+      'Supporting, monitoring, troubleshooting, and maintaining distributed data pipelines on AWS using Java, Scala, Python, Spark, and Airflow in a Scrum team.',
     ],
-    responsibilitiesTitle: 'Technical responsibilities',
+    responsibilitiesTitle: 'Key responsibilities',
     tablistLabel: 'Areas of responsibility',
     relatedTools: 'Related tools',
     groups: {
@@ -961,69 +1032,48 @@ const en: Dictionary = {
         title: 'Pipeline monitoring & operations',
         short: 'Monitoring',
         items: [
-          'Monitor the status of data process executions.',
-          'Check that executions have completed successfully.',
-          'Inspect logs and outputs to identify failures.',
-          'Detect unusual behavior during operation.',
-          'Follow up on scheduled processes using the available tools.',
+          'Supervise scheduled runs and distributed pipeline health.',
+          'Inspect logs and outputs to detect operational anomalies.',
         ],
       },
       incidents: {
         title: 'Incident diagnosis & resolution',
         short: 'Incidents',
         items: [
-          'Investigate errors detected while processes run.',
-          'Analyze logs to identify possible causes.',
-          'Fix software issues within the scope of my responsibilities.',
-          'Verify process behavior after a fix is applied.',
-          'Handle tickets assigned to the support team.',
-          'Work with the team to track and resolve incidents.',
+          'Analyze logs to isolate root causes of runtime failures.',
+          'Fix software defects and validate post-deployment behavior.',
+          'Collaborate on support tickets and incident tracking.',
         ],
       },
       dataAnalysis: {
         title: 'Data analysis & validation',
         short: 'Data',
         items: [
-          'Examine the input and output data of processes.',
-          'Investigate incorrect results or data inconsistencies.',
-          'Analyze processing behavior to locate possible causes.',
-          'Validate results after a fix when needed.',
-          'Help identify issues that affect data quality.',
+          'Validate input/output datasets and investigate inconsistencies.',
+          'Verify data quality after applying fixes.',
         ],
       },
       software: {
         title: 'Software development & maintenance',
         short: 'Software',
         items: [
-          'Work with Java, Scala, and Python.',
-          'Review and modify code across multiple repositories and modules.',
-          'Fix software bugs.',
-          'Use version control tools.',
-          'Test endpoints and analyze API responses with Postman.',
-          'Work with serverless functions and workflow sensors when needed.',
+          'Maintain multi-repository modules in Java, Scala, and Python.',
+          'Test REST endpoints with Postman and serverless workflows.',
         ],
       },
       cloud: {
         title: 'Cloud services & infrastructure',
         short: 'Cloud',
         items: [
-          'Work with services and tools from the AWS ecosystem.',
-          'Interact with distributed processing environments and clusters.',
-          'Access Linux environments and remote systems.',
-          'Take part in occasional cluster and cluster-template configuration tasks.',
-          'Apply basic networking knowledge when a task requires it.',
+          'Daily operations across AWS (S3, EMR, Lambda, API Gateway).',
+          'Access remote Linux environments and review cluster templates.',
         ],
       },
       collaboration: {
         title: 'Collaboration & ways of working',
         short: 'Team',
         items: [
-          'Join the team’s follow-up meetings.',
-          'Work within a Scrum-based team dynamic.',
-          'Manage and handle tickets using the team’s tools.',
-          'Use Jira to track tasks and incidents.',
-          'Collaborate through repositories and version control with Bitbucket.',
-          'Share technical findings and investigate issues with the team.',
+          'Agile Scrum workflow, Jira issue tracking, and Bitbucket version control.',
         ],
       },
     },
@@ -1051,8 +1101,7 @@ const en: Dictionary = {
 
   projects: {
     title: 'Featured Projects',
-    subtitle:
-      'Case studies explaining the need, the solution, my actual contribution, verified technologies, and current status.',
+    subtitle: 'Selected projects showing my concrete role, verified stack, and current status.',
     labels: {
       status: 'Status',
       type: 'Type',
@@ -1083,60 +1132,58 @@ const en: Dictionary = {
       nimpeMisak: {
         type: 'Ethno-educational video game',
         summary:
-          'An ethno-educational video game initiative with a cultural perspective, designed to bring together exploration, storytelling, and learning in an interactive experience.',
+          '2.5D Unity video game promoting the language and worldview of the Misak community (Morales, Cauca).',
         problem:
-          'Explore interactive ways to support the dissemination and learning of cultural and linguistic elements of the Misak community.',
+          'Support interactive learning of cultural and linguistic heritage of the Misak community.',
         solution:
-          'A video game built with Unity, proposed in a 2.5D format, that represents the Misak worldview and language while aiming to treat them with respect and context.',
+          '2.5D interactive experience in Unity designed with cultural respect and local context.',
         context:
-          'Undergraduate thesis project related to the Misak community of San Antonio, in Morales, Cauca (Colombia).',
-        role: 'Undergraduate thesis research & development in progress (Systems Engineering · Universidad del Cauca).',
+          'Undergraduate thesis connected with the Misak community of San Antonio, Morales, Cauca.',
+        role: 'Undergraduate thesis R&D (Systems Engineering · Unicauca).',
         contribution: [],
         team: '',
-        highlights: ['Thesis project', '2.5D proposal', 'Misak worldview & language'],
+        highlights: ['Thesis project', 'Unity 2.5D', 'Misak language'],
       },
       eventManager: {
         type: 'Event management web application',
         summary:
-          'A system to organize and track events, publications, and participants, with dashboards tailored to each user role.',
+          'Role-based web platform to manage events, publications, participants, and real-time notifications.',
         problem:
-          'Bring the organization of events, publications, and participants into a single application, with different access levels depending on the role.',
+          'Centralize event and participant management with role-based permissions in one platform.',
         solution:
-          'A web application with a React and TypeScript frontend and a Laravel backend, including Google sign-in, an event board, publications, notifications, and role-based dashboards.',
+          'React + TypeScript frontend integrated with a Laravel REST API, Google sign-in, and MySQL.',
         context: '',
-        role: 'Frontend development (main contribution: role-based views, REST API integration & responsive UI) + backend endpoint and automated tests.',
+        role: 'Lead frontend contributor (role dashboards, REST API integration & responsive UI) + backend endpoint & tests.',
         contribution: [
-          'Built views and role-based dashboards: mentor, coordinator, active member, interested user, and guest.',
-          'Made the dashboards, event board, and user management responsive.',
-          'Connected frontend components to the events, profile, and publications API, replacing static data with real data.',
-          'Created the publications page and the notifications modal, and improved the sign-in flow.',
-          'Occasional backend work: a user-creation endpoint and unit and feature tests.',
+          'Responsive dashboards for 5 user roles: mentor, coordinator, member, interested user, and guest.',
+          'REST API integration for events, user profiles, publications, and notifications.',
+          'User-creation backend endpoint and automated unit/feature tests.',
         ],
-        team: 'Built by a team of four contributors. The overall architecture and the backend were a joint team effort; my work focused on the frontend.',
-        highlights: ['Frontend', 'Role-based dashboards', 'Responsive design'],
+        team: '4-developer team; I led frontend implementation and API integrations.',
+        highlights: ['Frontend & REST API', '5 role dashboards', 'Public repo'],
       },
     },
     more: {
-      title: 'More projects on GitHub',
-      description: 'Browse my repositories and software projects.',
+      title: 'More on GitHub',
+      description: 'Software engineering repositories and code.',
       action: 'Go to GitHub',
     },
   },
 
   education: {
     title: 'Education & Certifications',
-    subtitle: 'Academic background and credentials, with a verification link whenever a public one exists.',
-    academicTitle: 'Academic Education',
-    certificationsTitle: 'Certifications & Additional Training',
+    subtitle: 'Undergraduate degree in progress and verifiable credentials.',
+    academicTitle: 'University Degree',
+    certificationsTitle: 'Verified Certifications',
     inProgress: 'In Progress',
     start: 'Start',
-    expectedCompletion: 'Expected Completion',
+    expectedCompletion: 'Expected Graduation',
     viewCredential: 'View Credential',
-    verifiedOnCredly: 'Verifiable on Credly',
+    verifiedOnCredly: 'Verify on Credly',
     issuer: 'Issuer',
-    platform: 'Credential platform',
-    identifier: 'Identifier',
-    topics: 'Topics covered in the program',
+    platform: 'Platform',
+    identifier: 'ID',
+    topics: 'Topics',
     groups: {
       security: 'Networking & Cybersecurity',
       ai: 'Artificial Intelligence',
@@ -1145,138 +1192,124 @@ const en: Dictionary = {
       careerPath: 'Career path',
       course: 'Course',
       bootcamp: 'Bootcamp',
-      training: 'Additional training',
+      training: 'Training',
     },
     aiAdvancedTopics: [
-      'Convolutional neural networks',
+      'Convolutional networks',
       'Segmentation',
-      'Artificial intelligence frameworks',
-      'Reinforcement learning',
-      'DQN, A3C, and PPO algorithms',
-      'Applications in games and robotics',
+      'Reinforcement learning (DQN, A3C, PPO)',
     ],
   },
 
   softSkills: {
     title: 'Soft Skills',
-    subtitle: 'How I work, how I collaborate, and what I bring to a development team.',
+    subtitle: 'How I collaborate and solve problems in engineering teams.',
     inPractice: 'In practice',
-    secondaryTitle: 'Other qualities',
+    secondaryTitle: 'Complementary traits',
     featured: {
       learning: {
         title: 'Continuous Learning',
-        description:
-          "I'm open to learning new technologies, receiving feedback, and steadily improving my technical skills.",
-        practice: 'Adapting to new tools and technologies.',
+        description: 'Fast adoption of cloud services, languages, and engineering practices.',
+        practice: 'Rapid stack ramp-up.',
       },
       proactivity: {
-        title: 'Proactivity & Initiative',
-        description:
-          "I identify problems, look into possible solutions, and contribute to the team's work without waiting for instructions when I can act within my responsibilities.",
-        practice: 'Investigating incidents before escalating them.',
+        title: 'Proactivity',
+        description: 'Investigating incidents and proposing fixes before escalating.',
+        practice: 'Autonomous diagnostics.',
       },
       teamwork: {
         title: 'Teamwork',
-        description: 'I enjoy working with others, sharing knowledge, and helping the team reach its goals.',
-        practice: 'Collaborating on tasks and incidents.',
+        description: 'Active Scrum collaboration, shared debugging, and peer support.',
+        practice: 'Sprint synergy.',
       },
       problemSolving: {
         title: 'Problem Solving',
-        description:
-          'I like investigating errors, analyzing their possible causes, and working toward solutions that help keep systems stable.',
-        practice: 'Investigating technical incidents.',
+        description: 'Tracing root causes across logs and datasets to keep pipelines stable.',
+        practice: 'Root-cause fixes.',
       },
       communication: {
-        title: 'Effective Communication',
-        description: 'I explain concepts, procedures, and solutions to others in a patient and clear way.',
-        practice: 'Sharing findings and supporting teammates.',
+        title: 'Clear Communication',
+        description: 'Concise explanation of technical findings to teammates and students.',
+        practice: 'Technical clarity.',
       },
       analytical: {
         title: 'Analytical Thinking',
-        description:
-          'I examine information, spot inconsistencies, and structure my analysis of a problem before proposing a solution.',
-        practice: 'Analyzing logs and process outputs.',
+        description: 'Structured validation of inputs, outputs, and distributed execution traces.',
+        practice: 'Log & data analysis.',
       },
     },
     secondary: {
       adaptability: {
         title: 'Adaptability',
-        description: 'Willing to work with different tools, technologies, tasks, and team dynamics.',
+        description: 'Versatile across tools and priorities.',
       },
       responsibility: {
-        title: 'Responsibility & Commitment',
-        description: "Focused on completing assigned tasks and following up on the team's activities.",
+        title: 'Ownership',
+        description: 'Reliable ticket follow-through.',
       },
       curiosity: {
         title: 'Technical Curiosity',
-        description: 'Interested in understanding how systems work and exploring alternatives to solve problems.',
+        description: 'Deep interest in distributed systems.',
       },
       patience: {
-        title: 'Patience & Empathy',
-        description: 'A respectful attitude when collaborating, active listening, and support for learning processes.',
+        title: 'Empathy',
+        description: 'Active listening and teaching mindset.',
       },
     },
   },
 
   languages: {
     title: 'Languages',
-    subtitle: 'The languages I communicate in, described honestly.',
+    subtitle: 'Everyday, academic, and technical communication.',
     spanish: {
       name: 'Spanish',
-      level: 'Native language',
-      description: 'Spoken and written communication in everyday, academic, and professional contexts.',
+      level: 'Native',
+      description: 'Fluent professional and technical communication.',
     },
     english: {
       name: 'English',
-      level: 'Approximate level B1–B2',
-      levelNote: 'Self-assessed · no formal certification',
-      description:
-        "I'm comfortable communicating in conversational English with people from different cultural backgrounds. I have experience interacting in English and I'm working on improving my fluency and confidence in professional settings.",
-      context: "I've had experiences in the United States and have kept in touch with people from India.",
+      level: 'B1–B2 Conversational',
+      levelNote: 'Practical self-assessment',
+      description: 'Daily technical reading and cross-cultural conversational fluency.',
+      context: 'Communication experience in the United States and with teams in India.',
     },
     interface: {
       title: 'Site language',
-      text: 'This portfolio is available in Spanish and English. You can switch languages at any time using the selector in the header.',
-      current: 'Current site language:',
+      text: 'Switch ES / EN anytime in the header.',
+      current: 'Current language:',
     },
   },
 
   focus: {
     title: 'Professional Focus',
-    subtitle:
-      "Areas where I want to keep growing and the kinds of problems I'm interested in solving. These are growth goals, not achievements.",
-    goalLabel: 'Growth goal',
-    relatedLabel: 'Related technologies',
-    connectionLabel: 'Connection to my experience',
+    subtitle: 'Strategic engineering domains where I focus my growth.',
+    goalLabel: 'Focus',
+    relatedLabel: 'Stack',
+    connectionLabel: 'Current base',
     areas: {
       backend: {
         title: 'Backend Engineering',
-        description:
-          'Continue building backend solutions, APIs, and maintainable software components, with a focus on code quality, system integration, and problem-solving.',
-        connection: 'My current work with Java, Scala, and Python.',
+        description: 'Maintainable backend services, clean APIs, and reliable system integrations.',
+        connection: 'Java, Scala & Python in production.',
       },
       cloud: {
-        title: 'Cloud Computing',
-        description:
-          'Deepen my knowledge of cloud services, especially AWS, to better understand how applications and data processes are deployed, operated, and maintained.',
-        connection: 'Using AWS services and tools in my daily work.',
+        title: 'Cloud Computing (AWS)',
+        description: 'Deploying, operating, and maintaining cloud workloads and data services on AWS.',
+        connection: 'S3, EMR, Lambda & API Gateway.',
       },
       data: {
-        title: 'Data Engineering & Distributed Systems',
-        description:
-          'Expand my knowledge of distributed processing, workflow orchestration, and data pipeline reliability, building on the practical experience gained in enterprise environments.',
-        connection: 'Monitoring, troubleshooting, and supporting data processes.',
+        title: 'Data & Distributed Systems',
+        description: 'Workflow orchestration, distributed processing, and data quality at scale.',
+        connection: 'Spark, Hadoop, Airflow & SQL.',
       },
       automation: {
         title: 'Automation & Reliability',
-        description:
-          "I'm interested in improving system reliability through task automation, error analysis, and continuous improvement of development and operational processes.",
-        connection: 'Investigating incidents and improving processes.',
+        description: 'Observability, root-cause diagnostics, and reducing manual operational toil.',
+        connection: 'Pipeline monitoring & support.',
       },
     },
-    philosophyLabel: 'Development philosophy',
-    philosophy:
-      'My goal is to build useful and maintainable software, understand systems beyond the code, and keep learning to deliver reliable solutions to real-world problems.',
+    philosophyLabel: 'Principle',
+    philosophy: 'Build useful, maintainable, and reliable software for real-world problems.',
   },
 
   contact: {
@@ -1429,17 +1462,164 @@ const en: Dictionary = {
     },
     projectFilters: {
       label: 'Filter projects by category',
-      all: 'All case studies',
-      completed: 'Completed software',
-      research: 'R&D / Thesis',
-      roleBadge: 'MY ROLE IN THIS PROJECT',
-      verifiedRepo: 'Verified public code',
-      activeThesis: 'Active academic R&D',
+      all: 'All',
+      completed: 'Completed',
+      research: 'Thesis',
+      roleBadge: 'My role',
+      verifiedRepo: 'Public repo',
+      activeThesis: 'In development',
     },
     quickBrief: {
       localTime: 'Local time (UTC-5)',
-      focusLabel: 'Primary Focus',
+      focusLabel: 'Specialty',
       focusValue: 'Backend · AWS Cloud · Data Pipelines',
+    },
+  },
+
+  honeycomb: {
+    filterLabel: 'Highlight domain in honeycomb',
+    all: 'Full honeycomb',
+    clickToPin: 'Click to open full card',
+    closeModal: 'Close details',
+    categories: {
+      backend: 'Backend & Languages',
+      cloud: 'AWS Cloud',
+      data: 'Distributed Data',
+      databases: 'Databases',
+      tools: 'Systems, APIs & Agile',
+      frontend: 'Web & Game Dev',
+    },
+    items: {
+      java: {
+        role: 'Core Backend Language',
+        desc: 'Building, maintaining, and debugging enterprise backend modules in production.',
+        tags: ['ST&T LTDA', 'Backend', 'Distributed systems'],
+      },
+      scala: {
+        role: 'Backend & Distributed Processing',
+        desc: 'Maintaining and supporting scalable data workflows on Spark and cloud clusters.',
+        tags: ['ST&T LTDA', 'Apache Spark', 'Pipelines'],
+      },
+      python: {
+        role: 'Automation, Data & Backend',
+        desc: 'Support scripts, Airflow workflow sensors, data validation, and task automation.',
+        tags: ['ST&T LTDA', 'Airflow', 'AWS Lambda'],
+      },
+      aws: {
+        role: 'Primary Cloud Ecosystem',
+        desc: 'Daily cloud operations across storage, distributed compute, and API services.',
+        tags: ['ST&T LTDA', 'Cloud Computing', 'Operations'],
+      },
+      awsS3: {
+        role: 'Cloud Object Storage',
+        desc: 'Inspecting and validating input/output datasets across distributed data pipelines.',
+        tags: ['AWS', 'Data Lakes', 'Pipelines'],
+      },
+      awsEmr: {
+        role: 'Managed Big Data Clusters',
+        desc: 'Tracking distributed job runs, execution logs, and cluster template configurations.',
+        tags: ['AWS', 'Spark & Hadoop', 'Clusters'],
+      },
+      awsLambda: {
+        role: 'Serverless Compute',
+        desc: 'Supporting and maintaining event-driven serverless functions and integrations.',
+        tags: ['AWS', 'Serverless', 'Events'],
+      },
+      awsApiGateway: {
+        role: 'Cloud API Management',
+        desc: 'Exposing, integrating, and inspecting cloud backend REST endpoints.',
+        tags: ['AWS', 'REST APIs', 'Integration'],
+      },
+      spark: {
+        role: 'Distributed Data Processing',
+        desc: 'Monitoring jobs, diagnosing runtime failures, and validating distributed outputs.',
+        tags: ['Big Data', 'Scala & Python', 'EMR'],
+      },
+      airflow: {
+        role: 'Workflow Orchestration',
+        desc: 'Supervising scheduled DAGs, workflow sensors, execution logs, and alerts.',
+        tags: ['Orchestration', 'DAGs', 'Monitoring'],
+      },
+      hadoop: {
+        role: 'Distributed Data Ecosystem',
+        desc: 'Supporting cluster environments and distributed storage/processing workflows.',
+        tags: ['Distributed Systems', 'Clusters', 'Big Data'],
+      },
+      sql: {
+        role: 'Data Querying & Validation',
+        desc: 'Consistency checks, record reconciliation, and data quality verification.',
+        tags: ['Data quality', 'Queries', 'Analytics'],
+      },
+      mysql: {
+        role: 'Relational Database',
+        desc: 'Relational modeling and querying across work environments and web apps (EventManager).',
+        tags: ['Relational', 'ST&T LTDA', 'EventManager'],
+      },
+      mongodb: {
+        role: 'NoSQL Document Database',
+        desc: 'Working with document-oriented collections for flexible data structures.',
+        tags: ['NoSQL', 'Documents', 'Databases'],
+      },
+      linux: {
+        role: 'OS & Remote Environments',
+        desc: 'SSH terminal access to remote servers, log inspection, and cluster operations.',
+        tags: ['SSH Terminal', 'Servers', 'Logs'],
+      },
+      postman: {
+        role: 'API Testing & Inspection',
+        desc: 'Testing REST endpoints, inspecting HTTP payloads, and debugging integrations.',
+        tags: ['REST APIs', 'Testing', 'Debugging'],
+      },
+      git: {
+        role: 'Version Control',
+        desc: 'Branch workflows, clean merges, and multi-repository team collaboration.',
+        tags: ['Git Flow', 'Repositories', 'Collaboration'],
+      },
+      bitbucket: {
+        role: 'Enterprise Repositories',
+        desc: 'Source code management, pull requests, and collaborative code review at work.',
+        tags: ['ST&T LTDA', 'Pull Requests', 'Git'],
+      },
+      jira: {
+        role: 'Agile & Incident Tracking',
+        desc: 'Managing support tickets, sprint tasks, and issue resolution in Scrum.',
+        tags: ['Scrum', 'Tickets', 'ST&T LTDA'],
+      },
+      typescript: {
+        role: 'Typed Web Development',
+        desc: 'Building type-safe, maintainable UIs such as EventManager and this portfolio.',
+        tags: ['EventManager', 'Static typing', 'Frontend'],
+      },
+      javascript: {
+        role: 'Web Programming Language',
+        desc: 'Interactive web features and asynchronous REST API integrations.',
+        tags: ['ES6+', 'Web APIs', 'Projects'],
+      },
+      react: {
+        role: 'Component-Based UIs',
+        desc: 'Built role-based dashboards, dynamic views, and API integrations in EventManager.',
+        tags: ['EventManager', 'Components', 'UI'],
+      },
+      tailwind: {
+        role: 'Utility-First Responsive CSS',
+        desc: 'Responsive layout styling for role dashboards and collaborative web views.',
+        tags: ['EventManager', 'Responsive UI', 'CSS'],
+      },
+      csharp: {
+        role: 'Unity Game Logic & Scripting',
+        desc: 'Implementing interactive mechanics and events for the Ñimpe Misak project.',
+        tags: ['Ñimpe Misak', 'Scripting', 'OOP'],
+      },
+      cpp: {
+        role: 'Systems & Algorithmic Foundations',
+        desc: 'Strong foundation in data structures, memory management, and algorithms.',
+        tags: ['Unicauca', 'Algorithms', 'Systems'],
+      },
+      unity: {
+        role: '2.5D / 3D Interactive Engine',
+        desc: 'Developing the Ñimpe Misak ethno-educational video game thesis project.',
+        tags: ['Thesis project', '2.5D', 'C#'],
+      },
     },
   },
 };

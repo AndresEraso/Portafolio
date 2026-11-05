@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import {
   Award,
   Calendar,
@@ -23,30 +24,29 @@ export function Education() {
     <section id="education" className="section section--alt education">
       <div className="container">
         <SectionHeading
-          eyebrow={`SYS.06 // ${t.education.title}`}
+          eyebrow={t.nav.education}
           title={t.education.title}
           subtitle={t.education.subtitle}
         />
 
         <div className="education__grid">
-          {/* Bloque 1: Registro Académico Oficial */}
-          <div className="education__block reveal">
+          {/* Formación Académica */}
+          <div className="education__block reveal reveal--left">
             <div className="education__block-header mono">
               <GraduationCap size={16} aria-hidden="true" />
-              <span>// {t.education.academicTitle.toUpperCase()}</span>
+              <span>{t.education.academicTitle}</span>
             </div>
 
             <div className="education__record focus-card">
               <div className="education__record-ribbon mono">
                 <span className="education__status-pill">
                   <span className="education__status-dot" aria-hidden="true" />
-                  <span>{t.education.inProgress.toUpperCase()}</span>
+                  <span>{t.education.inProgress}</span>
                 </span>
-                <span className="education__record-id">REG.01 // UNICAUCA</span>
               </div>
 
               <div className="education__record-body">
-                <h4 className="education__program-title hover-paint">{education.program}</h4>
+                <h3 className="education__program-title hover-paint">{education.program}</h3>
                 <p className="education__institution mono">{education.institution}</p>
 
                 <div className="education__timeline mono">
@@ -54,7 +54,7 @@ export function Education() {
                     <span className="education__date-label">{t.education.start}:</span>
                     <span className="education__date-val">{academicStart}</span>
                   </div>
-                  <div className="education__date-divider" aria-hidden="true">────────</div>
+                  <div className="education__date-divider" aria-hidden="true">────</div>
                   <div className="education__date-node">
                     <span className="education__date-label">{t.education.expectedCompletion}:</span>
                     <span className="education__date-val">{academicEnd}</span>
@@ -64,23 +64,25 @@ export function Education() {
             </div>
           </div>
 
-          {/* Bloque 2: Libro de Credenciales y Certificaciones */}
-          <div className="education__block reveal" style={{ animationDelay: '100ms' }}>
+          {/* Certificaciones */}
+          <div className="education__block reveal reveal--right">
             <div className="education__block-header mono">
               <Award size={16} aria-hidden="true" />
-              <span>// {t.education.certificationsTitle.toUpperCase()}</span>
+              <span>{t.education.certificationsTitle}</span>
             </div>
 
             <div className="education__ledger focus-group">
               {certifications.map((cert: CertificationData, idx: number) => {
                 const dateText = cert.date ? formatMonthYear(cert.date, language) : null;
                 const isCredly = !!cert.credentialUrl && cert.credentialUrl.includes('credly.com');
-                const certNum = String(idx + 1).padStart(2, '0');
 
                 return (
-                  <div key={cert.id} className="cert-row focus-card">
+                  <div
+                    key={cert.id}
+                    className="cert-row focus-card reveal"
+                    style={{ '--stagger-index': idx } as CSSProperties}
+                  >
                     <div className="cert-row__meta mono">
-                      <span className="cert-row__index">CRED.{certNum}</span>
                       <span className="cert-row__category">
                         {cert.category === 'security' ? (
                           <ShieldCheck size={12} aria-hidden="true" />
@@ -99,7 +101,7 @@ export function Education() {
                       <h4 className="cert-row__name hover-paint">{cert.name}</h4>
                       <p className="cert-row__issuer mono">
                         {cert.issuer}
-                        {cert.platform && ` · Platform: ${cert.platform}`}
+                        {cert.platform && ` · ${cert.platform}`}
                       </p>
                     </div>
 

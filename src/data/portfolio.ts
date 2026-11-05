@@ -6,6 +6,54 @@ export interface TechItem {
 
 export type TechDomainGroup = 'core' | 'ops' | 'complementary';
 
+export type HoneycombCategoryKey =
+  | 'backend'
+  | 'cloud'
+  | 'data'
+  | 'databases'
+  | 'tools'
+  | 'frontend';
+
+export type HoneycombTechKey =
+  | 'java'
+  | 'scala'
+  | 'python'
+  | 'aws'
+  | 'awsS3'
+  | 'awsEmr'
+  | 'awsLambda'
+  | 'awsApiGateway'
+  | 'spark'
+  | 'airflow'
+  | 'hadoop'
+  | 'sql'
+  | 'mysql'
+  | 'mongodb'
+  | 'linux'
+  | 'postman'
+  | 'git'
+  | 'bitbucket'
+  | 'jira'
+  | 'typescript'
+  | 'javascript'
+  | 'react'
+  | 'tailwind'
+  | 'csharp'
+  | 'cpp'
+  | 'unity';
+
+export interface HoneycombTechItem {
+  id: HoneycombTechKey;
+  name: string;
+  icon: string;
+  accentColor: string;
+  tileBg?: string;
+  fullBleed?: boolean;
+  context: 'work' | 'projects';
+  category: HoneycombCategoryKey;
+  priority?: boolean;
+}
+
 export interface TechCategory {
   id: string;
   titleKey: 'languages' | 'cloud' | 'data' | 'apis' | 'databases' | 'infrastructure' | 'collaboration' | 'web';
@@ -266,6 +314,245 @@ export const PORTFOLIO_DATA = {
       ],
     },
   ] satisfies readonly TechCategory[],
+
+  techHoneycomb: [
+    // Fila 1 (Core Backend & AWS Cloud)
+    {
+      id: 'java',
+      name: 'Java',
+      icon: '/icons/tech/java.svg',
+      accentColor: '#E76F00',
+      context: 'work',
+      category: 'backend',
+      priority: true,
+    },
+    {
+      id: 'scala',
+      name: 'Scala',
+      icon: '/icons/tech/scala.svg',
+      accentColor: '#DC322F',
+      context: 'work',
+      category: 'backend',
+      priority: true,
+    },
+    {
+      id: 'python',
+      name: 'Python',
+      icon: '/icons/tech/python.svg',
+      accentColor: '#3776AB',
+      context: 'work',
+      category: 'backend',
+      priority: true,
+    },
+    {
+      id: 'aws',
+      name: 'AWS',
+      icon: '/icons/tech/aws.svg',
+      accentColor: '#FF9900',
+      tileBg: '#F8FAFC',
+      context: 'work',
+      category: 'cloud',
+      priority: true,
+    },
+    {
+      id: 'awsS3',
+      name: 'Amazon S3',
+      icon: '/icons/tech/aws-s3.svg',
+      accentColor: '#7AA116',
+      tileBg: '#7AA116',
+      fullBleed: true,
+      context: 'work',
+      category: 'cloud',
+      priority: true,
+    },
+    {
+      id: 'awsEmr',
+      name: 'Amazon EMR',
+      icon: '/icons/tech/aws-emr.svg',
+      accentColor: '#8C4FFF',
+      tileBg: '#8C4FFF',
+      fullBleed: true,
+      context: 'work',
+      category: 'cloud',
+      priority: true,
+    },
+    {
+      id: 'awsLambda',
+      name: 'AWS Lambda',
+      icon: '/icons/tech/aws-lambda.svg',
+      accentColor: '#ED7100',
+      tileBg: '#ED7100',
+      fullBleed: true,
+      context: 'work',
+      category: 'cloud',
+      priority: true,
+    },
+    // Fila 2 (AWS APIs, Datos Distribuidos & Bases de Datos)
+    {
+      id: 'awsApiGateway',
+      name: 'Amazon API Gateway',
+      icon: '/icons/tech/aws-apigateway.svg',
+      accentColor: '#8C4FFF',
+      tileBg: '#8C4FFF',
+      fullBleed: true,
+      context: 'work',
+      category: 'cloud',
+      priority: true,
+    },
+    {
+      id: 'spark',
+      name: 'Apache Spark',
+      icon: '/icons/tech/spark.svg',
+      accentColor: '#E25A1C',
+      context: 'work',
+      category: 'data',
+      priority: true,
+    },
+    {
+      id: 'airflow',
+      name: 'Apache Airflow',
+      icon: '/icons/tech/airflow.svg',
+      accentColor: '#017CEE',
+      context: 'work',
+      category: 'data',
+      priority: true,
+    },
+    {
+      id: 'hadoop',
+      name: 'Apache Hadoop',
+      icon: '/icons/tech/hadoop.svg',
+      accentColor: '#FFCC00',
+      context: 'work',
+      category: 'data',
+      priority: true,
+    },
+    {
+      id: 'sql',
+      name: 'SQL',
+      icon: '/icons/tech/sql.svg',
+      accentColor: '#0078D4',
+      context: 'work',
+      category: 'databases',
+      priority: true,
+    },
+    {
+      id: 'mysql',
+      name: 'MySQL',
+      icon: '/icons/tech/mysql.svg',
+      accentColor: '#00758F',
+      context: 'work',
+      category: 'databases',
+    },
+    // Fila 3 (NoSQL, Sistemas, APIs, Colaboración & Tipado)
+    {
+      id: 'mongodb',
+      name: 'MongoDB',
+      icon: '/icons/tech/mongodb.svg',
+      accentColor: '#47A248',
+      context: 'projects',
+      category: 'databases',
+    },
+    {
+      id: 'linux',
+      name: 'Linux',
+      icon: '/icons/tech/linux.svg',
+      accentColor: '#FCC624',
+      context: 'work',
+      category: 'tools',
+    },
+    {
+      id: 'postman',
+      name: 'Postman',
+      icon: '/icons/tech/postman.svg',
+      accentColor: '#FF6C37',
+      context: 'work',
+      category: 'tools',
+    },
+    {
+      id: 'git',
+      name: 'Git',
+      icon: '/icons/tech/git.svg',
+      accentColor: '#F05032',
+      context: 'work',
+      category: 'tools',
+    },
+    {
+      id: 'bitbucket',
+      name: 'Bitbucket',
+      icon: '/icons/tech/bitbucket.svg',
+      accentColor: '#2684FF',
+      context: 'work',
+      category: 'tools',
+    },
+    {
+      id: 'jira',
+      name: 'Jira',
+      icon: '/icons/tech/jira.svg',
+      accentColor: '#0052CC',
+      context: 'work',
+      category: 'tools',
+    },
+    {
+      id: 'typescript',
+      name: 'TypeScript',
+      icon: '/icons/tech/typescript.svg',
+      accentColor: '#3178C6',
+      tileBg: '#007ACC',
+      context: 'projects',
+      category: 'frontend',
+    },
+    // Fila 4 (Web & Videojuegos)
+    {
+      id: 'javascript',
+      name: 'JavaScript',
+      icon: '/icons/tech/javascript.svg',
+      accentColor: '#F7DF1E',
+      tileBg: '#F0DB4F',
+      context: 'projects',
+      category: 'frontend',
+    },
+    {
+      id: 'react',
+      name: 'React',
+      icon: '/icons/tech/react.svg',
+      accentColor: '#61DAFB',
+      context: 'projects',
+      category: 'frontend',
+    },
+    {
+      id: 'tailwind',
+      name: 'Tailwind CSS',
+      icon: '/icons/tech/tailwindcss.svg',
+      accentColor: '#38BDF8',
+      context: 'projects',
+      category: 'frontend',
+    },
+    {
+      id: 'csharp',
+      name: 'C#',
+      icon: '/icons/tech/csharp.svg',
+      accentColor: '#9B4993',
+      context: 'projects',
+      category: 'frontend',
+    },
+    {
+      id: 'cpp',
+      name: 'C++',
+      icon: '/icons/tech/cplusplus.svg',
+      accentColor: '#00599C',
+      context: 'projects',
+      category: 'frontend',
+    },
+    {
+      id: 'unity',
+      name: 'Unity',
+      icon: '/icons/tech/unity.svg',
+      accentColor: '#94A3B8',
+      tileBg: '#F1F5F9',
+      context: 'projects',
+      category: 'frontend',
+    },
+  ] satisfies readonly HoneycombTechItem[],
 
   projects: [
     {

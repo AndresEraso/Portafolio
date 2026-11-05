@@ -1,6 +1,7 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import App from '../App';
+import { PORTFOLIO_DATA } from '../data/portfolio';
 import { LanguageProvider } from '../i18n/LanguageProvider';
 import { ThemeProvider } from '../theme/ThemeProvider';
 
@@ -14,10 +15,18 @@ function renderPortfolio() {
   );
 }
 
-describe('Consola de pestañas, enfoque profesional y animaciones interactivas', () => {
+describe('Navegación unificada, panal hexagonal de tecnologías y animaciones interactivas', () => {
   afterEach(() => {
     vi.useRealTimers();
     window.history.replaceState(null, '', '/');
+  });
+
+  it('mantiene una sola barra de navegación en el Header sin barras de pestañas duplicadas ni jerga de consola', () => {
+    const { container } = renderPortfolio();
+
+    expect(container.querySelector('header.header')).toBeInTheDocument();
+    expect(container.querySelector('#workspace-console')).not.toBeInTheDocument();
+    expect(container.textContent).not.toContain('CONSOLA MODULAR');
   });
 
   it('escribe en vivo el encabezado h1 del Hero letra por letra y mantiene el cursor | parpadeando', () => {
@@ -32,7 +41,6 @@ describe('Consola de pestañas, enfoque profesional y animaciones interactivas',
     expect(nameSpan).toBeInTheDocument();
     expect(roleSpan).toBeInTheDocument();
 
-    // Verifica que inicia vacío visualmente y avanza tecla por tecla como teclado real
     expect(nameSpan?.textContent).toBe('|');
 
     for (let i = 0; i < 75; i++) {
@@ -50,43 +58,48 @@ describe('Consola de pestañas, enfoque profesional y animaciones interactivas',
     expect(idleCursor?.textContent).toBe('|');
   });
 
-  it('segmenta el portafolio en 5 pestañas modulares, soporta teclas [1-5] y navegación por #hash', () => {
+  it('renderiza las 26 tecnologías verificadas en un panal hexagonal con iconos SVG oficiales, pop-up al pasar el cursor y modal al hacer clic', () => {
     const { container } = renderPortfolio();
 
-    const expPanel = container.querySelector('#workspace-panel-experience');
-    const projPanel = container.querySelector('#workspace-panel-projects');
-    const stackPanel = container.querySelector('#workspace-panel-stack');
-    const profilePanel = container.querySelector('#workspace-panel-profile');
+    const hexCells = container.querySelectorAll('.hex-cell');
+    expect(hexCells.length).toBe(PORTFOLIO_DATA.techHoneycomb.length);
+    expect(hexCells.length).toBe(26);
 
-    // Inicialmente el módulo 01 (Experiencia) está visible y los demás tienen hidden
-    expect(expPanel).not.toHaveAttribute('hidden');
-    expect(projPanel).toHaveAttribute('hidden');
+    // Verifica que cada hexágono tenga su icono oficial descargado en /icons/tech/*.svg
+    const icons = container.querySelectorAll<HTMLImageElement>('.hex-cell__icon');
+    expect(icons.length).toBe(26);
+    icons.forEach((img) => {
+      expect(img.getAttribute('src')).toMatch(/^\/icons\/tech\/[a-z0-9-]+\.svg$/);
+    });
 
-    // Al pulsar la tecla '2', activa el módulo 02 (Proyectos)
-    fireEvent.keyDown(window, { key: '2' });
-    expect(projPanel).not.toHaveAttribute('hidden');
-    expect(expPanel).toHaveAttribute('hidden');
+    // Al pasar el cursor sobre un hexágono (ej. Java), crece (.is-hovered) y muestra el pop-up flotante
+    const firstHex = hexCells[0] as HTMLButtonElement;
+    fireEvent.mouseEnter(firstHex);
 
-    // Al hacer clic en un enlace interno a #soft-skills, cambia a Perfil -> Competencias
-    const softSkillsLink = container.querySelector('a[href="#soft-skills"]');
-    if (softSkillsLink) {
-      fireEvent.click(softSkillsLink);
-      expect(profilePanel).not.toHaveAttribute('hidden');
-    }
+    expect(firstHex).toHaveClass('is-hovered');
+    const popup = container.querySelector('.hex-popup[role="tooltip"]');
+    expect(popup).toBeInTheDocument();
+    expect(popup?.textContent).toContain('Java');
 
-    // Al hacer clic en la pestaña 03 (Especialidad & Stack), muestra el stack
-    const stackTab = container.querySelector('#workspace-tab-stack');
-    expect(stackTab).toBeInTheDocument();
-    fireEvent.click(stackTab!);
-    expect(stackPanel).not.toHaveAttribute('hidden');
+    // Al hacer clic en el hexágono, abre el modal detallado y lo cierra con Escape
+    fireEvent.click(firstHex);
+    const modal = screen.getByRole('dialog');
+    expect(modal.querySelector('.hex-modal')).toBeInTheDocument();
+    expect(modal.textContent).toContain('Java');
+
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(container.querySelector('.hex-modal')).not.toBeInTheDocument();
+
+    // Resaltado por categoría en el panal
+    const filterButtons = container.querySelectorAll('.honeycomb-filters__btn');
+    expect(filterButtons.length).toBeGreaterThan(1);
+    fireEvent.click(filterButtons[1]);
+    expect(container.querySelectorAll('.hex-cell:not(.is-dimmed)').length).toBeGreaterThan(0);
+    expect(container.querySelectorAll('.hex-cell.is-dimmed').length).toBeGreaterThan(0);
   });
 
-  it('prioriza EventManager finalizado como CASE.01 con rol explícito y filtra el stack en la especialidad #1', () => {
+  it('prioriza EventManager finalizado con rol explícito y aplica variantes de animación scroll-reveal', () => {
     const { container } = renderPortfolio();
-
-    // Activar pestaña de Proyectos
-    const projectsTab = container.querySelector('#workspace-tab-projects');
-    fireEvent.click(projectsTab!);
 
     const projectTitles = Array.from(container.querySelectorAll('.case-study__title')).map((el) =>
       el.textContent?.trim()
@@ -94,26 +107,12 @@ describe('Consola de pestañas, enfoque profesional y animaciones interactivas',
     expect(projectTitles[0]).toBe('EventManager');
     expect(projectTitles[1]).toContain('Ñimpe Misak');
 
-    // Verifica que el callout de rol sea visible directamente en las tarjetas
     const roleCallouts = container.querySelectorAll('.case-study__role-callout');
     expect(roleCallouts.length).toBe(2);
 
-    // Activar pestaña de Stack y verificar filtro enfocado por defecto (4 categorías core) vs Todas (8)
-    const stackTab = container.querySelector('#workspace-tab-stack');
-    fireEvent.click(stackTab!);
-
-    expect(container.querySelectorAll('.tech-stack__panel').length).toBe(4);
-
-    const filterButtons = container.querySelectorAll('.tech-stack__filter-btn');
-    const allFilterBtn = filterButtons[filterButtons.length - 1];
-    fireEvent.click(allFilterBtn);
-
-    expect(container.querySelectorAll('.tech-stack__panel').length).toBe(8);
-  });
-
-  it('renderiza el foco ambiental que sigue al mouse (.cursor-spotlight)', () => {
-    const { container } = renderPortfolio();
-    const spotlight = container.querySelector('.cursor-spotlight');
-    expect(spotlight).toBeInTheDocument();
+    // Variantes dinámicas de scroll-reveal y foco ambiental
+    expect(container.querySelectorAll('.reveal--left').length).toBeGreaterThan(0);
+    expect(container.querySelectorAll('.reveal--right').length).toBeGreaterThan(0);
+    expect(container.querySelector('.cursor-spotlight')).toBeInTheDocument();
   });
 });
