@@ -139,6 +139,26 @@ p {
   border-block: 1px solid var(--color-border);
 }
 
+/* Vista de cada pestaña principal */
+.tab-screen[hidden] {
+  display: none !important;
+}
+
+.tab-screen {
+  animation: tabScreenFadeIn 280ms var(--ease-out-smooth);
+}
+
+@keyframes tabScreenFadeIn {
+  from {
+    opacity: 0.4;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 main:focus {
   outline: none;
 }
@@ -205,33 +225,33 @@ main:focus {
 }
 
 /* --------------------------------------------------------------------------
-   Animación marcada de aparición al desplazarse (Scroll Reveal Dinámico)
+   Animación marcada de aparición al desplazarse (Persistente con data-revealed)
    -------------------------------------------------------------------------- */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, var(--reveal-distance, 48px), 0) scale(0.955);
-  filter: blur(4px);
-  will-change: opacity, transform, filter;
+  transform: translate3d(0, var(--reveal-distance, 36px), 0) scale(0.97);
+  filter: blur(3px);
   transition:
-    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 620ms cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, calc(var(--stagger-index, 0) * 55ms));
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, calc(var(--stagger-index, 0) * 50ms));
 }
 
 .reveal--left {
-  transform: translate3d(-44px, 16px, 0) scale(0.96);
+  transform: translate3d(-36px, 12px, 0) scale(0.97);
 }
 
 .reveal--right {
-  transform: translate3d(44px, 16px, 0) scale(0.96);
+  transform: translate3d(36px, 12px, 0) scale(0.97);
 }
 
 .reveal--pop {
-  transform: translate3d(0, 30px, 0) scale(0.84);
+  transform: translate3d(0, 24px, 0) scale(0.92);
 }
 
-.reveal.is-visible {
+.reveal.is-visible,
+.reveal[data-revealed='true'] {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
@@ -261,7 +281,7 @@ main:focus {
 }
 
 /* --------------------------------------------------------------------------
-   Luz ambiental interactiva (Inspirado en v4 — Cursor Spotlight & Card Focus)
+   Luz ambiental interactiva y Foco de Tarjetas (sin oscurecer el modo claro)
    -------------------------------------------------------------------------- */
 .cursor-spotlight {
   position: fixed;
@@ -279,9 +299,10 @@ main:focus {
 
 .focus-card {
   position: relative;
+  box-shadow: var(--shadow-sm);
   transition:
-    opacity 240ms var(--ease-standard),
-    filter 240ms var(--ease-standard),
+    opacity 220ms var(--ease-standard),
+    filter 220ms var(--ease-standard),
     transform 220ms var(--ease-emphasized),
     border-color 220ms var(--ease-standard),
     background-color 220ms var(--ease-standard),
@@ -305,8 +326,8 @@ main:focus {
 
 @media (hover: hover) and (pointer: fine) {
   .focus-group:has(.focus-card:hover) .focus-card:not(:hover) {
-    opacity: 0.52;
-    filter: brightness(0.86) saturate(0.85);
+    opacity: 0.68;
+    filter: saturate(0.85);
   }
 
   .focus-card:hover {
@@ -323,7 +344,7 @@ main:focus {
 }
 
 /* --------------------------------------------------------------------------
-   Barrido cromático y líneas de scroll (Inspirado en folio-v2)
+   Barrido cromático y líneas de scroll
    -------------------------------------------------------------------------- */
 @supports (-webkit-background-clip: text) or (background-clip: text) {
   .hover-paint {
@@ -394,7 +415,9 @@ main:focus {
 }
 
 .scroll-line.is-visible,
-.reveal.is-visible .scroll-line {
+.scroll-line[data-revealed='true'],
+.reveal.is-visible .scroll-line,
+.reveal[data-revealed='true'] .scroll-line {
   transform: scaleX(1);
 }
 
@@ -406,11 +429,14 @@ main:focus {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .reveal.is-visible {
+  .reveal.is-visible,
+  .reveal[data-revealed='true'],
+  .tab-screen {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
     transition: none !important;
+    animation: none !important;
   }
 
   .card-lift:hover,
@@ -440,9 +466,12 @@ main:focus {
 }
 
 @media print {
-  .reveal {
+  .reveal,
+  .tab-screen[hidden] {
+    display: block !important;
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
   }
 
   .cursor-spotlight {
@@ -456,9 +485,5 @@ main:focus {
 
   .scroll-line {
     transform: scaleX(1) !important;
-  }
-
-  [role='tabpanel'][hidden] {
-    display: block !important;
   }
 }

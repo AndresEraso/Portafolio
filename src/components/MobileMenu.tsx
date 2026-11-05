@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { X } from 'lucide-react';
-import { NAV_ITEMS } from '../data/navigation';
+import { NAV_ITEMS, PAGE_TABS, type PageTabId } from '../data/navigation';
 import { useLanguage } from '../hooks/useLanguage';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
@@ -10,9 +10,19 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   activeId: string;
+  activeTab: PageTabId;
+  onSelectTab: (tab: PageTabId) => void;
+  onNavigateSection: (sectionId: string) => void;
 }
 
-export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
+export function MobileMenu({
+  isOpen,
+  onClose,
+  activeId,
+  activeTab,
+  onSelectTab,
+  onNavigateSection,
+}: MobileMenuProps) {
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -62,25 +72,57 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
         </div>
 
         <nav className="mobile-menu__nav" aria-label={t.a11y.mobileNav}>
-          <ul className="mobile-menu__list" role="list">
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeId === item.id;
-              const label = t.nav[item.labelKey];
+          <div className="mobile-menu__groups">
+            {PAGE_TABS.map((tab) => {
+              const isTabActive = activeTab === tab.id;
+              const tabCopy = t.pageTabs.tabs[tab.id];
+              const subItems = NAV_ITEMS.filter((item) => tab.sectionIds.includes(item.id));
 
               return (
-                <li key={item.id} className="mobile-menu__item">
-                  <a
-                    href={item.href}
-                    className={`mobile-menu__link ${isActive ? 'is-active' : ''}`}
-                    onClick={onClose}
+                <div
+                  key={tab.id}
+                  className={`mobile-menu__tab-group ${isTabActive ? 'is-active' : ''}`}
+                >
+                  <button
+                    type="button"
+                    className={`mobile-menu__tab-btn ${isTabActive ? 'is-active' : ''}`}
+                    onClick={() => {
+                      onSelectTab(tab.id);
+                      onClose();
+                    }}
                   >
-                    <span>{label}</span>
-                    {isActive && <span className="mobile-menu__indicator" aria-hidden="true" />}
-                  </a>
-                </li>
+                    <span className="mobile-menu__tab-num mono">{tab.number}</span>
+                    <span className="mobile-menu__tab-title">{tabCopy.label}</span>
+                  </button>
+
+                  {subItems.length > 1 && (
+                    <ul className="mobile-menu__sublist" role="list">
+                      {subItems.map((item) => {
+                        const isSectionActive = isTabActive && activeId === item.id;
+                        return (
+                          <li key={item.id}>
+                            <a
+                              href={item.href}
+                              className={`mobile-menu__sublink ${
+                                isSectionActive ? 'is-active' : ''
+                              }`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                onNavigateSection(item.id);
+                                onClose();
+                              }}
+                            >
+                              <span>{t.nav[item.labelKey]}</span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
               );
             })}
-          </ul>
+          </div>
         </nav>
 
         <div className="mobile-menu__footer">

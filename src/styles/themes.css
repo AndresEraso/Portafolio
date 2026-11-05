@@ -1,12 +1,9 @@
 /* ==========================================================================
    SISTEMA VISUAL CENTRALIZADO — Terminal de Ingeniería (themes.css)
    --------------------------------------------------------------------------
-   Inspirado en herramientas técnicas, terminales Unix, observabilidad cloud
-   y sistemas distribuidos.
-
-   1. Tokens comunes (tipografía, layout, radios rectos, transiciones)
+   1. Tokens comunes (tipografía fluida, layout responsivo, radios y ritmo)
    2. Tema oscuro (grafito profundo, superficies mate, verde terminal)
-   3. Tema claro (lienzo técnico cálido, contraste alto, acento calibrado)
+   3. Tema claro (lienzo blanco arquitectónico, esmeralda nítido, alto contraste)
    4. Movimiento reducido (prefers-reduced-motion)
    ========================================================================== */
 
@@ -24,15 +21,15 @@
   --line-height-tight: 1.15;
   --letter-spacing-display: -0.025em;
 
-  /* Escala tipográfica fluida */
+  /* Escala tipográfica fluida calibrada para móvil pequeño (320px+) y escritorio */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-md: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: clamp(1.2rem, 1.1rem + 0.4vw, 1.375rem);
-  --text-2xl: clamp(1.45rem, 1.25rem + 0.8vw, 1.85rem);
-  --text-3xl: clamp(1.9rem, 1.5rem + 1.6vw, 2.75rem);
-  --text-hero: clamp(2.3rem, 1.5rem + 3.8vw, 4.2rem);
+  --text-xl: clamp(1.15rem, 1.05rem + 0.4vw, 1.375rem);
+  --text-2xl: clamp(1.35rem, 1.18rem + 0.8vw, 1.85rem);
+  --text-3xl: clamp(1.7rem, 1.38rem + 1.6vw, 2.7rem);
+  --text-hero: clamp(1.9rem, 1.3rem + 3.4vw, 4rem);
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -41,8 +38,8 @@
 
   /* ---- Layout ---------------------------------------------------------- */
   --content-max-width: 1180px;
-  --content-padding-x: clamp(1rem, 4vw, 2rem);
-  --section-spacing: clamp(3.25rem, 2.5rem + 3vw, 4.75rem);
+  --content-padding-x: clamp(0.95rem, 3.8vw, 2rem);
+  --section-spacing: clamp(2.75rem, 2.2rem + 2.8vw, 4.5rem);
   --stack-gap: 1.25rem;
   --grid-gap: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
 
@@ -50,20 +47,20 @@
   --header-height: 4rem;
   --header-max-width: var(--content-max-width);
   --header-position: sticky;
-  --header-blur: 12px;
+  --header-blur: 14px;
   --scroll-behavior: smooth;
   --scroll-offset: calc(var(--header-height) + 1rem);
 
-  /* ---- Radios técnicos (esquinas rectas y definidas) ------------------ */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 8px;
-  --radius-pill: 4px; /* Insignias y etiquetas técnicas rectangulares */
+  /* ---- Radios técnicos (esquinas definidas y limpias) ------------------ */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-pill: 5px;
 
   /* ---- Tarjetas y Paneles --------------------------------------------- */
-  --card-padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --card-padding: clamp(1.1rem, 0.95rem + 1vw, 1.75rem);
   --card-radius: var(--radius-md);
   --card-border-width: 1px;
   --card-hover-lift: -2px;
@@ -89,7 +86,7 @@
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-  --reveal-distance: 16px;
+  --reveal-distance: 36px;
 
   /* ---- Foco visible ---------------------------------------------------- */
   --focus-ring-width: 2px;
@@ -116,34 +113,43 @@
   --color-surface-hover: #1f2b26;
   --color-overlay: rgb(11 15 14 / 0.88);
 
-  /* Texto de alta legibilidad tipo fósforo */
+  /* Texto de alta legibilidad */
   --color-text: #e7eee8;
   --color-text-muted: #9eada2;
-  --color-text-subtle: #67786d;
+  --color-text-subtle: #6b7d72;
 
-  /* Bordes estructurales de bajo contraste */
+  /* Bordes estructurales */
   --color-border: #1f2a24;
   --color-border-strong: #2c3c33;
 
-  /* Acento Terminal (Verde Eléctrico / Lime Terminal) */
+  /* Acento Terminal (Lime Eléctrico) */
   --color-primary: #b7f36b;
   --color-primary-strong: #c8fa82;
-  --color-primary-soft: rgb(183 243 107 / 0.10);
+  --color-primary-soft: rgb(183 243 107 / 0.11);
   --color-secondary: #7edb86;
   --color-secondary-soft: rgb(126 219 134 / 0.10);
   --color-accent-gradient: linear-gradient(135deg, #b7f36b 0%, #7edb86 100%);
 
-  /* Botón principal (alto contraste terminal) */
+  /* Botón principal */
   --color-button-bg: #b7f36b;
   --color-button-bg-hover: #c6fa7f;
   --color-button-text: #0b0f0e;
 
-  /* Botón secundario / contorno */
+  /* Botón secundario */
   --color-button-secondary-bg: #121816;
   --color-button-secondary-border: #2c3c33;
   --color-button-secondary-text: #e7eee8;
 
-  /* Estados y Telemetría */
+  /* Botón Uiverse de siguiente pestaña (adaptado a tema oscuro) */
+  --next-btn-frame: #b7f36b;
+  --next-btn-frame-hover: #c9fb88;
+  --next-btn-body: #141c19;
+  --next-btn-body-hover: #192420;
+  --next-btn-text: #eef5f0;
+  --next-btn-arrow: #0b0f0e;
+  --next-btn-shadow: 0 10px 26px -6px rgb(183 243 107 / 0.25), 0 4px 12px rgb(0 0 0 / 0.45);
+
+  /* Estados */
   --color-success: #b7f36b;
   --color-success-soft: rgb(183 243 107 / 0.12);
   --color-warning: #e5b842;
@@ -152,25 +158,25 @@
   --color-selection: rgb(183 243 107 / 0.25);
   --color-disabled: #3d4d44;
 
-  /* Sombras técnicas sobrias (sin neones ni halos) */
+  /* Sombras */
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.45);
-  --shadow-md: 0 4px 14px -2px rgb(0 0 0 / 0.6);
-  --shadow-lg: 0 12px 30px -6px rgb(0 0 0 / 0.7);
+  --shadow-md: 0 6px 18px -4px rgb(0 0 0 / 0.6);
+  --shadow-lg: 0 16px 36px -8px rgb(0 0 0 / 0.72);
   --shadow-glow: none;
 
   /* Retícula sutil del Hero */
-  --hero-grid-color: rgb(183 243 107 / 0.04);
-  --hero-glow-1: transparent;
-  --hero-glow-2: transparent;
+  --hero-grid-color: rgb(183 243 107 / 0.045);
 
   /* Consola de Código */
   --code-bg: #090d0c;
+  --code-text: #e7eee8;
   --code-key: #b7f36b;
   --code-string: #8de3a4;
+  --code-array: #b2c2b7;
   --code-punct: #67786d;
   --code-comment: #526258;
 
-  /* Foco / Luz interactiva (inspirado en v4) */
+  /* Foco / Luz interactiva */
   --spotlight-color: rgb(183 243 107 / 0.08);
   --spotlight-secondary: rgb(126 219 134 / 0.035);
   --card-spotlight: rgb(183 243 107 / 0.10);
@@ -178,78 +184,87 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. TEMA CLARO (Documentación Técnica / Lienzo de Ingeniería)
+   3. TEMA CLARO (Lienzo Arquitectónico Limpio, Luminoso y de Alto Contraste)
    -------------------------------------------------------------------------- */
 [data-theme='light'] {
   color-scheme: light;
 
-  /* Fondos y superficies */
-  --color-background: #f2f4ed;
-  --color-background-alt: #eaece4;
+  /* Lienzos blancos limpios con contraste sutil entre secciones y tarjetas */
+  --color-background: #f8faf9;
+  --color-background-alt: #f0f5f2;
   --color-surface: #ffffff;
-  --color-surface-2: #f5f7f1;
-  --color-surface-hover: #ebeee5;
-  --color-overlay: rgb(242 244 237 / 0.90);
+  --color-surface-2: #f2f7f4;
+  --color-surface-hover: #e7f0eb;
+  --color-overlay: rgb(248 250 249 / 0.90);
 
-  /* Texto */
-  --color-text: #18211b;
-  --color-text-muted: #526257;
-  --color-text-subtle: #728478;
+  /* Tipografía nítida en tinta pizarra oscura */
+  --color-text: #0f1914;
+  --color-text-muted: #3f5148;
+  --color-text-subtle: #607369;
 
-  /* Bordes */
-  --color-border: #d4ded3;
-  --color-border-strong: #bcc7bb;
+  /* Bordes limpios y definidos */
+  --color-border: #dce6e0;
+  --color-border-strong: #c2d3c9;
 
-  /* Acento de alto contraste para fondo claro (verde bosque técnico) */
-  --color-primary: #2a6113;
-  --color-primary-strong: #214f0e;
-  --color-primary-soft: rgb(42 97 19 / 0.09);
-  --color-secondary: #3b7421;
-  --color-secondary-soft: rgb(59 116 33 / 0.09);
-  --color-accent-gradient: linear-gradient(135deg, #2a6113 0%, #3b7421 100%);
+  /* Acento Esmeralda Técnico (fresco, moderno y accesible sobre blanco) */
+  --color-primary: #15803d;
+  --color-primary-strong: #166534;
+  --color-primary-soft: rgb(21 128 61 / 0.10);
+  --color-secondary: #0f766e;
+  --color-secondary-soft: rgb(15 118 110 / 0.09);
+  --color-accent-gradient: linear-gradient(135deg, #15803d 0%, #0f766e 100%);
 
   /* Botón principal */
-  --color-button-bg: #2a6113;
-  --color-button-bg-hover: #214f0e;
+  --color-button-bg: #15803d;
+  --color-button-bg-hover: #166534;
   --color-button-text: #ffffff;
 
   /* Botón secundario */
   --color-button-secondary-bg: #ffffff;
-  --color-button-secondary-border: #bcc7bb;
-  --color-button-secondary-text: #18211b;
+  --color-button-secondary-border: #c2d3c9;
+  --color-button-secondary-text: #0f1914;
+
+  /* Botón Uiverse de siguiente pestaña (convertido armónicamente a modo claro) */
+  --next-btn-frame: #15803d;
+  --next-btn-frame-hover: #166534;
+  --next-btn-body: #ffffff;
+  --next-btn-body-hover: #f2f8f5;
+  --next-btn-text: #0f1914;
+  --next-btn-arrow: #ffffff;
+  --next-btn-shadow: 0 10px 24px -6px rgb(21 128 61 / 0.25), 0 3px 10px rgb(15 25 20 / 0.08);
 
   /* Estados */
-  --color-success: #2a6113;
-  --color-success-soft: rgb(42 97 19 / 0.10);
-  --color-warning: #925c00;
-  --color-warning-soft: rgb(146 92 0 / 0.12);
-  --color-focus: #2a6113;
-  --color-selection: rgb(42 97 19 / 0.18);
-  --color-disabled: #9ea99f;
+  --color-success: #15803d;
+  --color-success-soft: rgb(21 128 61 / 0.11);
+  --color-warning: #b45309;
+  --color-warning-soft: rgb(180 83 9 / 0.11);
+  --color-focus: #15803d;
+  --color-selection: rgb(21 128 61 / 0.16);
+  --color-disabled: #94a39b;
 
-  /* Sombras */
-  --shadow-sm: 0 1px 2px rgb(24 33 27 / 0.06);
-  --shadow-md: 0 4px 12px -2px rgb(24 33 27 / 0.08);
-  --shadow-lg: 0 12px 28px -6px rgb(24 33 27 / 0.12);
+  /* Sombras suaves de elevación editorial */
+  --shadow-sm: 0 1px 3px rgb(15 25 20 / 0.06), 0 1px 2px rgb(15 25 20 / 0.04);
+  --shadow-md: 0 8px 22px -4px rgb(15 25 20 / 0.08), 0 2px 6px rgb(15 25 20 / 0.04);
+  --shadow-lg: 0 18px 38px -8px rgb(15 25 20 / 0.13), 0 4px 12px rgb(15 25 20 / 0.05);
   --shadow-glow: none;
 
   /* Retícula Hero en tema claro */
-  --hero-grid-color: rgb(42 97 19 / 0.05);
-  --hero-glow-1: transparent;
-  --hero-glow-2: transparent;
+  --hero-grid-color: rgb(21 128 61 / 0.06);
 
-  /* Consola de Código */
-  --code-bg: #141b17;
-  --code-key: #b7f36b;
-  --code-string: #8de3a4;
-  --code-punct: #67786d;
-  --code-comment: #526258;
+  /* Consola de Código en tema claro (IDE luminoso de alta legibilidad) */
+  --code-bg: #f4f8f6;
+  --code-text: #0f1914;
+  --code-key: #0f766e;
+  --code-string: #15803d;
+  --code-array: #334155;
+  --code-punct: #64748b;
+  --code-comment: #64748b;
 
   /* Foco / Luz interactiva en tema claro */
-  --spotlight-color: rgb(42 97 19 / 0.065);
-  --spotlight-secondary: rgb(59 116 33 / 0.028);
-  --card-spotlight: rgb(42 97 19 / 0.075);
-  --card-focus-shadow: 0 12px 26px -8px rgb(24 33 27 / 0.14), 0 0 0 1px rgb(42 97 19 / 0.28);
+  --spotlight-color: rgb(21 128 61 / 0.055);
+  --spotlight-secondary: rgb(15 118 110 / 0.025);
+  --card-spotlight: rgb(21 128 61 / 0.06);
+  --card-focus-shadow: 0 12px 28px -8px rgb(15 25 20 / 0.12), 0 0 0 1px rgb(21 128 61 / 0.28);
 }
 
 /* --------------------------------------------------------------------------

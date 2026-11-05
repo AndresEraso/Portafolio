@@ -63,7 +63,7 @@ export function Projects() {
           </div>
         </SectionHeading>
 
-        <div className="projects__cases focus-group">
+        <div className="projects__cases focus-group reveal">
           {filteredProjects.map((project: ProjectData, idx: number) => {
             const projectText = t.projects.items[project.id];
             const isExpanded = expandedId === project.id;
@@ -73,7 +73,7 @@ export function Projects() {
               <article
                 key={project.id}
                 style={{ '--stagger-index': idx } as CSSProperties}
-                className={`case-study case-study--${project.id} focus-card reveal ${
+                className={`case-study case-study--${project.id} focus-card ${
                   isExpanded ? 'is-expanded' : ''
                 }`}
               >

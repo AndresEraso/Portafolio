@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 
 /**
- * Activa animaciones dinámicas al hacer scroll (clase .is-visible en .reveal y .scroll-line).
- * Cuando un elemento vuelve a quedar por debajo del viewport, se rearma suavemente para
- * que el efecto de entrada al bajar siempre sea visible y fluido.
+ * Marca los elementos .reveal y .scroll-line con data-revealed="true" cuando entran al viewport.
+ * - Usa un atributo data-revealed (inmune a re-renders de className en React al hacer hover,
+ *   filtrar o expandir tarjetas) para que ningún elemento vuelva a ocultarse jamás por error.
+ * - Incluye un MutationObserver para detectar al instante tarjetas insertadas dinámicamente
+ *   (por ejemplo, al cambiar filtros en Proyectos).
  */
 export function useScrollReveal(triggerKey?: string) {
   useEffect(() => {
@@ -12,31 +14,74 @@ export function useScrollReveal(triggerKey?: string) {
     const prefersReducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const elements = document.querySelectorAll<HTMLElement>('.reveal, .scroll-line');
+
+    const markRevealed = (el: HTMLElement) => {
+      el.dataset.revealed = 'true';
+      el.classList.add('is-visible');
+    };
+
+    const queryRevealables = (): HTMLElement[] =>
+      Array.from(
+        document.querySelectorAll<HTMLElement>(
+          '.tab-screen:not([hidden]) .reveal, .tab-screen:not([hidden]) .scroll-line, main > section .reveal, main > section .scroll-line'
+        )
+      );
 
     if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-      elements.forEach((el) => el.classList.add('is-visible'));
+      document
+        .querySelectorAll<HTMLElement>('.reveal, .scroll-line')
+        .forEach(markRevealed);
       return;
     }
+
+    const observed = new WeakSet<Element>();
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          } else if (entry.boundingClientRect.top > window.innerHeight * 0.94) {
-            entry.target.classList.remove('is-visible');
+            markRevealed(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
           }
         });
       },
       {
-        rootMargin: '0px 0px -56px 0px',
-        threshold: 0.1,
+        rootMargin: '0px 0px -36px 0px',
+        threshold: 0.06,
       }
     );
 
-    elements.forEach((el) => observer.observe(el));
+    const registerElements = () => {
+      queryRevealables().forEach((el) => {
+        if (el.dataset.revealed === 'true') return;
+        const rect = el.getBoundingClientRect();
+        // Si ya está visible en pantalla al montar o filtrar, se revela de inmediato
+        if (rect.height > 0 && rect.top < window.innerHeight * 0.96 && rect.bottom > 0) {
+          markRevealed(el);
+          return;
+        }
+        if (!observed.has(el)) {
+          observed.add(el);
+          observer.observe(el);
+        }
+      });
+    };
 
-    return () => observer.disconnect();
+    registerElements();
+
+    const rootTarget = document.getElementById('main-content') ?? document.body;
+    const mutationObserver = new MutationObserver(() => {
+      registerElements();
+    });
+
+    mutationObserver.observe(rootTarget, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, [triggerKey]);
 }

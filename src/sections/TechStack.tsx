@@ -20,11 +20,22 @@ interface HoverPopoverState {
 
 function getBaseRowSize(width: number): number {
   if (width >= 980) return 7;
-  if (width >= 640) return 5;
+  if (width >= 600) return 5;
   return 3;
 }
 
-function buildHoneycombRows(items: readonly HoneycombTechItem[], baseSize: number): HoneycombTechItem[][] {
+function isCoarsePointer(): boolean {
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(pointer: coarse)').matches
+  );
+}
+
+function buildHoneycombRows(
+  items: readonly HoneycombTechItem[],
+  baseSize: number
+): HoneycombTechItem[][] {
   const rows: HoneycombTechItem[][] = [];
   let index = 0;
   let rowIdx = 0;
@@ -56,8 +67,15 @@ export function TechStack() {
       setBaseRowSize(getBaseRowSize(window.innerWidth));
       setHoverPopover(null);
     };
+    const handleScroll = () => {
+      setHoverPopover((prev) => (prev ? null : prev));
+    };
     window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -74,9 +92,11 @@ export function TechStack() {
   const rows = useMemo(() => buildHoneycombRows(items, baseRowSize), [items, baseRowSize]);
 
   const showPopoverForElement = (tech: HoneycombTechItem, element: HTMLElement) => {
+    if (isCoarsePointer()) return;
+
     const rect = element.getBoundingClientRect();
     const viewportW = typeof window !== 'undefined' ? window.innerWidth : 1200;
-    const cardHalfWidth = 165;
+    const cardHalfWidth = Math.min(165, viewportW / 2 - 12);
     const clampedX = Math.min(
       Math.max(rect.left + rect.width / 2, cardHalfWidth + 12),
       viewportW - cardHalfWidth - 12
@@ -89,6 +109,14 @@ export function TechStack() {
       x: clampedX,
       y: anchorY,
       placement,
+    });
+  };
+
+  const clearHoverPopover = (techId?: HoneycombTechItem['id']) => {
+    setHoverPopover((prev) => {
+      if (!prev) return null;
+      if (!techId || prev.tech.id === techId) return null;
+      return prev;
     });
   };
 
@@ -150,15 +178,14 @@ export function TechStack() {
           })}
         </div>
 
-        {/* Panal hexagonal unificado con iconos originales a todo color */}
+        {/* Panal hexagonal unificado: siempre permanece visible tras pasar o quitar el cursor */}
         <div
-          className="honeycomb"
+          className={`honeycomb reveal ${hoverPopover ? 'has-hovered-cell' : ''}`}
           onMouseLeave={() => setHoverPopover(null)}
         >
           {rows.map((row, rowIndex) => (
             <div key={rowIndex} className="honeycomb__row">
               {row.map((tech) => {
-                const globalIdx = items.findIndex((i) => i.id === tech.id);
                 const isDimmed =
                   activeCategory !== 'all' && tech.category !== activeCategory;
                 const isHovered = hoverPopover?.tech.id === tech.id;
@@ -166,7 +193,6 @@ export function TechStack() {
                 const cellStyle = {
                   '--hex-accent': tech.accentColor,
                   '--hex-tile': tech.tileBg ?? '',
-                  '--stagger-index': globalIdx % 10,
                 } as CSSProperties;
 
                 return (
@@ -178,8 +204,6 @@ export function TechStack() {
                     aria-label={`${tech.name} — ${t.honeycomb.items[tech.id].role}`}
                     className={[
                       'hex-cell',
-                      'reveal',
-                      'reveal--pop',
                       tech.tileBg ? 'hex-cell--solid-tile' : '',
                       tech.fullBleed ? 'hex-cell--full-bleed' : '',
                       tech.context === 'work' ? 'hex-cell--work' : 'hex-cell--projects',
@@ -189,8 +213,9 @@ export function TechStack() {
                       .filter(Boolean)
                       .join(' ')}
                     onMouseEnter={(e) => showPopoverForElement(tech, e.currentTarget)}
+                    onMouseLeave={() => clearHoverPopover(tech.id)}
                     onFocus={(e) => showPopoverForElement(tech, e.currentTarget)}
-                    onBlur={() => setHoverPopover(null)}
+                    onBlur={() => clearHoverPopover(tech.id)}
                     onClick={() => {
                       setHoverPopover(null);
                       setModalTech(tech);

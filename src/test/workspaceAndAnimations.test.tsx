@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import App from '../App';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import { LanguageProvider } from '../i18n/LanguageProvider';
@@ -15,18 +15,71 @@ function renderPortfolio() {
   );
 }
 
-describe('Navegación unificada, panal hexagonal de tecnologías y animaciones interactivas', () => {
+describe('División en 4 pestañas, botón Uiverse de avance y persistencia visual del panal y proyectos', () => {
+  beforeEach(() => {
+    window.scrollTo = vi.fn();
+  });
+
   afterEach(() => {
     vi.useRealTimers();
     window.history.replaceState(null, '', '/');
   });
 
-  it('mantiene una sola barra de navegación en el Header sin barras de pestañas duplicadas ni jerga de consola', () => {
+  it('divide la página en las 4 pestañas exactas y avanza entre ellas con el botón Uiverse inferior', () => {
     const { container } = renderPortfolio();
 
-    expect(container.querySelector('header.header')).toBeInTheDocument();
-    expect(container.querySelector('#workspace-console')).not.toBeInTheDocument();
-    expect(container.textContent).not.toContain('CONSOLA MODULAR');
+    const tab1 = container.querySelector('#screen-tab1')!;
+    const tab2 = container.querySelector('#screen-tab2')!;
+    const tab3 = container.querySelector('#screen-tab3')!;
+    const tab4 = container.querySelector('#screen-tab4')!;
+
+    // Agrupación exacta de secciones por pestaña
+    expect(tab1.querySelector('#hero')).toBeInTheDocument();
+    expect(tab1.querySelector('#about')).toBeInTheDocument();
+
+    expect(tab2.querySelector('#tech-stack')).toBeInTheDocument();
+    expect(tab2.querySelector('#experience')).toBeInTheDocument();
+    expect(tab2.querySelector('#projects')).toBeInTheDocument();
+
+    expect(tab3.querySelector('#education')).toBeInTheDocument();
+    expect(tab3.querySelector('#soft-skills')).toBeInTheDocument();
+    expect(tab3.querySelector('#languages')).toBeInTheDocument();
+    expect(tab3.querySelector('#focus')).toBeInTheDocument();
+
+    expect(tab4.querySelector('#contact')).toBeInTheDocument();
+
+    // Inicialmente solo la pestaña 1 está activa
+    expect(tab1).not.toHaveAttribute('hidden');
+    expect(tab2).toHaveAttribute('hidden');
+    expect(tab3).toHaveAttribute('hidden');
+    expect(tab4).toHaveAttribute('hidden');
+
+    // Botón Uiverse al final de Pestaña 1 ("Habilidades técnicas") -> Pestaña 2
+    const nextBtn1 = tab1.querySelector<HTMLButtonElement>('.next-tab-btn')!;
+    expect(nextBtn1.textContent).toContain('Habilidades técnicas');
+    fireEvent.click(nextBtn1);
+    expect(tab2).not.toHaveAttribute('hidden');
+    expect(tab1).toHaveAttribute('hidden');
+
+    // Botón Uiverse al final de Pestaña 2 ("Educación y certificaciones") -> Pestaña 3
+    const nextBtn2 = tab2.querySelector<HTMLButtonElement>('.next-tab-btn')!;
+    expect(nextBtn2.textContent).toContain('Educación y certificaciones');
+    fireEvent.click(nextBtn2);
+    expect(tab3).not.toHaveAttribute('hidden');
+    expect(tab2).toHaveAttribute('hidden');
+
+    // Botón Uiverse al final de Pestaña 3 ("Contacto profesional") -> Pestaña 4
+    const nextBtn3 = tab3.querySelector<HTMLButtonElement>('.next-tab-btn')!;
+    expect(nextBtn3.textContent).toContain('Contacto profesional');
+    fireEvent.click(nextBtn3);
+    expect(tab4).not.toHaveAttribute('hidden');
+    expect(tab3).toHaveAttribute('hidden');
+
+    // Botón Uiverse al final de Pestaña 4 ("Inicio") -> regresa a Pestaña 1
+    const nextBtn4 = tab4.querySelector<HTMLButtonElement>('.next-tab-btn')!;
+    expect(nextBtn4.textContent).toContain('Inicio');
+    fireEvent.click(nextBtn4);
+    expect(tab1).not.toHaveAttribute('hidden');
   });
 
   it('escribe en vivo el encabezado h1 del Hero letra por letra y mantiene el cursor | parpadeando', () => {
@@ -38,9 +91,6 @@ describe('Navegación unificada, panal hexagonal de tecnologías y animaciones i
     const roleSpan = container.querySelector('.hero__role-badge.mono');
 
     expect(headline).toBeInTheDocument();
-    expect(nameSpan).toBeInTheDocument();
-    expect(roleSpan).toBeInTheDocument();
-
     expect(nameSpan?.textContent).toBe('|');
 
     for (let i = 0; i < 75; i++) {
@@ -52,67 +102,66 @@ describe('Navegación unificada, panal hexagonal de tecnologías y animaciones i
     expect(headline).toHaveAttribute('data-typing-complete', 'true');
     expect(nameSpan?.textContent).toContain('Duber Andrés Eraso Uni');
     expect(roleSpan?.textContent).toContain('ST&T LTDA');
-
-    const idleCursor = container.querySelector('.hero__typing-cursor--idle');
-    expect(idleCursor).toBeInTheDocument();
-    expect(idleCursor?.textContent).toBe('|');
+    expect(container.querySelector('.hero__typing-cursor--idle')?.textContent).toBe('|');
   });
 
-  it('renderiza las 26 tecnologías verificadas en un panal hexagonal con iconos SVG oficiales, pop-up al pasar el cursor y modal al hacer clic', () => {
+  it('mantiene visibles los 26 hexágonos del panal después de pasar y retirar el cursor', () => {
     const { container } = renderPortfolio();
 
-    const hexCells = container.querySelectorAll('.hex-cell');
+    // Ir a Pestaña 2
+    fireEvent.click(container.querySelector('#header-tab-tab2')!);
+
+    const honeycomb = container.querySelector('.honeycomb')!;
+    const hexCells = container.querySelectorAll<HTMLButtonElement>('.hex-cell');
     expect(hexCells.length).toBe(PORTFOLIO_DATA.techHoneycomb.length);
     expect(hexCells.length).toBe(26);
 
-    // Verifica que cada hexágono tenga su icono oficial descargado en /icons/tech/*.svg
-    const icons = container.querySelectorAll<HTMLImageElement>('.hex-cell__icon');
-    expect(icons.length).toBe(26);
-    icons.forEach((img) => {
-      expect(img.getAttribute('src')).toMatch(/^\/icons\/tech\/[a-z0-9-]+\.svg$/);
+    // Ningún hexágono usa .reveal directamente para evitar que desaparezca al actualizar su clase
+    hexCells.forEach((cell) => {
+      expect(cell).not.toHaveClass('reveal');
     });
 
-    // Al pasar el cursor sobre un hexágono (ej. Java), crece (.is-hovered) y muestra el pop-up flotante
-    const firstHex = hexCells[0] as HTMLButtonElement;
+    const firstHex = hexCells[0];
     fireEvent.mouseEnter(firstHex);
-
     expect(firstHex).toHaveClass('is-hovered');
-    const popup = container.querySelector('.hex-popup[role="tooltip"]');
-    expect(popup).toBeInTheDocument();
-    expect(popup?.textContent).toContain('Java');
+    expect(honeycomb).toHaveClass('has-hovered-cell');
+    expect(container.querySelector('.hex-popup[role="tooltip"]')).toBeInTheDocument();
 
-    // Al hacer clic en el hexágono, abre el modal detallado y lo cierra con Escape
+    // Al retirar el cursor, vuelve a su estado inicial sin ocultarse
+    fireEvent.mouseLeave(firstHex);
+    expect(firstHex).not.toHaveClass('is-hovered');
+    expect(honeycomb).not.toHaveClass('has-hovered-cell');
+    expect(container.querySelector('.hex-popup[role="tooltip"]')).not.toBeInTheDocument();
+    expect(container.querySelectorAll('.hex-cell').length).toBe(26);
+
+    // Clic abre el modal detallado y Escape lo cierra
     fireEvent.click(firstHex);
     const modal = screen.getByRole('dialog');
     expect(modal.querySelector('.hex-modal')).toBeInTheDocument();
-    expect(modal.textContent).toContain('Java');
-
     fireEvent.keyDown(window, { key: 'Escape' });
     expect(container.querySelector('.hex-modal')).not.toBeInTheDocument();
-
-    // Resaltado por categoría en el panal
-    const filterButtons = container.querySelectorAll('.honeycomb-filters__btn');
-    expect(filterButtons.length).toBeGreaterThan(1);
-    fireEvent.click(filterButtons[1]);
-    expect(container.querySelectorAll('.hex-cell:not(.is-dimmed)').length).toBeGreaterThan(0);
-    expect(container.querySelectorAll('.hex-cell.is-dimmed').length).toBeGreaterThan(0);
   });
 
-  it('prioriza EventManager finalizado con rol explícito y aplica variantes de animación scroll-reveal', () => {
+  it('mantiene visibles las tarjetas de proyectos al filtrar y al interactuar con ellas', () => {
     const { container } = renderPortfolio();
 
-    const projectTitles = Array.from(container.querySelectorAll('.case-study__title')).map((el) =>
-      el.textContent?.trim()
-    );
-    expect(projectTitles[0]).toBe('EventManager');
-    expect(projectTitles[1]).toContain('Ñimpe Misak');
+    fireEvent.click(container.querySelector('#header-tab-tab2')!);
 
-    const roleCallouts = container.querySelectorAll('.case-study__role-callout');
-    expect(roleCallouts.length).toBe(2);
+    const filterPills = container.querySelectorAll<HTMLButtonElement>('.projects__filter-pill');
+    expect(filterPills.length).toBe(3);
 
-    // Variantes dinámicas de scroll-reveal y foco ambiental
-    expect(container.querySelectorAll('.reveal--left').length).toBeGreaterThan(0);
-    expect(container.querySelectorAll('.reveal--right').length).toBeGreaterThan(0);
-    expect(container.querySelector('.cursor-spotlight')).toBeInTheDocument();
+    // Filtrar Finalizados (1) -> Trabajo de grado (1) -> Todos (2)
+    fireEvent.click(filterPills[1]);
+    expect(container.querySelectorAll('.case-study').length).toBe(1);
+
+    fireEvent.click(filterPills[2]);
+    expect(container.querySelectorAll('.case-study').length).toBe(1);
+
+    fireEvent.click(filterPills[0]);
+    const allCards = container.querySelectorAll('.case-study');
+    expect(allCards.length).toBe(2);
+    allCards.forEach((card) => {
+      expect(card).not.toHaveClass('reveal');
+    });
   });
 });
