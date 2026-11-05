@@ -15,9 +15,9 @@ export function Languages() {
           subtitle={t.languages.subtitle}
         />
 
-        <div className="languages__grid">
+        <div className="languages__grid focus-group">
           {/* Registro Español */}
-          <div className="lang-panel reveal">
+          <div className="lang-panel focus-card reveal">
             <div className="lang-panel__top mono">
               <span className="lang-panel__protocol">COMM.01 // NATIVE</span>
               <span className="lang-panel__code">[ES]</span>
@@ -27,7 +27,7 @@ export function Languages() {
               <div className="lang-panel__icon-box">
                 <Globe size={18} aria-hidden="true" />
               </div>
-              <h3 className="lang-panel__name">{t.languages.spanish.name}</h3>
+              <h3 className="lang-panel__name hover-paint">{t.languages.spanish.name}</h3>
             </div>
 
             <div className="lang-panel__level mono">
@@ -39,7 +39,7 @@ export function Languages() {
           </div>
 
           {/* Registro Inglés */}
-          <div className="lang-panel reveal" style={{ animationDelay: '100ms' }}>
+          <div className="lang-panel focus-card reveal" style={{ animationDelay: '100ms' }}>
             <div className="lang-panel__top mono">
               <span className="lang-panel__protocol">COMM.02 // WORKING_PROFICIENCY</span>
               <span className="lang-panel__code">[EN]</span>
@@ -49,7 +49,7 @@ export function Languages() {
               <div className="lang-panel__icon-box">
                 <MessageSquare size={18} aria-hidden="true" />
               </div>
-              <h3 className="lang-panel__name">{t.languages.english.name}</h3>
+              <h3 className="lang-panel__name hover-paint">{t.languages.english.name}</h3>
             </div>
 
             <div className="lang-panel__level mono">

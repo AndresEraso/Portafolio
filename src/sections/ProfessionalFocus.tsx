@@ -61,9 +61,9 @@ export function ProfessionalFocus() {
             <span>SYSTEM_EVOLUTION: CONTINUOUS</span>
           </div>
 
-          <div className="focus__grid">
+          <div className="focus__grid focus-group">
             {areas.map(({ id, code, icon: IconComponent, data, technologies }) => (
-              <div key={id} className="focus-node reveal">
+              <div key={id} className="focus-node focus-card reveal">
                 <div className="focus-node__ribbon mono">
                   <span className="focus-node__code">{code}</span>
                   <div className="focus-node__badge">
@@ -77,7 +77,7 @@ export function ProfessionalFocus() {
                     <div className="focus-node__icon-box">
                       <IconComponent size={18} aria-hidden="true" />
                     </div>
-                    <h3 className="focus-node__title">{data.title}</h3>
+                    <h3 className="focus-node__title hover-paint">{data.title}</h3>
                   </div>
 
                   <p className="focus-node__desc">{data.description}</p>
@@ -96,7 +96,7 @@ export function ProfessionalFocus() {
                     <span className="focus-node__techs-label mono">// {t.focus.relatedLabel}:</span>
                     <div className="focus-node__tags">
                       {technologies.map((tech) => (
-                        <span key={tech} className="focus-node__tag mono">
+                        <span key={tech} className="focus-node__tag paint-tag mono">
                           {tech}
                         </span>
                       ))}

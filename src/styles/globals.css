@@ -244,6 +244,150 @@ main:focus {
   transform: translateY(0);
 }
 
+/* --------------------------------------------------------------------------
+   Luz ambiental interactiva (Inspirado en v4 — Cursor Spotlight & Card Focus)
+   -------------------------------------------------------------------------- */
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    620px circle at var(--spotlight-x, 50vw) var(--spotlight-y, 28vh),
+    var(--spotlight-color),
+    var(--spotlight-secondary) 42%,
+    transparent 78%
+  );
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.focus-card {
+  position: relative;
+  transition:
+    opacity 240ms var(--ease-standard),
+    filter 240ms var(--ease-standard),
+    transform 220ms var(--ease-emphasized),
+    border-color 220ms var(--ease-standard),
+    background-color 220ms var(--ease-standard),
+    box-shadow 240ms var(--ease-standard);
+}
+
+.focus-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    360px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    var(--card-spotlight),
+    transparent 72%
+  );
+  transition: opacity 220ms var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .focus-group:has(.focus-card:hover) .focus-card:not(:hover) {
+    opacity: 0.52;
+    filter: brightness(0.86) saturate(0.85);
+  }
+
+  .focus-card:hover {
+    opacity: 1;
+    filter: none;
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    box-shadow: var(--card-focus-shadow);
+  }
+
+  .focus-card:hover::after {
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Barrido cromático y líneas de scroll (Inspirado en folio-v2)
+   -------------------------------------------------------------------------- */
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .hover-paint {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-primary) 0%,
+      var(--color-primary) 50%,
+      var(--color-text) 50%,
+      var(--color-text) 100%
+    );
+    background-size: 205% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 380ms var(--ease-emphasized);
+  }
+
+  .hover-paint:hover,
+  .focus-card:hover .hover-paint {
+    background-position: 0% 0;
+  }
+}
+
+.paint-tag {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    border-color 200ms var(--ease-standard),
+    color 200ms var(--ease-standard),
+    transform 200ms var(--ease-standard);
+}
+
+.paint-tag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-primary-soft);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 280ms var(--ease-emphasized);
+}
+
+.paint-tag:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.paint-tag:hover::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.scroll-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-border-strong) 55%,
+    transparent 100%
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 720ms var(--ease-emphasized);
+}
+
+.scroll-line.is-visible,
+.reveal.is-visible .scroll-line {
+  transform: scaleX(1);
+}
+
+@media (pointer: coarse) {
+  .cursor-spotlight {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal.is-visible {
@@ -252,8 +396,29 @@ main:focus {
     transition: none !important;
   }
 
-  .card-lift:hover {
+  .card-lift:hover,
+  .focus-card:hover {
     transform: none !important;
+  }
+
+  .focus-group:has(.focus-card:hover) .focus-card:not(:hover) {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .cursor-spotlight {
+    display: none !important;
+  }
+
+  .hover-paint {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    transition: none !important;
+  }
+
+  .scroll-line {
+    transform: scaleX(1) !important;
+    transition: none !important;
   }
 }
 
@@ -261,5 +426,22 @@ main:focus {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .cursor-spotlight {
+    display: none !important;
+  }
+
+  .hover-paint {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  .scroll-line {
+    transform: scaleX(1) !important;
+  }
+
+  [role='tabpanel'][hidden] {
+    display: block !important;
   }
 }
