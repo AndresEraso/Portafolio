@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Boxes,
   Briefcase,
@@ -7,6 +8,7 @@ import {
   Coffee,
   Cpu,
   Database,
+  Filter,
   FolderGit2,
   Gamepad2,
   GitBranch,
@@ -22,7 +24,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SectionHeading } from '../components/SectionHeading';
-import { PORTFOLIO_DATA, type TechCategory } from '../data/portfolio';
+import { PORTFOLIO_DATA, type TechCategory, type TechDomainGroup } from '../data/portfolio';
 import { useLanguage } from '../hooks/useLanguage';
 import './TechStack.css';
 
@@ -70,9 +72,24 @@ function renderTechIcon(iconName?: string) {
   }
 }
 
+type TechFilterKey = TechDomainGroup | 'all';
+
 export function TechStack() {
   const { t } = useLanguage();
   const categories = PORTFOLIO_DATA.techCategories;
+  const [domainFilter, setDomainFilter] = useState<TechFilterKey>('core');
+
+  const counts: Record<TechFilterKey, number> = {
+    core: categories.filter((c) => c.domainGroup === 'core').length,
+    ops: categories.filter((c) => c.domainGroup === 'ops').length,
+    complementary: categories.filter((c) => c.domainGroup === 'complementary').length,
+    all: categories.length,
+  };
+
+  const visibleCategories =
+    domainFilter === 'all'
+      ? categories
+      : categories.filter((c) => c.domainGroup === domainFilter);
 
   return (
     <section id="tech-stack" className="section tech-stack">
@@ -100,16 +117,51 @@ export function TechStack() {
           </div>
         </SectionHeading>
 
-        <div className="tech-stack__grid">
-          {categories.map((cat: TechCategory, idx: number) => {
+        {/* Barra de enfoque por especialidad */}
+        <div className="tech-stack__controls reveal">
+          <div
+            className="tech-stack__filters"
+            role="group"
+            aria-label={t.workspace.techFilters.label}
+          >
+            {(['core', 'ops', 'complementary', 'all'] as TechFilterKey[]).map((key) => {
+              const active = domainFilter === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  aria-pressed={active}
+                  className={`tech-stack__filter-btn mono ${active ? 'is-active' : ''}`}
+                  onClick={() => setDomainFilter(key)}
+                >
+                  <span>{t.workspace.techFilters[key]}</span>
+                  <span className="tech-stack__filter-count">{counts[key]}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {domainFilter === 'core' && (
+            <p className="tech-stack__focus-banner mono">
+              <Filter size={13} aria-hidden="true" />
+              <span>{t.workspace.techFilters.focusedBanner}</span>
+            </p>
+          )}
+        </div>
+
+        <div className="tech-stack__grid focus-group">
+          {visibleCategories.map((cat: TechCategory) => {
             const catTranslation = t.techStack.categories[cat.titleKey];
             const hasCapabilities = catTranslation.capabilities && catTranslation.capabilities.length > 0;
-            const codeIndex = String(idx + 1).padStart(2, '0');
+            const globalIdx = categories.findIndex((item) => item.id === cat.id);
+            const codeIndex = String(globalIdx + 1).padStart(2, '0');
 
             return (
               <div
                 key={cat.id}
-                className={`tech-stack__panel reveal ${cat.highlight ? 'tech-stack__panel--highlight' : ''}`}
+                className={`tech-stack__panel focus-card reveal ${
+                  cat.highlight ? 'tech-stack__panel--highlight' : ''
+                }`}
               >
                 <div className="tech-stack__panel-header">
                   <div className="tech-stack__header-meta mono">
@@ -128,7 +180,7 @@ export function TechStack() {
                       {cat.id === 'web' && <Layers size={18} />}
                     </div>
                     <div>
-                      <h3 className="tech-stack__panel-title">{catTranslation.title}</h3>
+                      <h3 className="tech-stack__panel-title hover-paint">{catTranslation.title}</h3>
                       <p className="tech-stack__panel-desc">{catTranslation.description}</p>
                     </div>
                   </div>
@@ -142,7 +194,7 @@ export function TechStack() {
                     return (
                       <span
                         key={index}
-                        className={`tech-stack__tag mono ${
+                        className={`tech-stack__tag paint-tag mono ${
                           isWork ? 'tech-stack__tag--work' : 'tech-stack__tag--projects'
                         }`}
                         title={`${item.name} (${

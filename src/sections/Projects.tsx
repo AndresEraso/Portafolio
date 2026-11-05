@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import {
   ArrowUpRight,
+  CheckCircle2,
   ChevronDown,
   ChevronUp,
   FolderGit2,
   Gamepad2,
   Layers,
   Sparkles,
+  UserCheck,
   Users,
 } from 'lucide-react';
 import { GithubIcon } from '../components/Icons';
@@ -101,13 +103,22 @@ function NimpeMisakDiagram() {
   );
 }
 
+type ProjectCategoryFilter = 'all' | 'completed' | 'research';
+
 export function Projects() {
   const { t } = useLanguage();
   const [expandedId, setExpandedId] = useState<string | null>('eventManager');
+  const [categoryFilter, setCategoryFilter] = useState<ProjectCategoryFilter>('all');
 
   const toggleExpand = (id: string) => {
     setExpandedId((curr) => (curr === id ? null : id));
   };
+
+  const filteredProjects = PORTFOLIO_DATA.projects.filter((project) => {
+    if (categoryFilter === 'completed') return project.status === 'completed';
+    if (categoryFilter === 'research') return project.status === 'inDevelopment';
+    return true;
+  });
 
   return (
     <section id="projects" className="section projects">
@@ -116,19 +127,43 @@ export function Projects() {
           eyebrow={`SYS.05 // ${t.projects.title}`}
           title={t.projects.title}
           subtitle={t.projects.subtitle}
-        />
+        >
+          <div
+            className="projects__filters"
+            role="group"
+            aria-label={t.workspace.projectFilters.label}
+          >
+            {(['all', 'completed', 'research'] as ProjectCategoryFilter[]).map((key) => {
+              const active = categoryFilter === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  aria-pressed={active}
+                  className={`projects__filter-pill mono ${active ? 'is-active' : ''}`}
+                  onClick={() => setCategoryFilter(key)}
+                >
+                  <span>{t.workspace.projectFilters[key]}</span>
+                </button>
+              );
+            })}
+          </div>
+        </SectionHeading>
 
-        <div className="projects__cases">
-          {PORTFOLIO_DATA.projects.map((project: ProjectData, index: number) => {
+        <div className="projects__cases focus-group">
+          {filteredProjects.map((project: ProjectData) => {
             const projectText = t.projects.items[project.id];
             const isExpanded = expandedId === project.id;
             const isCompleted = project.status === 'completed';
-            const caseNumber = String(index + 1).padStart(2, '0');
+            const globalIndex = PORTFOLIO_DATA.projects.findIndex((p) => p.id === project.id);
+            const caseNumber = String(globalIndex + 1).padStart(2, '0');
 
             return (
               <article
                 key={project.id}
-                className={`case-study case-study--${project.id} reveal ${isExpanded ? 'is-expanded' : ''}`}
+                className={`case-study case-study--${project.id} focus-card reveal ${
+                  isExpanded ? 'is-expanded' : ''
+                }`}
               >
                 {/* Cabecera del Caso de Estudio */}
                 <div className="case-study__ribbon mono">
@@ -166,17 +201,38 @@ export function Projects() {
                       )}
                     </div>
                     <div>
-                      <h3 className="case-study__title">{project.name}</h3>
+                      <h3 className="case-study__title hover-paint">{project.name}</h3>
                       <p className="case-study__type mono">{projectText.type}</p>
                     </div>
                   </div>
 
                   <p className="case-study__summary">{projectText.summary}</p>
 
+                  {/* Contexto explícito y visible del rol dentro del proyecto */}
+                  {projectText.role && (
+                    <div className="case-study__role-callout">
+                      <div className="case-study__role-callout-head mono">
+                        <span className="case-study__role-badge">
+                          <UserCheck size={13} aria-hidden="true" />
+                          <span>{t.workspace.projectFilters.roleBadge}</span>
+                        </span>
+                        <span className="case-study__quality-tag">
+                          <CheckCircle2 size={12} aria-hidden="true" />
+                          <span>
+                            {isCompleted
+                              ? t.workspace.projectFilters.verifiedRepo
+                              : t.workspace.projectFilters.activeThesis}
+                          </span>
+                        </span>
+                      </div>
+                      <p className="case-study__role-callout-text">{projectText.role}</p>
+                    </div>
+                  )}
+
                   {/* Etiquetas de Tecnologías */}
                   <div className="case-study__techs">
                     {project.technologies.map((tech) => (
-                      <span key={tech} className="case-study__tech-tag mono">
+                      <span key={tech} className="case-study__tech-tag paint-tag mono">
                         {tech}
                       </span>
                     ))}
@@ -301,7 +357,7 @@ export function Projects() {
         </div>
 
         {/* Tarjeta de invitación a GitHub */}
-        <div className="projects__github-cta reveal">
+        <div className="projects__github-cta focus-card reveal">
           <div className="projects__github-icon-box">
             <FolderGit2 size={22} aria-hidden="true" />
           </div>

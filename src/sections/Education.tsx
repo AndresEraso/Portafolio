@@ -36,7 +36,7 @@ export function Education() {
               <span>// {t.education.academicTitle.toUpperCase()}</span>
             </div>
 
-            <div className="education__record">
+            <div className="education__record focus-card">
               <div className="education__record-ribbon mono">
                 <span className="education__status-pill">
                   <span className="education__status-dot" aria-hidden="true" />
@@ -46,7 +46,7 @@ export function Education() {
               </div>
 
               <div className="education__record-body">
-                <h4 className="education__program-title">{education.program}</h4>
+                <h4 className="education__program-title hover-paint">{education.program}</h4>
                 <p className="education__institution mono">{education.institution}</p>
 
                 <div className="education__timeline mono">
@@ -71,14 +71,14 @@ export function Education() {
               <span>// {t.education.certificationsTitle.toUpperCase()}</span>
             </div>
 
-            <div className="education__ledger">
+            <div className="education__ledger focus-group">
               {certifications.map((cert: CertificationData, idx: number) => {
                 const dateText = cert.date ? formatMonthYear(cert.date, language) : null;
                 const isCredly = !!cert.credentialUrl && cert.credentialUrl.includes('credly.com');
                 const certNum = String(idx + 1).padStart(2, '0');
 
                 return (
-                  <div key={cert.id} className="cert-row">
+                  <div key={cert.id} className="cert-row focus-card">
                     <div className="cert-row__meta mono">
                       <span className="cert-row__index">CRED.{certNum}</span>
                       <span className="cert-row__category">
@@ -96,7 +96,7 @@ export function Education() {
                     </div>
 
                     <div className="cert-row__main">
-                      <h4 className="cert-row__name">{cert.name}</h4>
+                      <h4 className="cert-row__name hover-paint">{cert.name}</h4>
                       <p className="cert-row__issuer mono">
                         {cert.issuer}
                         {cert.platform && ` · Platform: ${cert.platform}`}

@@ -143,6 +143,7 @@ export function Header({ activeId }: HeaderProps) {
             </button>
           </div>
         </div>
+        <div className="header__progress-bar" aria-hidden="true" />
       </header>
 
       {/* Menú móvil accesible */}

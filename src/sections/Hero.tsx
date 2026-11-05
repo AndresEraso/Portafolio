@@ -1,4 +1,5 @@
-import { ArrowRight, Mail, MapPin, Server, Terminal } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Clock, Layers, Mail, MapPin, Server, Terminal } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../components/Icons';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import { useLanguage } from '../hooks/useLanguage';
@@ -6,11 +7,125 @@ import './Hero.css';
 
 interface HeroProps {
   onOpenContact?: (triggerRef?: HTMLElement | null) => void;
+  onNavigateSection?: (sectionId: string) => void;
 }
 
-export function Hero({ onOpenContact }: HeroProps) {
-  const { t } = useLanguage();
+interface TypingState {
+  roleKey: string;
+  nameLen: number;
+  roleLen: number;
+}
+
+function isReducedMotionPreferred(): boolean {
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+}
+
+function getBogotaClock(locale: string): string {
+  try {
+    return new Intl.DateTimeFormat(locale === 'es' ? 'es-CO' : 'en-US', {
+      timeZone: 'America/Bogota',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).format(new Date());
+  } catch {
+    const now = new Date();
+    return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+  }
+}
+
+export function Hero({ onOpenContact, onNavigateSection }: HeroProps) {
+  const { t, language } = useLanguage();
   const { profile, experience, education } = PORTFOLIO_DATA;
+
+  const fullName = profile.name;
+  const fullRole = `${t.hero.roleLabel} ${experience.company}`;
+
+  const [typingState, setTypingState] = useState<TypingState>(() => {
+    const reduced = isReducedMotionPreferred();
+    return {
+      roleKey: fullRole,
+      nameLen: reduced ? fullName.length : 0,
+      roleLen: reduced ? fullRole.length : 0,
+    };
+  });
+
+  const [localClock, setLocalClock] = useState<string>(() => getBogotaClock(language));
+
+  const reducedMotion = isReducedMotionPreferred();
+  const isSameRole = typingState.roleKey === fullRole;
+  const activeNameLen = reducedMotion
+    ? fullName.length
+    : isSameRole
+      ? typingState.nameLen
+      : fullName.length;
+  const activeRoleLen = reducedMotion
+    ? fullRole.length
+    : isSameRole
+      ? typingState.roleLen
+      : 0;
+
+  const isTypingName = activeNameLen < fullName.length;
+  const isTypingComplete = activeNameLen >= fullName.length && activeRoleLen >= fullRole.length;
+
+  useEffect(() => {
+    if (isReducedMotionPreferred()) return;
+    if (activeNameLen >= fullName.length && activeRoleLen >= fullRole.length) return;
+
+    const delay =
+      activeNameLen < fullName.length
+        ? activeNameLen === 0
+          ? 180
+          : 42
+        : activeRoleLen === 0
+          ? 200
+          : 30;
+
+    const timer = window.setTimeout(() => {
+      setTypingState((prev) => {
+        const baseNameLen = prev.roleKey === fullRole ? prev.nameLen : fullName.length;
+        const baseRoleLen = prev.roleKey === fullRole ? prev.roleLen : 0;
+
+        if (baseNameLen < fullName.length) {
+          return {
+            roleKey: fullRole,
+            nameLen: baseNameLen + 1,
+            roleLen: 0,
+          };
+        }
+
+        if (baseRoleLen < fullRole.length) {
+          return {
+            roleKey: fullRole,
+            nameLen: fullName.length,
+            roleLen: baseRoleLen + 1,
+          };
+        }
+
+        return {
+          roleKey: fullRole,
+          nameLen: fullName.length,
+          roleLen: fullRole.length,
+        };
+      });
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [activeNameLen, activeRoleLen, fullName.length, fullRole]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setLocalClock(getBogotaClock(language));
+    }, 30000);
+    return () => window.clearInterval(interval);
+  }, [language]);
+
+  const displayedName = fullName.slice(0, activeNameLen);
+  const displayedRole = fullRole.slice(0, activeRoleLen);
 
   return (
     <section id="hero" className="hero">
@@ -27,6 +142,10 @@ export function Hero({ onOpenContact }: HeroProps) {
               <span className="hero__status-pulse" aria-hidden="true" />
               <span className="mono">ACTIVE // BACKEND & CLOUD</span>
             </div>
+            <div className="hero__clock-badge mono" title={t.workspace.quickBrief.localTime}>
+              <Clock size={12} className="hero__meta-icon" aria-hidden="true" />
+              <span>UTC-5 · {localClock}</span>
+            </div>
           </div>
 
           <div className="hero__cli-prompt mono" aria-hidden="true">
@@ -37,19 +156,38 @@ export function Hero({ onOpenContact }: HeroProps) {
             <span className="hero__cli-command">cat profile.spec</span>
           </div>
 
-          <h1 className="hero__headline">
-            <span className="hero__name">{profile.name}</span>
-            <span className="hero__role-badge mono">
-              {t.hero.roleLabel} {experience.company}
+          <h1 className="hero__headline" data-typing-complete={isTypingComplete ? 'true' : 'false'}>
+            <span className="visually-hidden">
+              {fullName} — {fullRole}
+            </span>
+            <span className="hero__name" aria-hidden="true">
+              {displayedName}
+              {isTypingName && (
+                <span className="hero__typing-cursor hero__typing-cursor--active">|</span>
+              )}
+            </span>
+            <span className="hero__role-badge mono" aria-hidden="true">
+              {displayedRole}
+              {!isTypingName && (
+                <span
+                  className={`hero__typing-cursor ${
+                    isTypingComplete ? 'hero__typing-cursor--idle' : 'hero__typing-cursor--active'
+                  }`}
+                >
+                  |
+                </span>
+              )}
             </span>
           </h1>
 
-          <div className="hero__spec-pill mono">
-            <span>BACKEND</span>
-            <span className="hero__spec-divider">/</span>
-            <span>AWS CLOUD</span>
-            <span className="hero__spec-divider">/</span>
-            <span>DISTRIBUTED SYSTEMS</span>
+          <div className="hero__quick-focus">
+            <Layers size={14} className="hero__meta-icon" aria-hidden="true" />
+            <span className="hero__quick-focus-label mono">
+              {t.workspace.quickBrief.focusLabel}:
+            </span>
+            <strong className="hero__quick-focus-value mono">
+              {t.workspace.quickBrief.focusValue}
+            </strong>
           </div>
 
           <p className="hero__intro">{t.hero.intro}</p>
@@ -77,7 +215,16 @@ export function Hero({ onOpenContact }: HeroProps) {
               <span className="mono">{t.hero.ctaContact}</span>
             </button>
 
-            <a href="#projects" className="hero__btn hero__btn--secondary">
+            <a
+              href="#projects"
+              className="hero__btn hero__btn--secondary paint-tag"
+              onClick={(e) => {
+                if (onNavigateSection) {
+                  e.preventDefault();
+                  onNavigateSection('projects');
+                }
+              }}
+            >
               <span className="mono">{t.hero.ctaProjects}</span>
               <ArrowRight size={16} aria-hidden="true" />
             </a>
@@ -90,7 +237,7 @@ export function Hero({ onOpenContact }: HeroProps) {
               href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hero__social-link mono"
+              className="hero__social-link paint-tag mono"
               aria-label={`GitHub ${t.a11y.opensInNewTab}`}
             >
               <GithubIcon width={16} height={16} />
@@ -102,7 +249,7 @@ export function Hero({ onOpenContact }: HeroProps) {
                 href={profile.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero__social-link mono"
+                className="hero__social-link paint-tag mono"
                 aria-label={`LinkedIn ${t.a11y.opensInNewTab}`}
               >
                 <LinkedinIcon width={16} height={16} />
@@ -114,7 +261,7 @@ export function Hero({ onOpenContact }: HeroProps) {
 
         {/* Columna Visual: Consola de Ingeniería y Telemetría */}
         <div className="hero__visual reveal" style={{ animationDelay: '100ms' }}>
-          <div className="hero__terminal">
+          <div className="hero__terminal focus-card">
             {/* Barra de cabecera de la terminal */}
             <div className="hero__terminal-bar">
               <div className="hero__terminal-status mono">
@@ -156,7 +303,7 @@ export function Hero({ onOpenContact }: HeroProps) {
                 <span className="hero__terminal-pulse" aria-hidden="true" />
                 <span>PIPELINES & CLOUD: ACTIVE</span>
               </div>
-              <span className="hero__terminal-region">LOC: COLOMBIA</span>
+              <span className="hero__terminal-region">POPAYÁN · UTC-5 · {localClock}</span>
             </div>
           </div>
         </div>
