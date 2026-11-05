@@ -826,6 +826,34 @@ const es = {
       },
     },
   },
+
+  pageTabs: {
+    tablistLabel: 'Pestañas principales del portafolio',
+    continueReading: 'Siguiente sección',
+    backToStart: 'Volver al inicio',
+    tabs: {
+      tab1: {
+        label: 'Inicio y Sobre mí',
+        short: 'Inicio',
+        nextTitle: 'Habilidades técnicas',
+      },
+      tab2: {
+        label: 'Stack, Experiencia y Proyectos',
+        short: 'Stack y Proyectos',
+        nextTitle: 'Educación y certificaciones',
+      },
+      tab3: {
+        label: 'Formación y Enfoque',
+        short: 'Formación',
+        nextTitle: 'Contacto profesional',
+      },
+      tab4: {
+        label: 'Contacto profesional',
+        short: 'Contacto',
+        nextTitle: 'Inicio',
+      },
+    },
+  },
 };
 
 export type Dictionary = typeof es;
@@ -1619,6 +1647,34 @@ const en: Dictionary = {
         role: '2.5D / 3D Interactive Engine',
         desc: 'Developing the Ñimpe Misak ethno-educational video game thesis project.',
         tags: ['Thesis project', '2.5D', 'C#'],
+      },
+    },
+  },
+
+  pageTabs: {
+    tablistLabel: 'Main portfolio tabs',
+    continueReading: 'Next section',
+    backToStart: 'Back to start',
+    tabs: {
+      tab1: {
+        label: 'Home & About',
+        short: 'Home',
+        nextTitle: 'Technical Skills',
+      },
+      tab2: {
+        label: 'Stack, Experience & Projects',
+        short: 'Stack & Projects',
+        nextTitle: 'Education & Certifications',
+      },
+      tab3: {
+        label: 'Education & Focus',
+        short: 'Education',
+        nextTitle: 'Professional Contact',
+      },
+      tab4: {
+        label: 'Professional Contact',
+        short: 'Contact',
+        nextTitle: 'Home',
       },
     },
   },
